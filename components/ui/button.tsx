@@ -2,7 +2,7 @@
 import React from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: "default" | "outline";
+    variant?: "default" | "outline" | "destructive";
     className?: string; // Expect className to be passed for customization
 }
 
@@ -14,6 +14,7 @@ export function Button({ variant = "default", className = "", ...props }: Button
     const variants = {
         default: "bg-blue-600 text-white hover:bg-blue-700 shadow-sm",
         outline: "border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-900",
+        destructive: "bg-red-600 text-white hover:bg-red-700 shadow-sm",
     };
 
     // Combine classes. 
