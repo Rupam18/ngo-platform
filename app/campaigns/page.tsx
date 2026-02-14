@@ -4,6 +4,7 @@ export default function CampaignsPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-6">
       <CampaignCard
+        id="education"
         title="Help Children Education"
         description="Support education for underprivileged children."
         image="https://images.unsplash.com/photo-1588072432836-e10032774350"
@@ -12,6 +13,7 @@ export default function CampaignsPage() {
       />
 
       <CampaignCard
+        id="green-hat"
         title="Tree Plantation Drive"
         description="Join us in making the earth greener."
         image="https://images.unsplash.com/photo-1501004318641-b39e6451bec6"
