@@ -37,6 +37,10 @@ export async function POST(req: Request) {
     }
 
     // Create token
+    if (!process.env.JWT_SECRET) {
+      throw new Error("JWT_SECRET is missing");
+    }
+
     const token = jwt.sign(
       { id: user.id, role: user.role },
       process.env.JWT_SECRET!,
@@ -55,6 +59,7 @@ export async function POST(req: Request) {
     });
 
   } catch (error) {
+    console.error("Login error:", error);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }

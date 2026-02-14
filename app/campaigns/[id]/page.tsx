@@ -20,7 +20,7 @@ export default async function CampaignDetailsPage({ params }: { params: { id: st
         <div className="min-h-screen bg-gray-50 py-12">
             <div className="max-w-4xl mx-auto px-6">
                 <Link href="/">
-                    <Button variant="ghost" className="mb-6">← Back to Campaigns</Button>
+                    <Button variant="outline" className="mb-6">← Back to Campaigns</Button>
                 </Link>
 
                 <div className="bg-white rounded-xl shadow-md overflow-hidden">
