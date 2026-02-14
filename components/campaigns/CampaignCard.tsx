@@ -40,7 +40,7 @@ export default function CampaignCard({
         <div className="mt-4">
           <Progress value={progress} className="h-2" />
           <p className="text-sm mt-2 text-gray-700">
-            <span className="font-bold text-blue-600">₹{raised.toLocaleString()}</span> raised of ₹{goal.toLocaleString()}
+            <span className="font-bold text-blue-600">₹{raised.toLocaleString("en-IN")}</span> raised of ₹{goal.toLocaleString("en-IN")}
           </p>
         </div>
 
