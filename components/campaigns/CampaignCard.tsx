@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card } from "@/components/ui/card";
@@ -22,7 +23,7 @@ export default function CampaignCard({
   const progress = (raised / goal) * 100;
 
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden bg-white shadow-md rounded-xl">
       <img
         src={image}
         alt={title}
@@ -30,20 +31,20 @@ export default function CampaignCard({
       />
 
       <div className="p-4">
-        <h3 className="text-xl font-semibold">{title}</h3>
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
 
-        <p className="text-sm text-gray-600 mt-2">
+        <p className="text-sm text-gray-600 line-clamp-2">
           {description}
         </p>
 
         <div className="mt-4">
-          <Progress value={progress} />
-          <p className="text-sm mt-2">
-            ₹{raised} raised of ₹{goal}
+          <Progress value={progress} className="h-2" />
+          <p className="text-sm mt-2 text-gray-700">
+            <span className="font-bold text-blue-600">₹{raised.toLocaleString()}</span> raised of ₹{goal.toLocaleString()}
           </p>
         </div>
 
-        <Button className="w-full mt-4">
+        <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">
           Donate Now
         </Button>
       </div>
