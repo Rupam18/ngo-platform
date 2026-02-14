@@ -4,8 +4,10 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import Link from "next/link";
 
 interface CampaignCardProps {
+  id: string;
   title: string;
   description: string;
   image: string;
@@ -14,6 +16,7 @@ interface CampaignCardProps {
 }
 
 export default function CampaignCard({
+  id,
   title,
   description,
   image,
@@ -44,9 +47,11 @@ export default function CampaignCard({
           </p>
         </div>
 
-        <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">
-          Donate Now
-        </Button>
+        <Link href={`/campaigns/${id}`}>
+          <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">
+            Donate Now
+          </Button>
+        </Link>
       </div>
     </Card>
   );

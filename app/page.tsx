@@ -1,13 +1,21 @@
 import Hero from "@/components/home/Hero";
 import ImpactStats from "@/components/home/ImpactStats";
 import FeaturedCampaigns from "@/components/home/FeaturedCampaigns";
+import { prisma } from "@/lib/prisma";
 
-export default function Home() {
+export const revalidate = 0; // Disable static caching for now
+
+export default async function Home() {
+  const campaigns = await prisma.campaign.findMany({
+    take: 3,
+    orderBy: { createdAt: "desc" },
+  });
+
   return (
     <main>
       <Hero />
       <ImpactStats />
-      <FeaturedCampaigns />
+      <FeaturedCampaigns campaigns={campaigns} />
     </main>
   );
 }

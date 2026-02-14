@@ -25,3 +25,22 @@ enum Role {
   USER
   ADMIN
 }
+
+model Campaign {
+  id          String     @id @default(uuid())
+  title       String
+  description String
+  image       String
+  goalAmount  Float
+  raisedAmount Float      @default(0)
+  createdAt   DateTime   @default(now())
+  donations   Donation[]
+}
+
+model Donation {
+  id          String   @id @default(uuid())
+  amount      Float
+  campaignId  String
+  campaign    Campaign @relation(fields: [campaignId], references: [id])
+  createdAt   DateTime @default(now())
+}
