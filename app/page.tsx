@@ -1,6 +1,6 @@
-import TopHeader from "@/components/home/TopHeader";
-import Navbar from "@/components/home/Navbar";
+import StickyHeader from "@/components/home/StickyHeader";
 import Hero from "@/components/home/Hero"; // Updated to use the new Premium Hero
+import KeyInitiatives from "@/components/home/KeyInitiatives";
 import AboutSection from "@/components/home/AboutSection";
 import VideoSection from "@/components/home/VideoSection";
 import OurWork from "@/components/home/OurWork";
@@ -22,9 +22,9 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      <TopHeader />
-      <Navbar />
+      <StickyHeader />
       <Hero />
+      <KeyInitiatives />
       <AboutSection />
       <VideoSection />
       <OurWork />

@@ -20,11 +20,12 @@ export default function VideoSection() {
                         Healthy Child, Healthy India
                     </h2>
 
-                    <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl aspect-video bg-gray-900 group">
+                    {/* Adjusted Video Container to match ~480px height on desktop while keeping aspect ratio */}
+                    <div className="relative w-full max-w-[854px] mx-auto overflow-hidden rounded-2xl shadow-2xl aspect-video bg-gray-900 group">
                         {/* YouTube Embed */}
                         <iframe
                             className="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder"
+                            src="https://www.youtube.com/embed/LIZi4Nl-Two"
                             title="Healthy Child, Healthy India"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
