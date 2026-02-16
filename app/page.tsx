@@ -1,7 +1,7 @@
 import StickyHeader from "@/components/home/StickyHeader";
-import Hero from "@/components/home/Hero"; // Updated to use the new Premium Hero
+import HeroSlider from "@/components/home/HeroSlider";
 import KeyInitiatives from "@/components/home/KeyInitiatives";
-import AboutSection from "@/components/home/AboutSection";
+import AboutRiso from "@/components/home/AboutRiso";
 import VideoSection from "@/components/home/VideoSection";
 import OurWork from "@/components/home/OurWork";
 import EventsGallery from "@/components/home/EventsGallery";
@@ -23,9 +23,9 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-white">
       <StickyHeader />
-      <Hero />
+      <HeroSlider />
       <KeyInitiatives />
-      <AboutSection />
+      <AboutRiso />
       <VideoSection />
       <OurWork />
       <EventsGallery />
