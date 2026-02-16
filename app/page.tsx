@@ -1,32 +1,37 @@
-import Hero from "@/components/home/Hero";
-import ImpactStats from "@/components/home/ImpactStats";
-import FeaturedCampaigns from "@/components/home/FeaturedCampaigns";
+import TopHeader from "@/components/home/TopHeader";
+import Navbar from "@/components/home/Navbar";
+import Hero from "@/components/home/Hero"; // Updated to use the new Premium Hero
+import AboutSection from "@/components/home/AboutSection";
+import VideoSection from "@/components/home/VideoSection";
+import OurWork from "@/components/home/OurWork";
+import EventsGallery from "@/components/home/EventsGallery";
+import CTASection from "@/components/home/CTASection";
+import CSRPartners from "@/components/home/CSRPartners";
+import Footer from "@/components/home/Footer";
 import { prisma } from "@/lib/prisma";
-import Banner from "@/components/home/Banner";
-import About from "@/components/home/About";
-import OurWings from "@/components/home/OurWings";
-import Events from "@/components/home/Events";
-import Partners from "@/components/home/Partners";
-
 
 export const revalidate = 0; // Disable static caching for now
 
 export default async function Home() {
-  const campaigns = await prisma.campaign.findMany({
-    take: 3,
-    orderBy: { createdAt: "desc" },
-  });
+  // Keeping prisma fetch in case we need it later or for other components, 
+  // though currently unused in the visual list provided.
+  // const campaigns = await prisma.campaign.findMany({
+  //   take: 3,
+  //   orderBy: { createdAt: "desc" },
+  // });
 
   return (
-    <main>
-      <Banner />
+    <main className="min-h-screen bg-white">
+      <TopHeader />
+      <Navbar />
       <Hero />
-      <About />
-      <OurWings />
-      <ImpactStats />
-      <FeaturedCampaigns campaigns={campaigns} />
-      <Events />
-      <Partners />
+      <AboutSection />
+      <VideoSection />
+      <OurWork />
+      <EventsGallery />
+      <CTASection />
+      <CSRPartners />
+      <Footer />
     </main>
   );
 }

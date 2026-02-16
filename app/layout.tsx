@@ -30,9 +30,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
+        {/* <Navbar /> Moved to page.tsx for homepage redesign request */}
         {children}
-        <Footer />
+        {/* <Footer /> Moved to page.tsx for homepage redesign request */}
       </body>
     </html>
   );
