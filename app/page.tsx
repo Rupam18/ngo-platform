@@ -1,5 +1,6 @@
 import StickyHeader from "@/components/home/StickyHeader";
 import HeroSlider from "@/components/home/HeroSlider";
+import ImpactAreas from "@/components/home/ImpactAreas";
 import ImpactStats from "@/components/home/ImpactStats";
 import KeyInitiatives from "@/components/home/KeyInitiatives";
 import AboutRiso from "@/components/home/AboutRiso";
@@ -26,6 +27,7 @@ export default async function Home() {
       <StickyHeader />
       <HeroSlider />
       <ImpactStats />
+      <ImpactAreas />
       <KeyInitiatives />
       <AboutRiso />
       <VideoSection />
