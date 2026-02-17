@@ -24,9 +24,9 @@ const galleryImages = [
 
 export default function EventsGallery() {
     return (
-        <section className="py-20 bg-white">
+        <section className="py-12 md:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-12">
+                <div className="text-center mb-8 md:mb-12">
                     <span className="text-blue-600 font-semibold tracking-wide uppercase">
                         Captured Moments
                     </span>
@@ -35,7 +35,7 @@ export default function EventsGallery() {
                     </h2>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                     {galleryImages.map((image, index) => (
                         <motion.div
                             key={index}

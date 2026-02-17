@@ -14,8 +14,8 @@ const partners = [
 
 export default function CSRPartners() {
     return (
-        <section className="py-20 bg-gray-50 overflow-hidden border-t">
-            <div className="max-w-7xl mx-auto px-6 text-center mb-12">
+        <section className="py-12 md:py-20 bg-gray-50 overflow-hidden border-t">
+            <div className="max-w-7xl mx-auto px-6 text-center mb-8 md:mb-12">
                 <span className="text-blue-600 font-semibold tracking-wide uppercase">
                     Our Supporters
                 </span>

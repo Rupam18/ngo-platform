@@ -23,7 +23,7 @@ const works = [
 
 export default function OurWork() {
     return (
-        <section className="py-20 bg-gray-50">
+        <section className="py-12 md:py-20 bg-gray-50">
             <div className="max-w-7xl mx-auto px-6 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -34,12 +34,12 @@ export default function OurWork() {
                     <span className="text-blue-600 font-semibold tracking-wide uppercase">
                         Our Key Initiatives
                     </span>
-                    <h2 className="mt-2 mb-12 text-3xl md:text-5xl font-bold text-gray-900">
+                    <h2 className="mt-2 mb-8 md:mb-12 text-3xl md:text-5xl font-bold text-gray-900">
                         Our Work
                     </h2>
                 </motion.div>
 
-                <div className="grid md:grid-cols-3 gap-12 justify-center">
+                <div className="grid md:grid-cols-3 gap-8 md:gap-12 justify-center">
                     {works.map((work, index) => (
                         <motion.div
                             key={index}
