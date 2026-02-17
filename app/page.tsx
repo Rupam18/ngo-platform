@@ -1,5 +1,6 @@
 import StickyHeader from "@/components/home/StickyHeader";
 import HeroSlider from "@/components/home/HeroSlider";
+import ImpactStats from "@/components/home/ImpactStats";
 import KeyInitiatives from "@/components/home/KeyInitiatives";
 import AboutRiso from "@/components/home/AboutRiso";
 import VideoSection from "@/components/home/VideoSection";
@@ -24,6 +25,7 @@ export default async function Home() {
     <main className="min-h-screen bg-white">
       <StickyHeader />
       <HeroSlider />
+      <ImpactStats />
       <KeyInitiatives />
       <AboutRiso />
       <VideoSection />

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -35,32 +35,32 @@ export default function HeroSlider() {
         setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
     };
 
-    // Auto-play functionality - 5s
+    // Auto-play functionality - increased duration for better reading
     useEffect(() => {
         const timer = setInterval(() => {
             nextSlide();
-        }, 5000);
+        }, 6000);
         return () => clearInterval(timer);
     }, [nextSlide]);
 
     return (
         <section className="relative w-full h-[70vh] md:h-[80vh] lg:h-screen overflow-hidden bg-gray-900 group">
 
-            {/* 1. BACKGROUND LAYER (Images) */}
+            {/* 1. BACKGROUND LAYER (Cinematic Zoom) */}
             <AnimatePresence mode="wait">
                 <motion.div
                     key={current}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }} // Smooth crossfade
+                    transition={{ duration: 1.5 }} // Slower, smoother fade
                     className="absolute inset-0 w-full h-full"
                 >
-                    {/* Image with Zoom Effect - Reduced duration/scale for mobile performance */}
+                    {/* Cinematic Zoom Effect (Slow Pan) */}
                     <motion.div
                         initial={{ scale: 1 }}
-                        animate={{ scale: 1.05 }}
-                        transition={{ duration: 8, ease: "linear" }}
+                        animate={{ scale: 1.1 }}
+                        transition={{ duration: 15, ease: "linear" }}
                         className="w-full h-full relative"
                     >
                         <Image
@@ -73,90 +73,124 @@ export default function HeroSlider() {
                         />
                     </motion.div>
 
-                    {/* Overlay - Gradient for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 lg:bg-gradient-to-r lg:from-blue-900/90 lg:via-blue-900/40 lg:to-transparent" />
+                    {/* Cinematic Overlay - Left Gradient & Slight Darken */}
+                    <div className="absolute inset-0 bg-black/30" />
+                    <div className="absolute inset-y-0 left-0 w-full lg:w-2/3 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
+                    <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-gray-900 to-transparent" />
                 </motion.div>
             </AnimatePresence>
 
-            {/* 2. STATIC CONTENT LAYER (Buttons & Subtitle stay, Title Animate) */}
+            {/* 2. CONTENT LAYER */}
             <div className="absolute inset-0 z-20 flex flex-col justify-center items-center lg:items-start text-center lg:text-left px-4 md:px-12 max-w-7xl mx-auto h-full">
                 <div className="max-w-4xl w-full flex flex-col items-center lg:items-start pt-16 lg:pt-0">
 
-                    {/* Animated Title */}
-                    <div className="min-h-[120px] sm:min-h-[160px] md:min-h-[200px] flex items-center justify-center lg:justify-start mb-2 md:mb-4 w-full">
+                    {/* Animated Headline */}
+                    <div className="min-h-[140px] sm:min-h-[180px] md:min-h-[240px] flex items-center justify-center lg:justify-start mb-6 w-full">
                         <AnimatePresence mode="wait">
                             <motion.h1
                                 key={current}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -30 }}
-                                transition={{ duration: 0.8, ease: "easeOut" }}
-                                className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-white drop-shadow-2xl leading-tight w-full"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight w-full drop-shadow-2xl"
                             >
-                                {slides[current].title}
+                                {slides[current].title.split(" ").map((word, i) => {
+                                    // Staggered Animation for each word
+                                    const cleanWord = word.replace(/[^a-zA-Z]/g, "");
+                                    let colorClass = "text-white";
+                                    if (cleanWord === "Education") colorClass = "text-blue-400";
+                                    if (cleanWord === "Health") colorClass = "text-green-400";
+                                    if (cleanWord === "Dignity") colorClass = "text-yellow-400";
+
+                                    return (
+                                        <motion.span
+                                            key={i}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5, delay: i * 0.05 }} // Stagger delay
+                                            className={`inline-block mr-2 or-3 ${colorClass}`}
+                                            // Add glow to special words
+                                            style={colorClass !== "text-white" ? { textShadow: "0 0 20px rgba(255,255,255,0.3)" } : {}}
+                                        >
+                                            {word}
+                                        </motion.span>
+                                    );
+                                })}
                             </motion.h1>
                         </AnimatePresence>
                     </div>
 
-                    {/* Static Subtitle */}
-                    <motion.p
+                    {/* Subtitle with Glassmorphism Overlay */}
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-sm sm:text-lg md:text-xl text-blue-50 max-w-2xl drop-shadow-md font-light mb-8 md:mb-10 leading-relaxed opacity-90 px-2 lg:px-0"
-                    >
-                        Empowering underserved communities through impactful programs aligned with the UN Sustainable Development Goals.
-                    </motion.p>
-
-                    {/* Static Buttons (Persistent) */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0"
+                        className="mb-10 lg:mb-12 max-w-2xl text-center lg:text-left mx-auto lg:mx-0"
                     >
-                        {/* Primary Button: Donate (Yellow) */}
-                        <Link
-                            href="/donate"
-                            className="group relative w-full sm:w-auto inline-flex items-center justify-center bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold rounded-xl px-8 py-3 md:py-4 shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 text-base md:text-lg tracking-wide uppercase"
-                        >
-                            Donate
+                        <p className="text-sm sm:text-lg md:text-xl text-blue-50 font-light leading-relaxed drop-shadow-md lg:bg-black/20 lg:backdrop-blur-sm lg:p-4 lg:rounded-xl lg:border lg:border-white/10">
+                            Empowering underserved communities through impactful programs aligned with the UN Sustainable Development Goals.
+                        </p>
+                    </motion.div>
+
+                    {/* Premium CTA Buttons */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto px-4 sm:px-0"
+                    >
+                        {/* Donate - Glowing Effect */}
+                        <Link href="/donate" className="relative group w-full sm:w-auto">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
+                            <div className="relative bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold rounded-xl px-10 py-4 shadow-xl flex items-center justify-center gap-2 transform transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 uppercase tracking-wide text-lg">
+                                Donate Now
+                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </div>
                         </Link>
 
-                        {/* Secondary Button: Volunteer (Blue) */}
-                        <Link
-                            href="/volunteer"
-                            className="group relative w-full sm:w-auto inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl px-8 py-3 md:py-4 shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 text-base md:text-lg tracking-wide uppercase border border-blue-500/30"
-                        >
-                            Volunteer
+                        {/* Volunteer - Glass/Outline Effect */}
+                        <Link href="/volunteer" className="w-full sm:w-auto">
+                            <div className="relative bg-blue-600/90 hover:bg-blue-600 text-white font-bold rounded-xl px-10 py-4 shadow-xl flex items-center justify-center gap-2 transform transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 uppercase tracking-wide text-lg border border-blue-400/30 backdrop-blur-sm hover:shadow-blue-500/30">
+                                Be a Volunteer
+                            </div>
                         </Link>
                     </motion.div>
                 </div>
             </div>
 
-            {/* 3. NAVIGATION (Arrows - Hidden on Mobile) */}
-            <button
-                onClick={prevSlide}
-                className="hidden lg:block absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all backdrop-blur-md opacity-0 group-hover:opacity-100 border border-white/10"
-            >
-                <ChevronLeft size={32} />
-            </button>
+            {/* 3. NAVIGATION CONTROLS */}
+            <div className="absolute bottom-8 right-8 z-30 hidden lg:flex gap-4">
+                <button
+                    onClick={prevSlide}
+                    className="p-4 rounded-full border border-white/20 bg-black/20 hover:bg-white/10 text-white backdrop-blur-md transition-all hover:scale-110 active:scale-95 group"
+                >
+                    <ChevronLeft size={24} className="group-hover:-translate-x-0.5 transition-transform" />
+                </button>
+                <div className="flex gap-2 items-center">
+                    {slides.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => setCurrent(idx)}
+                            className={`h-2 rounded-full transition-all duration-300 ${current === idx ? "bg-yellow-400 w-8" : "bg-white/30 w-2 hover:bg-white/50"}`}
+                        />
+                    ))}
+                </div>
+                <button
+                    onClick={nextSlide}
+                    className="p-4 rounded-full border border-white/20 bg-black/20 hover:bg-white/10 text-white backdrop-blur-md transition-all hover:scale-110 active:scale-95 group"
+                >
+                    <ChevronRight size={24} className="group-hover:translate-x-0.5 transition-transform" />
+                </button>
+            </div>
 
-            <button
-                onClick={nextSlide}
-                className="hidden lg:block absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all backdrop-blur-md opacity-0 group-hover:opacity-100 border border-white/10"
-            >
-                <ChevronRight size={32} />
-            </button>
-
-            {/* Dot Indicators */}
-            <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+            {/* Mobile Dots */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 lg:hidden flex gap-3">
                 {slides.map((_, idx) => (
                     <button
                         key={idx}
                         onClick={() => setCurrent(idx)}
-                        className={`h-2 sm:h-3 rounded-full transition-all duration-500 ${current === idx ? "bg-yellow-400 w-8 sm:w-10 shadow-[0_0_10px_rgba(250,204,21,0.5)]" : "bg-white/30 w-2 sm:w-3 hover:bg-white/50"}`}
-                        aria-label={`Go to slide ${idx + 1}`}
+                        className={`h-2 rounded-full transition-all duration-300 ${current === idx ? "bg-yellow-400 w-8 shadow-[0_0_10px_rgba(250,204,21,0.5)]" : "bg-white/30 w-2"}`}
                     />
                 ))}
             </div>

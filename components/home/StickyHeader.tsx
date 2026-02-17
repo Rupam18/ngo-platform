@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -9,15 +9,20 @@ import { Menu, X, Phone, Mail, ChevronRight } from "lucide-react";
 
 export default function StickyHeader() {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = scrollY.getPrevious() || 0;
+        if (latest > previous && latest > 150) {
+            setIsHidden(true);
+        } else {
+            setIsHidden(false);
+        }
+        setIsScrolled(latest > 20);
+    });
 
     // Close mobile menu when screen size increases to desktop
     useEffect(() => {
@@ -36,6 +41,8 @@ export default function StickyHeader() {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
+            // Also ensure header is visible if menu was open
+            setIsHidden(false);
         }
     }, [isMobileMenuOpen]);
 
@@ -51,26 +58,29 @@ export default function StickyHeader() {
     return (
         <motion.header
             initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.5 }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${isScrolled ? "shadow-md py-2" : "py-3 md:py-4"}`}
+            animate={{ y: isHidden ? "-100%" : 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-md py-2 md:py-3" : "bg-white py-4 md:py-6"}`}
         >
             <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 flex items-center justify-between">
 
-                {/* LEFT: Logo & Identity */}
                 <div className="flex items-center gap-3 z-50">
                     <Link href="/" className="flex items-center gap-3 group" onClick={() => setIsMobileMenuOpen(false)}>
-                        <div className="relative w-10 h-10 md:w-14 md:h-14 shrink-0 transition-transform group-hover:scale-105">
-                            <Image src="/banner.png" alt="RISO Logo" fill className="object-contain" />
-                        </div>
-                        <div className="hidden sm:block">
-                            <h1 className="text-lg md:text-xl font-bold text-gray-900 leading-none">
-                                RISO
-                            </h1>
-                            <p className="text-xs md:text-sm text-blue-600 font-medium italic mt-0.5">
-                                Be Social... Be Special..!
-                            </p>
-                        </div>
+                        <motion.div
+                            initial={{ scale: 0.8, opacity: 0, y: -20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                            whileHover={{ scale: 1.05 }}
+                            className="relative w-48 h-20 md:w-80 md:h-24 shrink-0"
+                        >
+                            <Image
+                                src="/banner.png"
+                                alt="RISO Logo"
+                                fill
+                                className="object-contain drop-shadow-xl saturate-150"
+                                priority
+                            />
+                        </motion.div>
                     </Link>
                 </div>
 
@@ -80,10 +90,10 @@ export default function StickyHeader() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-gray-700 font-medium hover:text-blue-600 transition-colors relative group text-sm uppercase tracking-wide"
+                            className="text-gray-700 font-medium hover:text-blue-600 transition-colors relative group text-sm uppercase tracking-wide py-1"
                         >
                             {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full" />
+                            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full" />
                         </Link>
                     ))}
                 </nav>
