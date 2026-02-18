@@ -34,14 +34,14 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function ImpactStats() {
   return (
-    <section className="relative z-30 -mt-16 md:-mt-24 mb-16 py-6" id="stats">
+    <section className="relative z-30 -mt-[80px] mb-16 py-6" id="stats">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-white rounded-2xl md:rounded-3xl shadow-2xl grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-100 overflow-hidden"
+          className="bg-white rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.08)] p-[35px] grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-100 overflow-hidden"
         >
           {stats.map((stat, index) => (
             <div key={index} className="p-6 md:p-8 text-center group hover:bg-blue-50/30 transition-colors">

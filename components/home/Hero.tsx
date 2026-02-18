@@ -52,7 +52,7 @@ export default function Hero() {
   }, [nextSlide]);
 
   return (
-    <section className="relative w-full h-[85vh] overflow-hidden bg-gray-900 group">
+    <section className="relative w-full min-h-[85vh] overflow-hidden bg-gray-900 group">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -72,10 +72,10 @@ export default function Hero() {
           />
 
           {/* Overlay - Dark Blue Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/60 via-black/40 to-black/70" />
+          <div className="absolute inset-0 bg-black/45" />
 
           {/* Content - Center Aligned */}
-          <div className="relative z-10 w-full h-full flex flex-col justify-center items-center text-center px-6 max-w-[1440px] mx-auto">
+          <div className="relative z-10 w-full h-full flex flex-col justify-center items-center text-center px-6 max-w-[1440px] mx-auto pt-[120px] pb-[80px]">
 
             {/* Heading Animation: y: 40 -> 0 */}
             <motion.h1

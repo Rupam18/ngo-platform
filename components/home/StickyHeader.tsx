@@ -57,7 +57,7 @@ export default function StickyHeader() {
 
     return (
         <motion.header
-            className={`sticky top-0 left-0 right-0 z-[9999] transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-md py-2 md:py-3" : "bg-white py-4 md:py-6"}`}
+            className={`sticky top-0 left-0 right-0 z-[9999] transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-[0_2px_10px_rgba(0,0,0,0.08)] py-2 md:py-3" : "bg-white py-4 md:py-6"}`}
         >
             <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 flex items-center justify-between">
 
