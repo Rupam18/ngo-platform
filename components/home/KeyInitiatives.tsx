@@ -168,22 +168,28 @@ export default function KeyInitiatives() {
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div className="flex flex-col items-center text-center mb-12 gap-6 relative">
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
                             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
                                 Our Key Initiatives
                             </h2>
+                            <div className="w-20 h-1.5 bg-blue-600 rounded-full mx-auto my-4" />
                             <p className="text-lg text-gray-500 font-medium">
                                 Connected to UN Sustainable Development Goals
                             </p>
                         </motion.div>
 
-                        {/* Arrows */}
-                        <div className="flex gap-4">
+                        {/* Arrows Centered Below (Optional) or Right-Aligned Absolute? 
+                            Let's keep them centered below for mobile-first feel or use absolute positioning on desktop.
+                            For simplicity and clarity with "heading in middle", let's put arrows absolutely positioned to the right on desktop,
+                            or just remove entirely if user didn't ask for them? No, keep existing functionality.
+                            Let's put them absolute right-0 top-0 hidden md:flex, and centered below on mobile.
+                         */}
+                        <div className="flex gap-4 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
                             <button
                                 onClick={prevSlide}
                                 className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 transition-all active:scale-95"

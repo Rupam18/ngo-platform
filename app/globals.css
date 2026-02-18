@@ -49,3 +49,138 @@ html {
   color: #6b7280;
   font-size: 18px;
 }
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Premium Social Icons */
+.social-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #f1f5f9;
+  color: #1e293b;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  animation: floatIcon 4s ease-in-out infinite;
+}
+
+.social-icon:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18), 0 0 15px rgba(59, 130, 246, 0.35);
+}
+
+.social-icon.fb:hover {
+  background: #1877f2;
+  color: white;
+}
+
+.social-icon.linkedin:hover {
+  background: #0a66c2;
+  color: white;
+}
+
+.social-icon.insta:hover {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+  color: white;
+}
+
+.social-icon.yt:hover {
+  background: #ff0000;
+  color: white;
+}
+
+@keyframes floatIcon {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* ULTRA Premium Social Icons */
+.ultra-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.35s cubic-bezier(.2, .8, .2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: ultraFloat 5s ease-in-out infinite;
+  color: #1e293b;
+}
+
+.ultra-icon:hover {
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18), 0 0 18px rgba(59, 130, 246, 0.35);
+}
+
+.ultra-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.ultra-icon:hover::after {
+  opacity: 1;
+}
+
+.ultra-icon.fb:hover {
+  background: #1877f2;
+  color: white;
+}
+
+.ultra-icon.linkedin:hover {
+  background: #0a66c2;
+  color: white;
+}
+
+.ultra-icon.insta:hover {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+  color: white;
+}
+
+.ultra-icon.yt:hover {
+  background: #ff0000;
+  color: white;
+}
+
+@keyframes ultraFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}

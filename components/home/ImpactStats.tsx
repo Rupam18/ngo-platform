@@ -34,7 +34,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function ImpactStats() {
   return (
-    <section className="relative z-30 -mt-[80px] mb-16 py-6" id="stats">
+    <section className="relative z-30 mt-12 mb-12 py-6" id="stats">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

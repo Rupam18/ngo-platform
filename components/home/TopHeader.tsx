@@ -14,16 +14,10 @@ export default function TopHeader() {
         >
             <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
 
-                {/* Left: Logo */}
+                {/* Left: Logo (Removed as per request) */}
                 <div className="flex items-center gap-4">
-                    <div className="relative w-16 h-16 shrink-0">
-                        <Image
-                            src="/banner.png"
-                            alt="RISO Logo"
-                            fill
-                            className="object-contain"
-                        />
-                    </div>
+                    {/* Logo Removed */}
+
 
                     {/* Middle: Text */}
                     <div className="text-center md:text-left">
