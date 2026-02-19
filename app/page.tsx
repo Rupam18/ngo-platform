@@ -6,6 +6,9 @@ import KeyInitiatives from "@/components/home/KeyInitiatives";
 import AboutRiso from "@/components/home/AboutRiso";
 import VideoSection from "@/components/home/VideoSection";
 import OurWork from "@/components/home/OurWork";
+import SustainableGoalsSection from "@/components/home/SustainableGoalsSection";
+import LatestUpdates from "@/components/home/LatestUpdates";
+import ImpactStories from "@/components/home/ImpactStories";
 import EventsGallery from "@/components/home/EventsGallery";
 import CTASection from "@/components/home/CTASection";
 import CSRPartners from "@/components/home/CSRPartners";
@@ -32,9 +35,9 @@ export default async function Home() {
       <ImpactStats />
       <ImpactAreas />
       <KeyInitiatives />
-      <VideoSection />
-      {/* <OurWork /> */}
-      <EventsGallery />
+      <SustainableGoalsSection />
+      <LatestUpdates />
+      <ImpactStories />
       <CTASection />
       <CSRPartners />
       <Footer />
