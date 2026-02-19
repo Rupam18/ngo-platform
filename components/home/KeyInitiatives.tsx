@@ -193,20 +193,35 @@ export default function KeyInitiatives() {
 
                 {/* --- KEY INITIATIVES (PREMIUM EXPANDABLE SLIDER) --- */}
                 <div className="relative">
-                    <div className="flex items-center justify-between mb-10 px-2">
-                        <div>
-                            <h3 className="text-3xl font-bold text-gray-900 tracking-tight">Key Initiatives</h3>
-                            <p className="text-gray-600 mt-2 font-medium">Projects driving real change.</p>
-                        </div>
-                        <div className="flex gap-3">
-                            <button onClick={scrollLeft} className="p-3 rounded-full border border-gray-200 hover:border-blue-500 hover:bg-white hover:text-blue-600 hover:shadow-md transition-all group">
-                                <ArrowLeft size={20} className="text-gray-400 group-hover:text-blue-600 transition-colors" />
-                            </button>
-                            <button onClick={scrollRight} className="p-3 rounded-full bg-[#0f172a] text-white hover:bg-blue-600 hover:shadow-lg hover:scale-105 transition-all">
-                                <ArrowRight size={20} />
-                            </button>
-                        </div>
+                    {/* Centered Premium Header */}
+                    <div className="text-center mb-16 px-4">
+                        <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
+                            Our Core Programs
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">
+                            Key <span className="text-blue-600">Initiatives</span>
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Projects driving real change and creating sustainable impact.
+                        </p>
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-6 shadow-lg shadow-blue-500/20" />
                     </div>
+
+                    {/* Navigation Arrows (Floating) */}
+                    <button
+                        onClick={scrollLeft}
+                        className="absolute -left-2 md:-left-6 top-[60%] -translate-y-1/2 z-30 p-3 md:p-4 rounded-full bg-white/90 backdrop-blur-md shadow-xl text-slate-700 hover:text-blue-600 hover:scale-110 transition-all duration-300 border border-white/50 group hidden md:block"
+                        aria-label="Previous slide"
+                    >
+                        <ArrowLeft size={24} strokeWidth={2.5} />
+                    </button>
+                    <button
+                        onClick={scrollRight}
+                        className="absolute -right-2 md:-right-6 top-[60%] -translate-y-1/2 z-30 p-3 md:p-4 rounded-full bg-white/90 backdrop-blur-md shadow-xl text-slate-700 hover:text-blue-600 hover:scale-110 transition-all duration-300 border border-white/50 group hidden md:block"
+                        aria-label="Next slide"
+                    >
+                        <ArrowRight size={24} strokeWidth={2.5} />
+                    </button>
 
                     <div
                         ref={sliderRef}

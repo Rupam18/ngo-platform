@@ -2,9 +2,9 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { BookOpen, HeartPulse, Library, HandCoins, UserCheck, Leaf } from "lucide-react";
 import Image from "next/image";
+import PremiumImpactCircle from "./PremiumImpactCircle";
 
 const data = [
     { name: "Education & Learning", value: 34, color: "#3B82F6", icon: BookOpen }, // Blue-500
@@ -80,72 +80,9 @@ export default function ImpactAreas() {
                 <div className="grid lg:grid-cols-[40%_60%] gap-6 items-center relative z-10">
 
                     {/* LEFT: Animated Donut Chart */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="relative h-[350px] w-full flex items-center justify-center order-1 relative z-0"
-                    >
-                        {/* Glassmorphism Circle Background */}
-                        <div className="absolute inset-0 bg-white/40 backdrop-blur-3xl rounded-full scale-90 blur-3xl -z-10" />
-
-                        <ResponsiveContainer width="100%" height="100%">
-                            <PieChart>
-                                <Pie
-                                    data={data}
-                                    cx="50%"
-                                    cy="50%"
-                                    innerRadius={90}
-                                    outerRadius={140}
-                                    paddingAngle={5}
-                                    dataKey="value"
-                                    nameKey="name"
-                                    cornerRadius={8}
-                                    stroke="none"
-                                    animationBegin={200}
-                                    animationDuration={1500}
-                                    animationEasing="ease-out"
-                                    onMouseEnter={(_, index) => setActiveIndex(index)}
-                                    onMouseLeave={() => setActiveIndex(null)}
-                                >
-                                    {data.map((entry, index) => (
-                                        <Cell
-                                            key={`cell-${index}`}
-                                            fill={entry.color}
-                                            style={{
-                                                filter: activeIndex === index ? `drop-shadow(0 0 10px ${entry.color}80)` : 'none',
-                                                transition: 'filter 0.3s ease',
-                                                cursor: 'pointer'
-                                            }}
-                                            stroke={activeIndex === index ? "#fff" : "none"}
-                                            strokeWidth={2}
-                                        />
-                                    ))}
-                                </Pie>
-                                <Tooltip
-                                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', padding: '12px' }}
-                                    formatter={(value: any, name: any) => [`${value}%`, name]}
-                                />
-                            </PieChart>
-                        </ResponsiveContainer>
-
-                        {/* Center Logo/Text with Pulse */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ delay: 1, duration: 0.8 }}
-                            className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
-                        >
-                            <div className="w-24 h-24 relative mb-2">
-                                <span className="absolute inset-0 border-2 border-blue-100 rounded-full animate-ping opacity-75"></span>
-                                <div className="bg-white p-4 rounded-full shadow-lg relative z-10 w-full h-full flex items-center justify-center">
-                                    <span className="text-3xl font-bold text-blue-600">100%</span>
-                                </div>
-                            </div>
-                            <span className="text-sm font-semibold text-gray-500 tracking-wider uppercase">Transparency</span>
-                        </motion.div>
-                    </motion.div>
+                    <div className="relative h-[350px] md:h-[450px] w-full flex items-center justify-center order-1 relative z-0">
+                        <PremiumImpactCircle />
+                    </div>
 
                     {/* RIGHT: Impact Cards Container */}
                     <div className="relative z-20 bg-white/60 backdrop-blur-md rounded-3xl p-6 lg:p-8 shadow-sm border border-white/50 order-2 lg:order-2">
