@@ -14,10 +14,20 @@ export default function AboutRiso() {
 
                 {/* CENTERED HEADING */}
                 <div className="flex flex-col items-center justify-center text-center mb-16">
-                    <div className="w-20 h-1.5 bg-blue-600 rounded-full mb-6" />
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
-                        <span className="text-blue-900">About</span> <span className="text-red-600">RISO</span>
-                    </h2>
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                        <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
+                            Who We Are
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                            About <span className="text-yellow-500">RISO</span>
+                        </h2>
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto" />
+                    </motion.div>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -75,16 +85,37 @@ export default function AboutRiso() {
                         </div>
 
                         {/* Buttons */}
-                        <div className="flex flex-wrap gap-4 pt-2">
+                        <div className="flex flex-wrap gap-4 pt-4">
                             <Link href="/about">
-                                <Button className="h-12 px-8 bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center gap-2 group">
-                                    KNOW MORE <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                                </Button>
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <Button className="relative h-14 px-8 bg-gradient-to-r from-blue-900 to-blue-700 hover:from-blue-800 hover:to-blue-600 text-white font-bold text-lg rounded-full shadow-[0_10px_20px_rgba(30,58,138,0.3)] hover:shadow-[0_15px_30px_rgba(30,58,138,0.4)] transition-all flex items-center gap-3 overflow-hidden group">
+                                        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                                        <span className="relative z-10">KNOW MORE</span>
+                                        <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+                                    </Button>
+                                </motion.div>
                             </Link>
+
                             <Link href="/reports">
-                                <Button variant="outline" className="h-12 px-8 border-2 border-blue-900 text-blue-900 font-bold rounded-xl hover:bg-blue-50 transition-all flex items-center gap-2">
-                                    ANNUAL REPORT <Download size={18} />
-                                </Button>
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <Button variant="outline" className="h-14 px-8 border-2 border-blue-900 text-blue-900 font-bold text-lg rounded-full hover:bg-blue-50 transition-all flex items-center gap-3 group shadow-md hover:shadow-lg">
+                                        ANNUAL REPORT
+                                        <motion.div
+                                            variants={{
+                                                hover: { y: [0, -4, 0], transition: { repeat: Infinity, duration: 1.5 } }
+                                            }}
+                                            whileHover="hover"
+                                        >
+                                            <Download size={20} className="group-hover:text-blue-700" />
+                                        </motion.div>
+                                    </Button>
+                                </motion.div>
                             </Link>
                         </div>
                     </motion.div>

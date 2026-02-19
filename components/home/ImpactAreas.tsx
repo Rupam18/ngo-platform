@@ -63,18 +63,22 @@ export default function ImpactAreas() {
 
                 {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-center mb-16 space-y-4"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
-                        RISO’s Key <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Impact Areas</span>
+                    <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
+                        Where We Focus
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent">
+                        RISO’s Key <span className="text-yellow-500">Impact Areas</span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         A clear overview of the areas where RISO creates lasting impact, driven by your generous support.
                     </p>
+                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mt-6" />
                 </motion.div>
 
                 <div className="grid lg:grid-cols-[40%_60%] gap-6 items-center relative z-10">

@@ -14,13 +14,13 @@ export default function CTASection() {
 
             <div className="relative z-10 container mx-auto px-6 text-center text-white">
                 <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-12 drop-shadow-lg"
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-12 drop-shadow-xl"
                 >
-                    TOGETHER WE CAN <br /> IMPROVE THEIR LIVES
+                    TOGETHER WE CAN <br /> <span className="text-yellow-400">IMPROVE THEIR LIVES</span>
                 </motion.h2>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-6">

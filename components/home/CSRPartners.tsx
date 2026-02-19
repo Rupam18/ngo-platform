@@ -84,32 +84,23 @@ export default function CSRPartners() {
             </div>
 
             <div className="max-w-7xl mx-auto px-6 mb-16 text-center relative z-10">
-                <motion.span
-                    initial={{ opacity: 0, y: 10 }}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="inline-block py-1 px-3 rounded-full bg-blue-100/50 text-blue-600 font-bold tracking-wider uppercase text-xs mb-4 border border-blue-200/50 backdrop-blur-sm"
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    Trusted Partners
-                </motion.span>
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                    className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight"
-                >
-                    Trusted by Leading <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">CSR Partners</span>
-                </motion.h2>
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    className="text-lg text-gray-600 max-w-2xl mx-auto"
-                >
-                    Working together to create lasting social impact through sustainable development initiatives.
-                </motion.p>
+                    <span className="inline-block py-1 px-3 rounded-full bg-blue-100/50 text-blue-600 font-bold tracking-wider uppercase text-xs mb-4 border border-blue-200/50 backdrop-blur-sm">
+                        Trusted Partners
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        Trusted by Leading <span className="text-yellow-500">CSR Partners</span>
+                    </h2>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Working together to create lasting social impact through sustainable development initiatives.
+                    </p>
+                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mt-6" />
+                </motion.div>
             </div>
 
             {/* Seamless Marquee Container */}

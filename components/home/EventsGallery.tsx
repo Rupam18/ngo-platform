@@ -26,14 +26,21 @@ export default function EventsGallery() {
     return (
         <section className="py-12 md:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-8 md:mb-12">
-                    <span className="text-blue-600 font-semibold tracking-wide uppercase">
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-center mb-8 md:mb-12"
+                >
+                    <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
                         Captured Moments
                     </span>
-                    <h2 className="mt-2 text-3xl md:text-5xl font-bold text-gray-900">
-                        Recent Activities
+                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        Recent <span className="text-yellow-500">Activities</span>
                     </h2>
-                </div>
+                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mt-6" />
+                </motion.div>
 
                 <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                     {galleryImages.map((image, index) => (

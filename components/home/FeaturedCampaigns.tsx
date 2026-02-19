@@ -15,12 +15,16 @@ export default function FeaturedCampaigns({ campaigns }: FeaturedCampaignsProps)
 
                 {/* Heading */}
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                        Our Key Initiatives
+                    <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
+                        Get Involved
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        Featured <span className="text-yellow-500">Campaigns</span>
                     </h2>
-                    <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 mt-3 max-w-2xl mx-auto">
                         Supporting education, environment, and empowerment through impactful community-driven programs.
                     </p>
+                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mt-6" />
                 </div>
 
                 {/* Campaign Grid */}

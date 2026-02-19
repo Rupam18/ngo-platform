@@ -131,18 +131,24 @@ export default function KeyInitiatives() {
             <div className="max-w-[1240px] mx-auto px-6">
 
                 {/* --- HEADER --- */}
-                <div className="text-center mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-center mb-16"
+                >
                     <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
                         Our Impact Areas
                     </span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">
-                        What We Do?
+                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        What We <span className="text-yellow-500">Do</span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
                         Our core programs designed for real community impact.
                     </p>
-                    <div className="w-20 h-1.5 bg-blue-600 rounded-full mx-auto" />
-                </div>
+                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto" />
+                </motion.div>
 
                 {/* --- WHAT WE DO (CIRCULAR IMPACT CARDS) --- */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-28 justify-items-center">
@@ -194,18 +200,24 @@ export default function KeyInitiatives() {
                 {/* --- KEY INITIATIVES (PREMIUM EXPANDABLE SLIDER) --- */}
                 <div className="relative">
                     {/* Centered Premium Header */}
-                    <div className="text-center mb-16 px-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="text-center mb-16 px-4"
+                    >
                         <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
                             Our Core Programs
                         </span>
-                        <h2 className="text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">
-                            Key <span className="text-blue-600">Initiatives</span>
+                        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                            Key <span className="text-yellow-500">Initiatives</span>
                         </h2>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                             Projects driving real change and creating sustainable impact.
                         </p>
-                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-6 shadow-lg shadow-blue-500/20" />
-                    </div>
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mt-6 shadow-lg shadow-blue-500/20" />
+                    </motion.div>
 
                     {/* Navigation Arrows (Floating) */}
                     <button
@@ -251,14 +263,27 @@ export default function KeyInitiatives() {
                                 >
                                     {/* Background Image Reveal (Only on hover, hidden if expanded for readability) */}
                                     {!isExpanded && (
-                                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out z-0 pointer-events-none">
+                                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out z-0 pointer-events-none bg-slate-900">
+                                            {/* Blurred Background Fill */}
+                                            <div className="absolute inset-0 z-0">
+                                                <Image
+                                                    src={initiative.image}
+                                                    alt={initiative.title}
+                                                    fill
+                                                    className="object-cover opacity-40 blur-xl scale-110"
+                                                />
+                                            </div>
+
+                                            {/* Main Image - Contained & Full Visible */}
                                             <Image
                                                 src={initiative.image}
                                                 alt={initiative.title}
                                                 fill
-                                                className="object-cover scale-105 group-hover:scale-110 transition-transform duration-1000"
+                                                className="object-contain relative z-10 p-4 transition-transform duration-1000 group-hover:scale-105"
                                             />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
+
+                                            {/* Gradient Overlay for Text Visibility */}
+                                            <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
                                         </div>
                                     )}
 

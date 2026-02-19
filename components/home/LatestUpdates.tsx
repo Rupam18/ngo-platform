@@ -116,19 +116,22 @@ export default function LatestUpdates() {
 
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-4">
-                        Latest <span className="text-blue-600">Updates</span>
+                    <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
+                        Recent News
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                        Latest <span className="text-yellow-500">Updates</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                         Stay informed about our recent activities and impact
                     </p>
-                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mt-6 shadow-lg shadow-blue-500/20" />
+                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mt-6 shadow-lg shadow-blue-500/20" />
                 </motion.div>
 
                 {/* Carousel */}
@@ -176,17 +179,27 @@ export default function LatestUpdates() {
                                             <div className="absolute inset-0 rounded-[20px] bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
 
                                             {/* Image Section */}
-                                            <div className="relative h-60 overflow-hidden z-10 rounded-t-[20px]">
+                                            <div className="relative h-64 overflow-hidden z-10 rounded-t-[20px] bg-gray-100 group-hover:bg-gray-200 transition-colors">
+                                                {/* Blurred Background Layer for "Fill" effect */}
+                                                <div className="absolute inset-0 z-0">
+                                                    <Image
+                                                        src={item.image}
+                                                        alt={item.title}
+                                                        fill
+                                                        className="object-cover opacity-30 blur-xl scale-110"
+                                                    />
+                                                </div>
+
+                                                {/* Main Image - Contained & Full Visible */}
                                                 <Image
                                                     src={item.image}
                                                     alt={item.title}
                                                     fill
-                                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                                    className="object-contain relative z-10 p-2 transition-transform duration-700 ease-out group-hover:scale-105"
                                                 />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-70" />
 
                                                 {/* Category Badge */}
-                                                <div className={`absolute top-5 left-5 px-4 py-1.5 rounded-full text-[11px] font-bold text-white uppercase tracking-wider shadow-lg bg-gradient-to-r ${item.badgeGradient} group-hover:brightness-110 transition-all transform group-hover:scale-105`}>
+                                                <div className={`absolute top-5 left-5 z-20 px-4 py-1.5 rounded-full text-[11px] font-bold text-white uppercase tracking-wider shadow-lg bg-gradient-to-r ${item.badgeGradient} group-hover:brightness-110 transition-all transform group-hover:scale-105`}>
                                                     {item.category}
                                                 </div>
                                             </div>
@@ -232,8 +245,8 @@ export default function LatestUpdates() {
                                 key={idx}
                                 onClick={() => setCurrentPage(idx)}
                                 className={`h-2.5 rounded-full transition-all duration-500 ${idx === currentPage
-                                        ? "w-10 bg-gradient-to-r from-blue-600 to-purple-600 shadow-md scale-110"
-                                        : "w-2.5 bg-slate-300 hover:bg-slate-400 hover:scale-110"
+                                    ? "w-10 bg-gradient-to-r from-blue-600 to-purple-600 shadow-md scale-110"
+                                    : "w-2.5 bg-slate-300 hover:bg-slate-400 hover:scale-110"
                                     }`}
                                 aria-label={`Go to page ${idx + 1}`}
                             />

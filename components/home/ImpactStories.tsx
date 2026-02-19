@@ -48,22 +48,22 @@ export default function ImpactStories() {
 
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-center mb-16"
                 >
                     <span className="text-blue-400 font-bold tracking-widest uppercase text-sm mb-3 block">
                         Our Impact
                     </span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">
-                        Impact Stories
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
+                        Impact <span className="text-yellow-400">Stories</span>
                     </h2>
                     <p className="text-lg text-blue-100/80 max-w-2xl mx-auto font-light">
                         Real stories of change and transformation
                     </p>
-                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mt-6" />
+                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mx-auto mt-6" />
                 </motion.div>
 
                 {/* Stories Grid */}
@@ -80,26 +80,37 @@ export default function ImpactStories() {
                             <div className="h-full bg-white/5 backdrop-blur-md border border-white/10 rounded-[24px] overflow-hidden hover:bg-white/10 hover:border-white/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all duration-500 flex flex-col group-hover:-translate-y-2">
 
                                 {/* Image / Video Thumbnail Section */}
-                                <div className="relative h-64 overflow-hidden w-full">
+                                <div className="relative h-64 overflow-hidden w-full bg-slate-800">
+                                    {/* Blurred Background */}
+                                    <div className="absolute inset-0 z-0">
+                                        <Image
+                                            src={story.image}
+                                            alt={story.title}
+                                            fill
+                                            className="object-cover opacity-20 blur-2xl scale-125"
+                                        />
+                                    </div>
+
+                                    {/* Main Image */}
                                     <Image
                                         src={story.image}
                                         alt={story.title}
                                         fill
-                                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                                        className="object-contain relative z-10 transition-transform duration-700 ease-out group-hover:scale-105"
                                     />
 
-                                    {/* Overlay Gradient */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent" />
+                                    {/* Overlay Gradient (Subtle) */}
+                                    <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent pointer-events-none" />
 
                                     {/* Featured Badge */}
                                     {story.featured && (
-                                        <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                                        <div className="absolute top-4 left-4 z-30 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
                                             <Star size={10} fill="white" /> FEATURED STORY
                                         </div>
                                     )}
 
                                     {/* Play Button Overlay */}
-                                    <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
                                         <div className="relative">
                                             <div className="absolute inset-0 bg-white/30 rounded-full animate-ping opacity-75" />
                                             <div className="relative w-14 h-14 md:w-16 md:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-xl group-hover:scale-110 transition-transform duration-300">

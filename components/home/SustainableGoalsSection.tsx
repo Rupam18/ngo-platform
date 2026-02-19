@@ -88,17 +88,17 @@ export default function SustainableGoalsSection() {
 
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                     className="mb-16"
                 >
                     <span className="text-blue-300 font-bold tracking-[0.2em] uppercase text-sm mb-4 block">
                         Towards Achieving
                     </span>
                     <h2 className="text-3xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 via-white to-blue-200 drop-shadow-sm">
-                        SUSTAINABLE DEVELOPMENT GOALS
+                        SUSTAINABLE <span className="text-yellow-400">DEVELOPMENT GOALS</span>
                     </h2>
                     <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-green-400 rounded-full mx-auto mt-6" />
                 </motion.div>
