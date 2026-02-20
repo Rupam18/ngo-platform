@@ -41,8 +41,34 @@ export default function DonatePage() {
                 </motion.div>
             </section>
 
+            {/* Trust Section */}
+            <section className="max-w-7xl mx-auto px-6 mt-16 mb-6">
+                <div className="grid md:grid-cols-3 gap-6">
+                    <div className="bg-blue-50 rounded-2xl p-6 text-center">
+                        <h4 className="font-bold text-blue-900 text-lg">100% Secure</h4>
+                        <p className="text-gray-600 text-sm mt-2">
+                            Payments processed through encrypted gateway.
+                        </p>
+                    </div>
+
+                    <div className="bg-green-50 rounded-2xl p-6 text-center">
+                        <h4 className="font-bold text-green-800 text-lg">Verified NGO</h4>
+                        <p className="text-gray-600 text-sm mt-2">
+                            Registered under Section 25. PAN & 80G compliant.
+                        </p>
+                    </div>
+
+                    <div className="bg-yellow-50 rounded-2xl p-6 text-center">
+                        <h4 className="font-bold text-yellow-800 text-lg">Tax Benefit</h4>
+                        <p className="text-gray-600 text-sm mt-2">
+                            Eligible for tax exemption under 80G.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             {/* Main Content Area */}
-            <section className="flex-grow max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-12 gap-12 w-full">
+            <section className="flex-grow max-w-7xl mx-auto px-6 py-6 grid lg:grid-cols-12 gap-12 w-full">
 
                 {/* Left Side: Stats & Trust Badges */}
                 <motion.div
@@ -85,37 +111,38 @@ export default function DonatePage() {
                         </div>
                     </div>
 
-                    {/* Trust Badges */}
-                    <div className="grid grid-cols-2 lg:grid-cols-1 xl:grid-cols-3 gap-4">
-                        <div className="bg-white p-4 rounded-2xl border border-gray-100 flex flex-col items-center text-center shadow-sm">
-                            <ShieldCheck className="w-8 h-8 text-green-500 mb-2" />
-                            <span className="text-xs font-bold text-gray-600 uppercase tracking-tight">100% Secure<br />Donation</span>
-                        </div>
-                        <div className="bg-white p-4 rounded-2xl border border-gray-100 flex flex-col items-center text-center shadow-sm">
-                            <CheckCircle className="w-8 h-8 text-blue-500 mb-2" />
-                            <span className="text-xs font-bold text-gray-600 uppercase tracking-tight">Verified<br />NGO</span>
-                        </div>
-                        <div className="bg-white p-4 rounded-2xl border border-gray-100 flex flex-col items-center text-center shadow-sm col-span-2 lg:col-span-1 xl:col-span-1">
-                            <Receipt className="w-8 h-8 text-yellow-500 mb-2" />
-                            <span className="text-xs font-bold text-gray-600 uppercase tracking-tight">Tax Benefit<br />(80G)</span>
-                        </div>
+                    <div className="bg-gray-50 rounded-2xl p-8 mt-8 text-center border border-gray-100 shadow-sm">
+                        <h3 className="text-2xl font-bold text-gray-800">
+                            ₹500 provides educational supplies for 1 child
+                        </h3>
+                        <p className="text-gray-600 mt-3">
+                            Your donation is not just a transaction — it is an investment in someone's future.
+                        </p>
                     </div>
                 </motion.div>
 
-                {/* Right Side: Glassmorphism Donation Form */}
+                {/* Right Side: Premium Donation Form */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 40, scale: 0.97 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-                    className="lg:col-span-7 relative bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_20px_60px_rgba(0,0,0,0.1)] rounded-3xl p-8 md:p-12 hover:shadow-[0_30px_80px_rgba(30,64,175,0.2)] transition-all duration-500 overflow-hidden group"
+                    transition={{ duration: 0.6 }}
+                    className="lg:col-span-7 relative bg-white shadow-[0_25px_80px_rgba(0,0,0,0.08)] border border-gray-100 rounded-3xl p-8 md:p-12 overflow-hidden group"
                 >
                     {/* Glowing Border Background */}
                     <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-500 via-yellow-400 to-indigo-500 rounded-[24px] blur-sm opacity-20 group-hover:opacity-40 transition duration-700 pointer-events-none" />
 
                     <div className="relative">
-                        <h2 className="text-3xl font-extrabold text-blue-900 mb-8 border-b border-gray-200/60 pb-4">
-                            Select Donation Amount
-                        </h2>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="text-3xl md:text-4xl font-extrabold text-blue-900 tracking-tight"
+                        >
+                            Choose Your Contribution
+                        </motion.h2>
+                        <p className="mt-2 text-gray-600 text-lg mb-8 border-b border-gray-200/60 pb-6">
+                            Every rupee you give directly supports children, education and health initiatives.
+                        </p>
 
                         {/* Amount Chips */}
                         <div className="flex flex-wrap gap-4 mb-8">
@@ -124,10 +151,9 @@ export default function DonatePage() {
                                     key={amount}
                                     type="button"
                                     onClick={() => setSelectedAmount(amount)}
-                                    className={`px-5 py-3 rounded-full border-2 transition-all duration-300 font-bold tracking-wide shadow-sm hover:shadow-md 
-                                        ${selectedAmount === amount
-                                            ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-transparent scale-105 shadow-xl ring-4 ring-blue-500/20"
-                                            : "border-blue-200 bg-white hover:bg-blue-50 text-blue-900 hover:scale-[1.03] active:scale-95"
+                                    className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 border-2 ${selectedAmount === amount
+                                        ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-transparent shadow-lg scale-105"
+                                        : "bg-white text-blue-900 border-blue-200 hover:border-blue-500 hover:shadow-md hover:scale-105"
                                         }`}
                                 >
                                     ₹{amount.toLocaleString('en-IN')}
@@ -146,7 +172,7 @@ export default function DonatePage() {
                                         placeholder="Enter Custom Amount"
                                         onChange={(e) => setSelectedAmount(Number(e.target.value) || null)}
                                         value={selectedAmount && !amounts.includes(selectedAmount) ? selectedAmount : ""}
-                                        className="w-full pl-8 pr-4 py-4 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all shadow-inner font-semibold text-gray-900"
+                                        className="w-full pl-8 pr-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all shadow-sm font-bold text-gray-900 placeholder-gray-500"
                                     />
                                 </div>
                             </div>
@@ -156,7 +182,7 @@ export default function DonatePage() {
                                     <input
                                         type="text"
                                         placeholder="Full Name"
-                                        className="w-full px-4 py-4 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-inner font-medium"
+                                        className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500"
                                         required
                                     />
                                 </div>
@@ -164,7 +190,7 @@ export default function DonatePage() {
                                     <input
                                         type="email"
                                         placeholder="Email Address"
-                                        className="w-full px-4 py-4 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-inner font-medium"
+                                        className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500"
                                         required
                                     />
                                 </div>
@@ -175,13 +201,13 @@ export default function DonatePage() {
                                     <input
                                         type="tel"
                                         placeholder="Phone Number"
-                                        className="w-full px-4 py-4 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-inner font-medium"
+                                        className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500"
                                         required
                                     />
                                 </div>
                                 <div>
                                     <select
-                                        className="w-full px-4 py-4 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-inner font-medium text-gray-600"
+                                        className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900"
                                         required
                                     >
                                         <option value="">Donation Purpose</option>
@@ -197,20 +223,18 @@ export default function DonatePage() {
                                 <textarea
                                     placeholder="Leave a message with your donation (Optional)"
                                     rows={3}
-                                    className="w-full px-4 py-4 rounded-xl border border-gray-200 bg-white/50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-inner font-medium resize-none"
+                                    className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500 resize-none"
                                 ></textarea>
                             </div>
 
                             {/* CTA Button */}
                             <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.97 }}
                                 type="submit"
-                                className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-lg py-5 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group"
+                                className="relative w-full py-4 text-lg font-bold rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-xl overflow-hidden group flex items-center justify-center gap-3"
                             >
-                                {/* Shine Effect */}
-                                <span className="absolute inset-0 w-1/4 h-full bg-white/20 skew-x-12 -translate-x-full group-hover:animate-[shine_1s_infinite]"></span>
-
+                                <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
                                 <Lock size={20} /> Proceed Securely
                             </motion.button>
                             <p className="text-center text-xs text-gray-500 mt-4 font-medium flex items-center justify-center gap-1">
@@ -220,6 +244,13 @@ export default function DonatePage() {
                     </div>
                 </motion.div>
             </section>
+
+            {/* Realism Section */}
+            <div className="mt-10 mb-16 text-center text-sm text-gray-800 font-medium px-6 max-w-4xl mx-auto leading-relaxed">
+                Rostrum India Social Organization (RISO) is a registered non-profit organization
+                based in Pune, Maharashtra. Registration No: <span className="font-bold">E-XXXX</span>. <br className="hidden md:block" />
+                For donation queries: <a href="mailto:info@rostrumindia.org" className="text-blue-700 font-bold hover:underline">info@rostrumindia.org</a> | <a href="tel:+919730035255" className="text-blue-700 font-bold hover:underline">+91 9730035255</a>
+            </div>
 
             <Footer />
 
