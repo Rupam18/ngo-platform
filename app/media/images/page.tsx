@@ -9,12 +9,11 @@ import { X, Search } from "lucide-react";
 
 // Robust Static Data fallback
 const staticImages = [
-    { id: 1, src: "/education.jpg", category: "Education", title: "Classroom Program" },
-    { id: 2, src: "/environmentalcare.jpg", category: "Events", title: "Tree Plantation Drive" },
-    { id: 3, src: "/library.jpg", category: "Education", title: "Community Library Opening" },
-    { id: 4, src: "/community-development.jpg", category: "Health", title: "Village Health Camp" },
-    { id: 5, src: "/women.avif", category: "Events", title: "Women Empowerment Workshop" },
-    { id: 6, src: "/aadhar_1.jpg", category: "Education", title: "School Kit Distribution" },
+    { id: 1, src: "/med4.png", category: "Events", title: "SAREE DISTRIBUTION" },
+    { id: 2, src: "/med3.png", category: "Events", title: "SCHOOL KIT DISTRIBUTION" },
+    { id: 3, src: "/med1.png", category: "Events", title: "NEERCHAKRA" },
+    { id: 4, src: "/med2.png", category: "Health", title: "NISHARG-CYCLONE" },
+    {id:5, src:"/WALL.jpg", category:"Education", title:"WALL BEAUTIFICATION ACTIVITY"}
 ];
 
 const categories = ["All", "Events", "Education", "Health"];

@@ -1,48 +1,24 @@
 "use client";
 
+import { useState } from "react";
 import StickyHeader from "@/components/home/StickyHeader";
 import Footer from "@/components/home/Footer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
 
-const staticNews = [
-    {
-        id: "1",
-        title: "Annual CSR Connect 2026 Concludes with Major Pledges",
-        date: "February 18, 2026",
-        excerpt: "Corporate leaders and NGO workers gathered to discuss sustainable community upliftment, resulting in over 10 new corporate alliances.",
-        image: "/community-development.jpg",
-        category: "Press Release"
-    },
-    {
-        id: "2",
-        title: "Project Educare Reaches 500+ Children",
-        date: "January 22, 2026",
-        excerpt: "Thanks to generous donations, we have successfully provided non-stop learning resources to migrant children.",
-        image: "/educare.jpg",
-        category: "Milestone"
-    },
-    {
-        id: "3",
-        title: "Green Hat Volunteer Drive Hits Record Turnout",
-        date: "December 10, 2025",
-        excerpt: "Over 200 youths participated in our weekend plantation drive, planting 5,000 saplings near the city outskirts.",
-        image: "/environmentalcare.jpg",
-        category: "Events"
-    },
-    {
-        id: "4",
-        title: "New Community Library Built Supported By Locals",
-        date: "November 05, 2025",
-        excerpt: "A brand new learning facility was inaugurated today equipped with thousands of donated books and computer access.",
-        image: "/library.jpg",
-        category: "Update"
-    }
+const mediaImages = [
+    "/news1.jpg", "/news2.jpg", "/news3.jpg", "/news4.jpg",
+    "/news5.png", "/news6.jpg", "/news7.png", "/news8.bmp",
+    "/news9.jpg", "/news10.png", "/news11.jpg", "/news12.png",
+    "/news13.jpg", "/news15.jpg", "/news16.jpg", "/news17.jpg",
+    "/news19.jpg"
 ];
 
 export default function MediaNewsPage() {
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
     return (
         <main className="min-h-screen flex flex-col bg-gray-50/50">
             <StickyHeader />
@@ -59,51 +35,76 @@ export default function MediaNewsPage() {
                 </motion.div>
             </section>
 
-            {/* News Grid */}
-            <section className="flex-grow max-w-7xl mx-auto px-6 pb-24 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {staticNews.map((news, idx) => (
+            {/* Clean Grid Section */}
+            <section className="flex-grow max-w-7xl mx-auto px-6 pb-24 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-full">
+                {mediaImages.map((image, idx) => (
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        key={idx}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: idx * 0.1 }}
-                        key={news.id}
-                        className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group"
+                        transition={{ duration: 0.4, delay: (idx % 8) * 0.05 }}
+                        whileHover={{ y: -8 }}
+                        onClick={() => setSelectedImage(image)}
+                        className="relative w-full h-64 md:h-72 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group cursor-pointer"
                     >
-                        {/* Image Container */}
-                        <div className="relative w-full h-56 overflow-hidden">
-                            <Image
-                                src={news.image}
-                                alt={news.title}
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                            />
-                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-blue-700 shadow-sm uppercase tracking-wider">
-                                {news.category}
-                            </div>
-                        </div>
+                        <Image
+                            src={image}
+                            alt={`Media News ${idx + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        />
 
-                        {/* Content */}
-                        <div className="p-6 md:p-8 flex flex-col flex-grow">
-                            <div className="flex items-center gap-2 text-sm text-gray-500 mb-4 font-medium">
-                                <Calendar size={16} className="text-red-500" /> {news.date}
-                            </div>
-
-                            <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors leading-snug">
-                                {news.title}
-                            </h3>
-
-                            <p className="text-gray-600 leading-relaxed text-sm mb-6 flex-grow">
-                                {news.excerpt}
-                            </p>
-
-                            <Link href="#" className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-red-600 transition-colors mt-auto">
-                                Read More <ArrowRight size={18} />
-                            </Link>
+                        {/* Premium Gradient Hover Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end justify-center pb-6">
+                            <span className="text-white font-semibold text-lg tracking-wide backdrop-blur-sm px-4 py-2 rounded-full bg-white/10 border border-white/20">
+                                View Image
+                            </span>
                         </div>
                     </motion.div>
                 ))}
             </section>
+
+            {/* Premium Image Popup Lightbox */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        {/* Close Button */}
+                        <button
+                            className="absolute top-6 right-6 text-white text-3xl font-bold hover:scale-110 transition"
+                            onClick={() => setSelectedImage(null)}
+                        >
+                            ✕
+                        </button>
+
+                        {/* Image Container with Zoom Animation */}
+                        <motion.div
+                            initial={{ scale: 0.8, opacity: 0, y: 40 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.8, opacity: 0, y: 40 }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
+                            className="relative w-full max-w-5xl h-[70vh] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <Image
+                                src={selectedImage}
+                                alt="Preview"
+                                fill
+                                className="object-contain bg-black"
+                                sizes="100vw"
+                                priority
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <Footer />
         </main>

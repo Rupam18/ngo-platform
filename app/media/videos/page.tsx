@@ -6,27 +6,24 @@ import { motion } from "framer-motion";
 import { PlayCircle } from "lucide-react";
 import Image from "next/image";
 
-const staticVideos = [
+const videos = [
     {
-        id: "v1",
-        title: "RISO Annual Report Highlight 2025",
-        youtubeId: "dQw4w9WgXcQ", // Replace with real NGO IDs
-        thumbnail: "/environmentalcare.jpg", // Simulated thumbnail from standard assets
-        duration: "03:45"
+        id: 1,
+        title: "Mission Healthy Child",
+        thumbnail: "/med4.png", // Fallback thumbnail mapped closely to existing assets
+        url: "https://youtu.be/LIZi4Nl-Two",
     },
     {
-        id: "v2",
-        title: "Voices from the Field: Project Educare",
-        youtubeId: "dQw4w9WgXcQ",
-        thumbnail: "/educare.jpg",
-        duration: "05:20"
+        id: 2,
+        title: "RISO Library",
+        thumbnail: "/med1.png", // Fallback thumbnail mapped closely to existing assets
+        url: "https://youtu.be/S4mRDSIo38c",
     },
     {
-        id: "v3",
-        title: "Women Empowerment Success Stories",
-        youtubeId: "dQw4w9WgXcQ",
-        thumbnail: "/women.avif",
-        duration: "02:15"
+        id: 3,
+        title: "Joy Of Giving",
+        thumbnail: "/med2.png", // Fallback thumbnail mapped closely to existing assets
+        url: "https://youtu.be/bdnNzRio53A",
     }
 ];
 
@@ -48,49 +45,72 @@ export default function MediaVideosPage() {
             </section>
 
             {/* Video Layout Grid */}
-            <section className="flex-grow max-w-7xl mx-auto px-6 pb-24 grid lg:grid-cols-2 gap-8 w-full">
-                {staticVideos.map((video, idx) => (
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: idx * 0.1 }}
+            <section className="flex-grow max-w-7xl mx-auto px-6 pb-24 grid md:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
+                {videos.map((video, index) => (
+                    <motion.a
                         key={video.id}
-                        className="bg-white rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group"
+                        href={video.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        initial={{ opacity: 0, y: 60, scale: 0.95 }}
+                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: index * 0.15 }}
+                        whileHover={{ y: -12, scale: 1.03 }}
+                        className="group relative"
                     >
-                        {/* Video Aspect Ratio Box */}
-                        <div className="relative w-full aspect-video bg-gray-900 overflow-hidden group-hover:shadow-inner">
-                            {/* Static Thumbnail Placeholder overlay to act as a play button */}
-                            <Image
-                                src={video.thumbnail}
-                                alt={video.title}
-                                fill
-                                className="object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-300"
-                            />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <PlayCircle size={64} className="text-white opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-300 drop-shadow-lg" />
+                        {/* Glow Border */}
+                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-red-500 to-yellow-400 rounded-3xl blur opacity-0 group-hover:opacity-60 transition duration-500"></div>
+
+                        {/* Glass Card */}
+                        <div className="relative bg-white/70 backdrop-blur-xl border border-white/40 rounded-3xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500">
+
+                            {/* Image Container */}
+                            <div className="relative w-full h-64 overflow-hidden">
+                                <Image
+                                    src={video.thumbnail}
+                                    alt={video.title}
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                                />
+
+                                {/* Dark Cinematic Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition duration-500"></div>
+
+                                {/* Animated Play Button */}
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <motion.div
+                                        whileHover={{ scale: 1.2 }}
+                                        className="relative"
+                                    >
+                                        {/* Ripple Effect */}
+                                        <span className="absolute inset-0 rounded-full bg-white/30 animate-ping"></span>
+
+                                        {/* Play Button */}
+                                        <div className="relative bg-white/90 backdrop-blur-md p-5 rounded-full shadow-2xl border border-white/50">
+                                            <svg
+                                                className="w-10 h-10 text-red-600"
+                                                fill="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </div>
+                                    </motion.div>
+                                </div>
                             </div>
 
-                            <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-bold font-mono">
-                                {video.duration}
+                            {/* Content */}
+                            <div className="p-6 text-center">
+                                <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-700 transition-colors duration-300">
+                                    {video.title}
+                                </h3>
+
+                                {/* Animated Underline */}
+                                <div className="mt-3 h-1 w-12 bg-gradient-to-r from-blue-500 to-red-500 mx-auto rounded-full group-hover:w-24 transition-all duration-500"></div>
                             </div>
                         </div>
-
-                        {/* Title block */}
-                        <div className="p-6">
-                            <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors line-clamp-2">
-                                {video.title}
-                            </h3>
-                            <a
-                                href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-block mt-4 text-sm font-bold text-red-600 hover:text-red-700 uppercase tracking-widest"
-                            >
-                                Watch on YouTube →
-                            </a>
-                        </div>
-                    </motion.div>
+                    </motion.a>
                 ))}
             </section>
 
