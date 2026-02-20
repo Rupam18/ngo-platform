@@ -41,8 +41,20 @@ function SimpleCounter({ to }: { to: number }) {
 
 // Floating Particle Component
 const Particle = ({ delay }: { delay: number }) => {
-    const randomTop = Math.random() * 100;
-    const randomLeft = Math.random() * 100;
+    const [style, setStyle] = useState<any>(null);
+
+    useEffect(() => {
+        setStyle({
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            width: `${20 + Math.random() * 50}px`,
+            height: `${20 + Math.random() * 50}px`,
+            randomX: Math.random() * 40 - 20,
+            duration: 5 + Math.random() * 5
+        });
+    }, []);
+
+    if (!style) return null;
 
     return (
         <motion.div
@@ -50,20 +62,20 @@ const Particle = ({ delay }: { delay: number }) => {
             animate={{
                 opacity: [0, 0.4, 0],
                 y: -100,
-                x: Math.random() * 40 - 20
+                x: style.randomX
             }}
             transition={{
-                duration: 5 + Math.random() * 5,
+                duration: style.duration,
                 repeat: Infinity,
                 delay: delay,
                 ease: "easeInOut"
             }}
             className="absolute rounded-full bg-blue-400/20 blur-xl"
             style={{
-                top: `${randomTop}%`,
-                left: `${randomLeft}%`,
-                width: `${20 + Math.random() * 50}px`,
-                height: `${20 + Math.random() * 50}px`,
+                top: style.top,
+                left: style.left,
+                width: style.width,
+                height: style.height,
             }}
         />
     );

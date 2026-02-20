@@ -8,6 +8,10 @@ import { ArrowRight, Download, Eye, Target } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+import WhatDrivesUs from "@/components/about/WhatDrivesUs";
+import OurPurpose from "@/components/about/OurPurpose";
+import OurBelief from "@/components/about/OurBelief";
+
 export default function AboutPage() {
     return (
         <main className="min-h-screen bg-white">
@@ -128,6 +132,10 @@ export default function AboutPage() {
 
                 </div>
             </section>
+
+            <WhatDrivesUs />
+            <OurPurpose />
+            <OurBelief />
 
             <Footer />
         </main>

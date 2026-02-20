@@ -29,7 +29,7 @@ export default function Footer() {
                         Quick Links
                     </h3>
                     <ul className="space-y-3">
-                        {['Home', 'About Us', 'Our Work', 'Media', 'Join Us', 'Events', 'Donate'].map((item) => (
+                        {['Home', 'About Us', 'Programs', 'Media', 'Join Us', 'Events', 'Donate'].map((item) => (
                             <li key={item}>
                                 <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:text-blue-400 transition-colors">
                                     {item}

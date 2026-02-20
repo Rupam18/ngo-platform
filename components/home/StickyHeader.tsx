@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail, Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
@@ -11,6 +12,7 @@ export default function StickyHeader() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { scrollY } = useScroll();
+    const pathname = usePathname();
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         setIsScrolled(latest > 50);
@@ -34,8 +36,6 @@ export default function StickyHeader() {
         { name: "Home", href: "/" },
         { name: "About Us", href: "/about" },
         { name: "Programs", href: "/programs" },
-        { name: "Impact", href: "/impact" },
-        { name: "CSR Partners", href: "/partners" },
         { name: "Media", href: "/media" },
         { name: "Contact", href: "/contact" },
     ];
@@ -103,16 +103,25 @@ export default function StickyHeader() {
 
                     {/* NAV LINKS */}
                     <nav className="flex gap-8">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="relative text-[15px] font-medium text-gray-700 hover:text-blue-700 transition-colors uppercase tracking-wide group"
-                            >
-                                {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-700 transition-all duration-300 group-hover:w-full" />
-                            </Link>
-                        ))}
+                        {navLinks.map((link) => {
+                            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+                            return (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={`relative text-[15px] font-medium transition-colors uppercase tracking-wide group ${isActive ? 'text-blue-700' : 'text-gray-700 hover:text-blue-700'}`}
+                                >
+                                    {link.name}
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="header-underline"
+                                            className="absolute -bottom-1 left-0 right-0 h-[2px] bg-blue-700"
+                                        />
+                                    )}
+                                    <span className={`absolute -bottom-1 left-0 w-full h-[2px] bg-blue-700 transition-transform duration-300 origin-left ${isActive ? 'scale-x-0' : 'scale-x-0 group-hover:scale-x-100'}`} />
+                                </Link>
+                            );
+                        })}
                     </nav>
 
                     {/* CONTACT */}

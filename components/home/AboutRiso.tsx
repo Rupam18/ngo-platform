@@ -122,27 +122,27 @@ export default function AboutRiso() {
 
                     {/* RIGHT IMAGE */}
                     <motion.div
-                        className="relative h-full min-h-[500px] lg:min-h-[700px] w-full"
+                        className="relative h-full min-h-[500px] lg:min-h-[600px] w-full lg:ml-auto lg:w-[95%] lg:translate-x-4 xl:translate-x-8"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                     >
-                        <div className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl animate-[float_5s_ease-in-out_infinite]">
+                        <div className="relative w-full h-full rounded-[3rem] rounded-tr-[6rem] rounded-bl-[6rem] overflow-hidden shadow-2xl animate-[float_6s_ease-in-out_infinite] border-4 border-white/50">
                             <Image
-                                src="/about-riso.png"
+                                src="/aboutus.png"
                                 alt="RISO Activities"
                                 fill
-                                className="object-cover"
+                                className="object-cover hover:scale-105 transition-transform duration-700"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                             />
                             {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 via-transparent to-transparent" />
                         </div>
 
                         {/* Decorative Blob */}
-                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-yellow-400 rounded-full blur-[60px] opacity-40 -z-10" />
-                        <div className="absolute -top-10 -right-10 w-48 h-48 bg-blue-600 rounded-full blur-[70px] opacity-30 -z-10" />
+                        <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-yellow-400 rounded-full blur-[60px] opacity-40 -z-10" />
+                        <div className="absolute -top-8 -right-8 w-56 h-56 bg-blue-600 rounded-full blur-[70px] opacity-30 -z-10" />
                     </motion.div>
                 </div>
             </div>

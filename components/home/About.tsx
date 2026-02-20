@@ -48,7 +48,7 @@ export default function About() {
                     {/* Placeholder for About Image */}
                     <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400">
                         <Image
-                            src="https://placehold.co/600x400/png"
+                            src="about-us-img-riso.602c1f6c03f20bfc97aa.png"
                             alt="About Us"
                             fill
                             className="object-cover"
