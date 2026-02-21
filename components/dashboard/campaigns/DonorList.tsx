@@ -84,7 +84,7 @@ export function DonorList() {
                                         </div>
                                     </div>
                                 </TableCell>
-                                <TableCell className="text-emerald-600 font-semibold">₹{donor.amount.toLocaleString()}</TableCell>
+                                <TableCell className="text-emerald-600 font-semibold">₹{donor.amount.toLocaleString("en-IN")}</TableCell>
                                 <TableCell>
                                     <Badge variant="outline" className="bg-gray-50 text-gray-600 font-normal">
                                         {donor.method}

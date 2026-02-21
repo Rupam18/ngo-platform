@@ -51,7 +51,7 @@ export function DonationChart() {
                         />
                         <Tooltip
                             contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                            formatter={(value: any) => [`₹${Number(value).toLocaleString()}`, "Donations"]}
+                            formatter={(value: any) => [`₹${Number(value).toLocaleString("en-IN")}`, "Donations"]}
                         />
                         <Area
                             type="monotone"

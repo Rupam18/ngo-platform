@@ -58,7 +58,7 @@ export function CampaignAnalytics() {
                             <YAxis axisLine={false} tickLine={false} tick={{ fill: '#9ca3af', fontSize: 12 }} tickFormatter={(val) => `₹${val / 1000}k`} />
                             <Tooltip
                                 contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                                formatter={(value: any) => [`₹${Number(value).toLocaleString()}`, "Amount"]}
+                                formatter={(value: any) => [`₹${Number(value).toLocaleString("en-IN")}`, "Amount"]}
                             />
                             <Area type="monotone" dataKey="amount" stroke="#3b82f6" strokeWidth={3} fillOpacity={1} fill="url(#colorAmount)" activeDot={{ r: 6, strokeWidth: 0, fill: '#2563eb' }} />
                         </AreaChart>

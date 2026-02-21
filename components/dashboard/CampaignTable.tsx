@@ -109,8 +109,8 @@ export function CampaignTable() {
                                 return (
                                     <TableRow key={campaign.id} className="hover:bg-gray-50/50 border-gray-100">
                                         <TableCell className="font-medium text-gray-900">{campaign.title}</TableCell>
-                                        <TableCell className="text-emerald-600 font-medium">₹{campaign.raised.toLocaleString()}</TableCell>
-                                        <TableCell className="text-gray-500">₹{campaign.goal.toLocaleString()}</TableCell>
+                                        <TableCell className="text-emerald-600 font-medium">₹{campaign.raised.toLocaleString("en-IN")}</TableCell>
+                                        <TableCell className="text-gray-500">₹{campaign.goal.toLocaleString("en-IN")}</TableCell>
                                         <TableCell>
                                             <div className="flex items-center gap-3">
                                                 <Progress value={progress} className="h-2 bg-gray-100 [&>div]:bg-emerald-500" />

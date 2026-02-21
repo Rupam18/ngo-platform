@@ -77,7 +77,7 @@ export function DonorProfile() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-gray-100">
                     <div>
                         <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Lifetime Value</p>
-                        <p className="text-2xl font-bold text-gray-900">₹{donorInfo.totalDonated.toLocaleString()}</p>
+                        <p className="text-2xl font-bold text-gray-900">₹{donorInfo.totalDonated.toLocaleString("en-IN")}</p>
                     </div>
                     <div>
                         <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Status</p>

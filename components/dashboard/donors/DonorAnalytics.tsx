@@ -40,7 +40,7 @@ export function DonorAnalytics() {
                             <Tooltip
                                 cursor={{ fill: '#f3f4f6', opacity: 0.4 }}
                                 contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                                formatter={(value: any) => [`₹${Number(value).toLocaleString()}`, "Donated"]}
+                                formatter={(value: any) => [`₹${Number(value).toLocaleString("en-IN")}`, "Donated"]}
                             />
                             <Bar dataKey="amount" fill="#3b82f6" radius={[4, 4, 0, 0]} maxBarSize={40} />
                         </BarChart>

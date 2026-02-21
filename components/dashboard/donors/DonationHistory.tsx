@@ -66,7 +66,7 @@ export function DonationHistory() {
                                     <p className="font-medium text-gray-900">{txn.campaign}</p>
                                     <p className="text-xs text-gray-400 font-mono mt-0.5">{txn.id}</p>
                                 </TableCell>
-                                <TableCell className="text-emerald-600 font-semibold">₹{txn.amount.toLocaleString()}</TableCell>
+                                <TableCell className="text-emerald-600 font-semibold">₹{txn.amount.toLocaleString("en-IN")}</TableCell>
                                 <TableCell>
                                     <Badge variant="outline" className="bg-gray-50 text-gray-600 font-normal">
                                         {txn.method}

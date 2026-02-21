@@ -40,7 +40,7 @@ export function CampaignStats({ stats }: { stats: CampaignStatsProps }) {
                     <div>
                         <h4 className="text-gray-500 text-xs font-medium uppercase tracking-wider mb-1">{item.label}</h4>
                         <p className="text-xl font-bold text-gray-900 tracking-tight">
-                            {item.prefix}{item.value.toLocaleString()}{item.suffix}
+                            {item.prefix}{item.value.toLocaleString("en-IN")}{item.suffix}
                         </p>
                     </div>
                 </motion.div>

@@ -151,7 +151,7 @@ export function DonorTable() {
                                         <TableCell>
                                             <div className="flex items-center gap-1.5 font-bold text-gray-900">
                                                 <span className="text-emerald-500">₹</span>
-                                                {donor.totalDonated.toLocaleString()}
+                                                {donor.totalDonated.toLocaleString("en-IN")}
                                             </div>
                                             {donor.totalDonated > 50000 && <span className="text-[10px] uppercase font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded ml-1">High Value</span>}
                                         </TableCell>

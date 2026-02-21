@@ -38,7 +38,7 @@ export function CampaignPerformanceChart() {
                         <Tooltip
                             cursor={{ fill: '#f3f4f6', opacity: 0.4 }}
                             contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                            formatter={(value: any) => [`₹${Number(value).toLocaleString()}`, "Amount"]}
+                            formatter={(value: any) => [`₹${Number(value).toLocaleString("en-IN")}`, "Amount"]}
                         />
                         <Bar dataKey="raised" fill="#10b981" radius={[4, 4, 0, 0]} name="Raised" maxBarSize={40} />
                         <Bar dataKey="goal" fill="#cbd5e1" radius={[4, 4, 0, 0]} name="Goal" maxBarSize={40} />

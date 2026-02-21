@@ -52,11 +52,11 @@ export default function StickyHeader() {
                 }`}>
                 {/* LOGO */}
                 <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                    <div className="flex items-center w-[520px]">
+                    <div className="flex items-center">
                         <img
                             src="/banner-removebg-preview.png"
                             alt="RISO Logo"
-                            className="w-full h-16 object-contain transition-all duration-500 hover:scale-105 animate-[float_4s_ease-in-out_infinite]"
+                            className="h-16 w-auto object-contain object-left transition-all duration-300 ease-in-out hover:scale-105 hover:drop-shadow-sm origin-left will-change-transform"
                         />
                     </div>
                 </Link>

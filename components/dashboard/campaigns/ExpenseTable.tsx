@@ -65,7 +65,7 @@ export function ExpenseTable() {
                                     </TableCell>
                                     <TableCell className="text-gray-500 text-sm">{expense.date}</TableCell>
                                     <TableCell className="text-right text-gray-900 font-semibold">
-                                        ₹{expense.amount.toLocaleString()}
+                                        ₹{expense.amount.toLocaleString("en-IN")}
                                     </TableCell>
                                 </TableRow>
                             ))}
@@ -96,7 +96,7 @@ export function ExpenseTable() {
                                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                 ))}
                             </Pie>
-                            <Tooltip formatter={(value: any) => [`₹${Number(value).toLocaleString()}`, "Amount"]} />
+                            <Tooltip formatter={(value: any) => [`₹${Number(value).toLocaleString("en-IN")}`, "Amount"]} />
                         </PieChart>
                     </ResponsiveContainer>
                     <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
