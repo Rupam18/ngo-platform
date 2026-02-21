@@ -6,25 +6,28 @@ import { usePathname } from "next/navigation";
 import {
     LayoutDashboard,
     Heart,
-    Flag,
-    Users,
+    PiggyBank,
+    UserCheck,
+    CreditCard,
+    RefreshCw,
+    HandHeart,
     FileText,
-    UserPlus,
-    Settings,
-    Layers,
+    CheckCircle,
     ChevronLeft,
-    ChevronRight
+    ChevronRight,
+    Settings
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const SIDEBAR_ITEMS = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Donations", href: "/dashboard/donations", icon: Heart },
-    { name: "Campaigns", href: "/dashboard/campaigns", icon: Flag },
-    { name: "Donors", href: "/dashboard/donors", icon: Users },
+    { name: "Campaigns", href: "/dashboard/campaigns", icon: PiggyBank },
+    { name: "Donors", href: "/dashboard/donors", icon: UserCheck },
+    { name: "Donations", href: "/dashboard/donations", icon: CreditCard },
+    { name: "Recurring", href: "/dashboard/recurring", icon: RefreshCw },
+    { name: "Impact", href: "/dashboard/impact", icon: HandHeart },
     { name: "Reports", href: "/dashboard/reports", icon: FileText },
-    { name: "Volunteers", href: "/dashboard/volunteers", icon: UserPlus },
-    { name: "Content", href: "/dashboard/content", icon: Layers },
+    { name: "Compliance", href: "/dashboard/compliance", icon: CheckCircle },
     { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ];
 
@@ -70,8 +73,8 @@ export function Sidebar() {
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 className={`flex items-center gap-3 px-3 py-3 rounded-xl transition-all ${isExactActive
-                                        ? "bg-emerald-600/10 text-emerald-400 font-medium"
-                                        : "hover:bg-slate-800/50 hover:text-white"
+                                    ? "bg-emerald-600/10 text-emerald-400 font-medium"
+                                    : "hover:bg-slate-800/50 hover:text-white"
                                     }`}
                                 title={isCollapsed ? item.name : undefined}
                             >
