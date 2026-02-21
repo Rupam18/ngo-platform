@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { DollarSign, Users, Flag, CheckCircle, TrendingUp, Clock } from "lucide-react";
+import { IndianRupee, Users, Flag, CheckCircle, TrendingUp, Clock } from "lucide-react";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { DonationChart } from "@/components/dashboard/DonationChart";
 import { CampaignPerformanceChart } from "@/components/dashboard/CampaignPerformanceChart";
@@ -24,9 +24,9 @@ export default function DashboardHomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <StatCard
                     title="Total Raised"
-                    value="2,450,000"
+                    value={new Intl.NumberFormat("en-IN").format(2450000)}
                     prefix="₹"
-                    icon={DollarSign}
+                    icon={IndianRupee}
                     trend={12.5}
                     delay={0.1}
                 />

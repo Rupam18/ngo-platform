@@ -4,7 +4,7 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CampaignCard } from "@/components/dashboard/campaigns/CampaignCard";
 import { CampaignTable } from "@/components/dashboard/campaigns/CampaignTable";
-import { DollarSign, Flag, Layers, CheckCircle } from "lucide-react";
+import { IndianRupee, Flag, Layers, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -43,9 +43,9 @@ export default function CampaignsMainPage() {
                 />
                 <CampaignCard
                     title="Total Raised"
-                    value="4,850,000"
+                    value={new Intl.NumberFormat("en-IN").format(4850000)}
                     prefix="₹"
-                    icon={DollarSign}
+                    icon={IndianRupee}
                     trend={8.2}
                     delay={0.3}
                 />
