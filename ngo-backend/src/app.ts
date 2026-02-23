@@ -13,10 +13,14 @@ app.use(express.urlencoded({ extended: true }));
 
 import { prisma } from './config/prisma';
 import authRoutes from './routes/auth.routes';
+import donationRoutes from './routes/donation.routes';
+import dashboardRoutes from './routes/dashboard.routes';
 import { protect } from './middleware/auth.middleware';
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/donation', donationRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 app.get('/api/protected', protect, (req: Request, res: Response) => {
     res.json({ message: 'You are authenticated' });
