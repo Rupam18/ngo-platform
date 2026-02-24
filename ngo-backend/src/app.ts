@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import { errorHandler } from './middleware/error.middleware';
+import { globalLimiter } from './middleware/rateLimit.middleware';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -8,7 +10,19 @@ dotenv.config();
 const app: express.Express = express();
 
 // Middleware
-app.use(cors());
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
+
+app.use(cors({
+    origin: [
+        'http://localhost:3000',
+        'https://yourdomain.com'
+    ],
+    credentials: true,
+}));
+
+app.use(globalLimiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
