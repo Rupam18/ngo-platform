@@ -5,20 +5,23 @@ import { prisma } from "../config/prisma";
 export const createCampaign = async (req: Request, res: Response): Promise<any> => {
     try {
         const { title, goal, status } = req.body;
+        const coverImage = req.file ? req.file.path : undefined;
 
         if (!title || typeof title !== "string") {
             return res.status(400).json({ success: false, message: "Valid title is required" });
         }
 
-        if (!goal || typeof goal !== "number" || goal <= 0) {
+        const goalAmount = Number(goal);
+        if (isNaN(goalAmount) || goalAmount <= 0) {
             return res.status(400).json({ success: false, message: "Goal must be a positive number" });
         }
 
         const campaign = await prisma.campaign.create({
             data: {
                 title,
-                goal,
-                status: status || "ACTIVE"
+                goal: goalAmount,
+                status: status || "ACTIVE",
+                ...(coverImage && { coverImage })
             }
         });
 
@@ -122,8 +125,9 @@ export const updateCampaign = async (req: Request, res: Response): Promise<any> 
             where: { id },
             data: {
                 ...(title && { title }),
-                ...(goal && { goal }),
-                ...(status && { status })
+                ...(goal !== undefined && { goal: Number(goal) }),
+                ...(status && { status }),
+                ...(req.file && { coverImage: req.file.path })
             }
         });
 

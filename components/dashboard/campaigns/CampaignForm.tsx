@@ -11,6 +11,12 @@ export function CampaignForm() {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
+    // Form fields
+    const [title, setTitle] = useState("");
+    const [goal, setGoal] = useState("");
+    const [imageFile, setImageFile] = useState<File | null>(null);
+    const [description, setDescription] = useState("");
+
     const totalSteps = 3;
 
     const handleNext = () => {
@@ -21,12 +27,35 @@ export function CampaignForm() {
         if (step > 1) setStep(step - 1);
     };
 
-    const handlePublish = () => {
+    const handlePublish = async () => {
         setLoading(true);
-        setTimeout(() => {
+        try {
+            const token = typeof window !== 'undefined' ? localStorage.getItem("token") : null;
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("goal", goal);
+            if (description) formData.append("description", description);
+            if (imageFile) formData.append("image", imageFile);
+
+            const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
+            const res = await fetch(`${baseUrl}/campaign`, {
+                method: "POST",
+                headers: token ? { "Authorization": `Bearer ${token}` } : {},
+                body: formData
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                setSuccess(true);
+            } else {
+                alert("Creation failed: " + data.message);
+            }
+        } catch (error) {
+            console.error("Upload error:", error);
+            alert("Upload failed. Check console.");
+        } finally {
             setLoading(false);
-            setSuccess(true);
-        }, 1500);
+        }
     };
 
     if (success) {
@@ -86,7 +115,7 @@ export function CampaignForm() {
                             <div className="space-y-4">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Campaign Title</label>
-                                    <Input placeholder="e.g. Save the Rainforest 2026" className="h-11 border-gray-200 focus:ring-blue-500" />
+                                    <Input value={title} onChange={e => setTitle(e.target.value)} placeholder="e.g. Save the Rainforest 2026" className="h-11 border-gray-200 focus:ring-blue-500" />
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
@@ -100,7 +129,7 @@ export function CampaignForm() {
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1"><IndianRupee size={14} /> Goal Amount (₹)</label>
-                                        <Input type="number" placeholder="500000" className="h-11 border-gray-200 focus:ring-blue-500" />
+                                        <Input type="number" value={goal} onChange={e => setGoal(e.target.value)} placeholder="500000" className="h-11 border-gray-200 focus:ring-blue-500" />
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -133,11 +162,19 @@ export function CampaignForm() {
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-2">Campaign Cover Image</label>
-                                <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 hover:bg-gray-50 hover:border-blue-300 transition-colors cursor-pointer group flex flex-col items-center justify-center text-center">
+                                <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 hover:bg-gray-50 hover:border-blue-300 transition-colors cursor-pointer group flex flex-col items-center justify-center text-center relative overflow-hidden">
+                                    <input
+                                        type="file"
+                                        accept="image/png, image/jpeg, image/webp"
+                                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                                        onChange={e => setImageFile(e.target.files?.[0] || null)}
+                                    />
                                     <div className="w-14 h-14 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                         <UploadCloud size={24} />
                                     </div>
-                                    <p className="font-medium text-gray-900 mb-1">Click to upload or drag and drop</p>
+                                    <p className="font-medium text-gray-900 mb-1">
+                                        {imageFile ? imageFile.name : "Click to upload or drag and drop"}
+                                    </p>
                                     <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (max. 5MB)</p>
                                 </div>
                             </div>
@@ -155,6 +192,8 @@ export function CampaignForm() {
                                         <button className="h-8 px-2 hover:bg-white rounded shadow-sm text-gray-600 border border-transparent hover:border-gray-200 transition-colors text-xs font-medium">H2</button>
                                     </div>
                                     <textarea
+                                        value={description}
+                                        onChange={e => setDescription(e.target.value)}
                                         className="w-full h-48 p-4 focus:outline-none resize-none text-gray-700"
                                         placeholder="Write an inspiring story explaining what this campaign solves..."
                                     />
@@ -183,7 +222,7 @@ export function CampaignForm() {
                                 <div className="space-y-4 flex-1">
                                     <div>
                                         <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Education</p>
-                                        <h2 className="text-2xl font-bold text-gray-900">Education for All 2026</h2>
+                                        <h2 className="text-2xl font-bold text-gray-900">{title || "Education for All 2026"}</h2>
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>

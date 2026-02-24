@@ -21,9 +21,10 @@ model Campaign {
   id        String     @id @default(uuid())
   title     String
   createdAt DateTime   @default(now())
-  goal      Int
-  status    String
-  donations Donation[]
+  goal       Int
+  status     String
+  coverImage String?
+  donations  Donation[]
 }
 
 model Donation {

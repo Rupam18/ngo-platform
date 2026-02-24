@@ -112,3 +112,33 @@ The width(-1) and height(-1) of chart should be greater than 0,
  GET / 200 in 39ms (compile: 17ms, render: 22ms)
 ✓ Finished filesystem cache database compaction in 10.9s
 ✓ Compiled in 2.5s
+ GET / 200 in 3.6s (compile: 623ms, render: 3.0s)
+ GET / 200 in 684ms (compile: 18ms, render: 666ms)
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /dashboard 200 in 136ms (compile: 10ms, render: 126ms)
+ GET /dashboard/campaigns 200 in 30ms (compile: 8ms, render: 22ms)
+ GET /dashboard/campaigns/create?edit=19df61e2-6e11-4853-90cb-ebe51a0b1f56 200 in 37ms (compile: 9ms, render: 28ms)
+ GET /dashboard/campaigns 200 in 27ms (compile: 6ms, render: 21ms)
+ GET /dashboard/campaigns/19df61e2-6e11-4853-90cb-ebe51a0b1f56 200 in 2.8s (compile: 2.7s, render: 23ms)
+ GET /dashboard/campaigns 200 in 43ms (compile: 16ms, render: 27ms)
+ GET /dashboard/campaigns/create 200 in 33ms (compile: 7ms, render: 26ms)
+✓ Compiled in 184ms
+ GET /dashboard/campaigns/create 200 in 80ms (compile: 55ms, render: 25ms)
+ GET / 200 in 89ms (compile: 20ms, render: 69ms)
+✓ Compiled in 26ms
+ GET /dashboard/campaigns/create 200 in 67ms (compile: 4ms, render: 62ms)
+ GET / 200 in 71ms (compile: 39ms, render: 32ms)
+✓ Compiled in 723ms
+ GET /programs 200 in 122ms (compile: 53ms, render: 69ms)
+ GET / 200 in 2.9s (compile: 10ms, render: 2.9s)
