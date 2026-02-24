@@ -1,10 +1,11 @@
-import express, { Express, Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
+import { errorHandler } from './middleware/error.middleware';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const app: Express = express();
+const app: express.Express = express();
 
 // Middleware
 app.use(cors());
@@ -47,5 +48,8 @@ app.get('/test-db', async (req: Request, res: Response) => {
 app.use((req: Request, res: Response) => {
     res.status(404).json({ error: 'Not Found' });
 });
+
+// Global Error Handler must be the last middleware
+app.use(errorHandler);
 
 export default app;
