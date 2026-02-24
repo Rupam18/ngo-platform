@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { fetchWithAuth } from "@/lib/api";
 
 interface CampaignFormProps {
     initialData?: any;
@@ -17,7 +18,8 @@ export default function CampaignForm({ initialData }: CampaignFormProps) {
     const [formData, setFormData] = useState({
         title: initialData?.title || "",
         description: initialData?.description || "",
-        goalAmount: initialData?.goalAmount || "",
+        goal: initialData?.goal || "",
+        category: initialData?.category || "EDUCATION",
         image: initialData?.image || "",
     });
 
@@ -30,23 +32,20 @@ export default function CampaignForm({ initialData }: CampaignFormProps) {
 
         try {
             const url = isEditing
-                ? `/api/campaigns/${initialData.id}`
-                : "/api/campaigns";
+                ? `/campaign/${initialData.id}`
+                : "/campaign";
             const method = isEditing ? "PUT" : "POST";
 
-            const token = localStorage.getItem("token");
-            const res = await fetch(url, {
-                method,
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(formData),
-            });
+            // Target backend requires goal as a number
+            const payload = {
+                ...formData,
+                goal: Number(formData.goal)
+            };
 
-            if (!res.ok) {
-                throw new Error("Failed to save campaign");
-            }
+            await fetchWithAuth(url, {
+                method,
+                body: JSON.stringify(payload),
+            });
 
             router.push("/dashboard");
             router.refresh();
@@ -81,14 +80,28 @@ export default function CampaignForm({ initialData }: CampaignFormProps) {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium mb-1">Goal Amount (₹)</label>
+                    <label className="block text-sm font-medium mb-1">Target Amount (₹)</label>
                     <Input
                         type="number"
-                        value={formData.goalAmount}
-                        onChange={(e) => setFormData({ ...formData, goalAmount: e.target.value })}
+                        value={formData.goal}
+                        onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
                         required
                         placeholder="50000"
                     />
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium mb-1">Category</label>
+                    <select
+                        className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                        value={formData.category}
+                        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    >
+                        <option value="EDUCATION">Education</option>
+                        <option value="MEDICAL">Medical</option>
+                        <option value="EMERGENCY">Emergency</option>
+                        <option value="ENVIRONMENT">Environment</option>
+                    </select>
                 </div>
 
                 <div>

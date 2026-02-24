@@ -1,7 +1,7 @@
 "use client";
 
 // Force editor re-check
-import { Campaign } from "@prisma/client";
+import { Campaign } from "../../ngo-backend/node_modules/@prisma/client";
 import CampaignCard from "@/components/campaigns/CampaignCard";
 
 interface FeaturedCampaignsProps {
@@ -30,15 +30,15 @@ export default function FeaturedCampaigns({ campaigns }: FeaturedCampaignsProps)
                 {/* Campaign Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {campaigns.length > 0 ? (
-                        campaigns.map((campaign) => (
+                        campaigns.map((campaign: any) => (
                             <CampaignCard
                                 key={campaign.id}
                                 id={campaign.id}
                                 title={campaign.title}
-                                description={campaign.description}
-                                image={campaign.image}
-                                raised={campaign.raisedAmount}
-                                goal={campaign.goalAmount}
+                                description={campaign.description || "A wonderful campaign to support."}
+                                image={campaign.image || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070"}
+                                raised={campaign.donations?.reduce((sum: number, d: any) => sum + d.amount, 0) || 0}
+                                goal={campaign.goal}
                             />
                         ))
                     ) : (

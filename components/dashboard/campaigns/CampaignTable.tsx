@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Filter, Eye, Edit, Trash2, Archive, MoreVertical, Copy, ArrowUpDown, ChevronDown, Image as ImageIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
+import { fetchWithAuth } from "@/lib/api";
 import {
     Table,
     TableBody,
@@ -35,39 +36,58 @@ interface AdvancedCampaignData {
     thumbnailUrl?: string; // Optional for when DB isn't wired
 }
 
-// Extensive mock data to show pagination and scrolling
-const mockCampaigns: AdvancedCampaignData[] = [
-    { id: "cm_1", title: "Education for All 2026", category: "Education", raised: 85000, goal: 100000, status: "Active", created: "10 Feb 2026" },
-    { id: "cm_2", title: "Clean Water Initiative", category: "Water", raised: 120000, goal: 120000, status: "Completed", created: "01 Jan 2026" },
-    { id: "cm_3", title: "Disaster Relief Fund", category: "Emergency", raised: 45000, goal: 200000, status: "Active", created: "15 Feb 2026" },
-    { id: "cm_4", title: "Women Empowerment", category: "Social", raised: 0, goal: 50000, status: "Draft", created: "20 Feb 2026" },
-    { id: "cm_5", title: "Medical Camp Setup", category: "Healthcare", raised: 90000, goal: 150000, status: "Active", created: "05 Feb 2026" },
-    { id: "cm_6", title: "Winter Blanket Drive", category: "Relief", raised: 25000, goal: 30000, status: "Archived", created: "10 Dec 2025" },
-    { id: "cm_7", title: "Rural Solar Power", category: "Environment", raised: 75000, goal: 500000, status: "Active", created: "18 Feb 2026" },
-];
-
 export function CampaignTable() {
+    const [campaigns, setCampaigns] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
     const [statusFilter, setStatusFilter] = useState<string>("All");
     const [sortBy, setSortBy] = useState<string>("Newest");
 
+    useEffect(() => {
+        const fetchCampaigns = async () => {
+            try {
+                const res = await fetchWithAuth("/campaign");
+                setCampaigns(res.data || []);
+            } catch (error) {
+                console.error("Failed to fetch campaigns", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCampaigns();
+    }, []);
+
+    const handleDelete = async (id: string) => {
+        if (!confirm("Are you sure you want to delete this campaign?")) return;
+        try {
+            await fetchWithAuth(`/campaign/${id}`, { method: "DELETE" });
+            setCampaigns((prev) => prev.filter((c) => c.id !== id));
+        } catch (error: any) {
+            alert(error.message || "Failed to delete campaign. It might have existing donations.");
+        }
+    };
+
     // Filtering
-    let filtered = mockCampaigns.filter(c => {
+    let filtered = campaigns.filter(c => {
         const matchesSearch = c.title.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesStatus = statusFilter === "All" || c.status === statusFilter;
+        const matchesStatus = statusFilter === "All" || c.status === statusFilter.toUpperCase();
         return matchesSearch && matchesStatus;
     });
 
     // Sorting
     filtered = filtered.sort((a, b) => {
-        if (sortBy === "Most Raised") return b.raised - a.raised;
+        const raisedA = a.donations?.reduce((sum: number, d: any) => sum + d.amount, 0) || 0;
+        const raisedB = b.donations?.reduce((sum: number, d: any) => sum + d.amount, 0) || 0;
+
+        if (sortBy === "Most Raised") return raisedB - raisedA;
         if (sortBy === "Goal Progress") {
-            const pA = a.raised / a.goal;
-            const pB = b.raised / b.goal;
+            const pA = raisedA / a.goal;
+            const pB = raisedB / b.goal;
             return pB - pA;
         }
-        // Fallback Newest (mock using ID for structural sorting)
-        return b.id.localeCompare(a.id);
+        // Fallback Newest
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
 
     return (
@@ -144,9 +164,14 @@ export function CampaignTable() {
                     </TableHeader>
                     <TableBody>
                         <AnimatePresence>
-                            {filtered.length > 0 ? (
+                            {loading ? (
+                                <TableRow>
+                                    <TableCell colSpan={9} className="h-32 text-center text-gray-500">Loading campaigns...</TableCell>
+                                </TableRow>
+                            ) : filtered.length > 0 ? (
                                 filtered.map((campaign) => {
-                                    const progress = Math.min(100, Math.round((campaign.raised / campaign.goal) * 100)) || 0;
+                                    const raised = campaign._count?.donations ? campaign.donations?.reduce((sum: number, d: any) => sum + d.amount, 0) || 0 : 0;
+                                    const progress = Math.min(100, Math.round((raised / campaign.goal) * 100)) || 0;
 
                                     return (
                                         <TableRow key={campaign.id} className="hover:bg-blue-50/30 border-gray-100 transition-colors group">
@@ -160,8 +185,8 @@ export function CampaignTable() {
                                                 </div>
                                             </TableCell>
                                             <TableCell className="font-semibold text-gray-900">{campaign.title}</TableCell>
-                                            <TableCell className="text-gray-500">{campaign.category}</TableCell>
-                                            <TableCell className="text-emerald-600 font-semibold">₹{campaign.raised.toLocaleString("en-IN")}</TableCell>
+                                            <TableCell className="text-gray-500">{campaign.category || "General"}</TableCell>
+                                            <TableCell className="text-emerald-600 font-semibold">₹{raised.toLocaleString("en-IN")}</TableCell>
                                             <TableCell className="text-gray-500">₹{campaign.goal.toLocaleString("en-IN")}</TableCell>
                                             <TableCell>
                                                 <div className="flex items-center gap-3">
@@ -172,15 +197,17 @@ export function CampaignTable() {
                                             <TableCell>
                                                 <Badge variant="outline" className={`
                                                     font-medium px-2.5 py-1 rounded-md border
-                                                    ${campaign.status === 'Active' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : ''}
-                                                    ${campaign.status === 'Completed' ? 'bg-blue-50 text-blue-700 border-blue-200' : ''}
-                                                    ${campaign.status === 'Draft' ? 'bg-gray-50 text-gray-600 border-gray-300' : ''}
-                                                    ${campaign.status === 'Archived' ? 'bg-amber-50 text-amber-700 border-amber-200' : ''}
+                                                    ${campaign.status === 'ACTIVE' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : ''}
+                                                    ${campaign.status === 'COMPLETED' ? 'bg-blue-50 text-blue-700 border-blue-200' : ''}
+                                                    ${campaign.status === 'DRAFT' ? 'bg-gray-50 text-gray-600 border-gray-300' : ''}
+                                                    ${campaign.status === 'ARCHIVED' ? 'bg-amber-50 text-amber-700 border-amber-200' : ''}
                                                 `}>
                                                     {campaign.status}
                                                 </Badge>
                                             </TableCell>
-                                            <TableCell className="text-gray-400 text-sm whitespace-nowrap">{campaign.created}</TableCell>
+                                            <TableCell className="text-gray-400 text-sm whitespace-nowrap">
+                                                {new Date(campaign.createdAt).toLocaleDateString("en-IN", { day: '2-digit', month: 'short', year: 'numeric' })}
+                                            </TableCell>
                                             <TableCell className="text-right">
                                                 <DropdownMenu>
                                                     <DropdownMenuTrigger asChild>
@@ -206,7 +233,10 @@ export function CampaignTable() {
                                                         <DropdownMenuItem className="cursor-pointer hover:bg-amber-50 text-amber-700 rounded-lg focus:text-amber-700 focus:bg-amber-50">
                                                             <Archive size={16} className="mr-2" /> Archive
                                                         </DropdownMenuItem>
-                                                        <DropdownMenuItem className="cursor-pointer hover:bg-red-50 text-red-700 rounded-lg focus:text-red-700 focus:bg-red-50 mt-1">
+                                                        <DropdownMenuItem
+                                                            className="cursor-pointer hover:bg-red-50 text-red-700 rounded-lg focus:text-red-700 focus:bg-red-50 mt-1"
+                                                            onClick={() => handleDelete(campaign.id)}
+                                                        >
                                                             <Trash2 size={16} className="mr-2" /> Delete
                                                         </DropdownMenuItem>
                                                     </DropdownMenuContent>
@@ -244,7 +274,7 @@ export function CampaignTable() {
             </div>
 
             <div className="p-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500 bg-gray-50/50">
-                <span className="font-medium text-gray-700">Showing {filtered.length} of {mockCampaigns.length} total campaigns</span>
+                <span className="font-medium text-gray-700">Showing {filtered.length} of {campaigns.length} total campaigns</span>
                 <div className="flex gap-2">
                     <Button variant="outline" size="sm" disabled className="rounded-lg bg-white border-gray-200">Previous</Button>
                     <Button variant="outline" size="sm" disabled className="rounded-lg bg-white border-gray-200 text-gray-900 font-medium">1</Button>

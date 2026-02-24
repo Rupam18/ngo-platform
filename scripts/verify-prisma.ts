@@ -1,5 +1,5 @@
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../ngo-backend/node_modules/@prisma/client';
 
 const prisma = new PrismaClient();
 

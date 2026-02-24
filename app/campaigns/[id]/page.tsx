@@ -5,16 +5,24 @@ import { notFound } from "next/navigation";
 
 export const revalidate = 0;
 
-export default async function CampaignDetailsPage({ params }: { params: { id: string } }) {
+export default async function CampaignDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+    const resolvedParams = await params;
+
     const campaign = await prisma.campaign.findUnique({
-        where: { id: params.id },
+        where: { id: resolvedParams.id },
+        include: {
+            donations: {
+                where: { status: "SUCCESS" }
+            }
+        }
     });
 
     if (!campaign) {
         notFound();
     }
 
-    const progress = (campaign.raisedAmount / campaign.goalAmount) * 100;
+    const raisedAmount = campaign.donations?.reduce((sum, d) => sum + d.amount, 0) || 0;
+    const progress = (raisedAmount / campaign.goal) * 100;
 
     return (
         <div className="min-h-screen bg-gray-50 py-12">
@@ -25,7 +33,7 @@ export default async function CampaignDetailsPage({ params }: { params: { id: st
 
                 <div className="bg-white rounded-xl shadow-md overflow-hidden">
                     <img
-                        src={campaign.image}
+                        src={(campaign as any).image || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070"}
                         alt={campaign.title}
                         className="w-full h-80 object-cover"
                     />
@@ -40,13 +48,13 @@ export default async function CampaignDetailsPage({ params }: { params: { id: st
                                 />
                             </div>
                             <div className="flex justify-between mt-2 text-sm text-gray-600">
-                                <span>Raised: <span className="font-bold text-black">₹{campaign.raisedAmount.toLocaleString('en-IN')}</span></span>
-                                <span>Goal: <span className="font-bold text-black">₹{campaign.goalAmount.toLocaleString('en-IN')}</span></span>
+                                <span>Raised: <span className="font-bold text-black">₹{raisedAmount.toLocaleString('en-IN')}</span></span>
+                                <span>Goal: <span className="font-bold text-black">₹{campaign.goal.toLocaleString('en-IN')}</span></span>
                             </div>
                         </div>
 
                         <p className="text-gray-700 text-lg leading-relaxed mb-8 whitespace-pre-wrap">
-                            {campaign.description}
+                            {(campaign as any).description || "A wonderful campaign to support."}
                         </p>
 
                         <Button className="w-full py-6 text-xl bg-blue-600 hover:bg-blue-700">

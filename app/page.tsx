@@ -13,22 +13,32 @@ import EventsGallery from "@/components/home/EventsGallery";
 import CTASection from "@/components/home/CTASection";
 import CSRPartners from "@/components/home/CSRPartners";
 import Footer from "@/components/home/Footer";
-import { prisma } from "@/lib/prisma";
+import FeaturedCampaigns from "@/components/home/FeaturedCampaigns";
 
 export const revalidate = 0; // Disable static caching for now
 
 export default async function Home() {
-  // Keeping prisma fetch in case we need it later or for other components, 
-  // though currently unused in the visual list provided.
-  // const campaigns = await prisma.campaign.findMany({
-  //   take: 3,
-  //   orderBy: { createdAt: "desc" },
-  // });
+  let activeCampaigns: any[] = [];
+
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
+    const res = await fetch(`${baseUrl}/campaign`, { cache: 'no-store' });
+    const json = await res.json();
+
+    if (json.success) {
+      activeCampaigns = json.data
+        .filter((c: any) => c.status === 'ACTIVE')
+        .slice(0, 3);
+    }
+  } catch (error) {
+    console.error("Failed to fetch featured campaigns:", error);
+  }
 
   return (
     <main className="min-h-screen bg-white">
       <StickyHeader />
       <HeroSlider />
+      <FeaturedCampaigns campaigns={activeCampaigns} />
       <div className="mt-16">
         <AboutRiso />
       </div>
