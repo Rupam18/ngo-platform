@@ -170,3 +170,712 @@ The width(-1) and height(-1) of chart should be greater than 0,
  GET / 200 in 286ms (compile: 126ms, render: 160ms)
 ✓ Compiled in 51ms
  GET / 200 in 77ms (compile: 29ms, render: 49ms)
+ GET / 200 in 3.9s (compile: 132ms, render: 3.8s)
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /dashboard 200 in 589ms (compile: 195ms, render: 394ms)
+ GET /dashboard/campaigns 200 in 62ms (compile: 25ms, render: 38ms)
+ GET /dashboard/campaigns/create 200 in 269ms (compile: 235ms, render: 34ms)
+ GET / 200 in 442ms (compile: 24ms, render: 418ms)
+ GET / 200 in 505ms (compile: 42ms, render: 463ms)
+✓ Compiled in 7.9s
+ GET /dashboard/campaigns 200 in 1009ms (compile: 72ms, render: 936ms)
+ GET / 200 in 1033ms (compile: 657ms, render: 376ms)
+✓ Finished writing to filesystem cache in 12.0s
+✓ Finished filesystem cache database compaction in 16.2s
+ GET /about 200 in 1587ms (compile: 1480ms, render: 106ms)
+✓ Compiled in 1092ms
+✓ Compiled in 356ms
+ GET / 200 in 3.2s (compile: 477ms, render: 2.7s)
+ GET / 200 in 2.2s (compile: 9ms, render: 2.2s)
+✓ Compiled in 2.4s
+✓ Compiled in 398ms
+✓ Compiled in 1391ms
+ GET /dashboard/campaigns 200 in 2.9s (compile: 141ms, render: 2.8s)
+ GET / 200 in 2.9s (compile: 1650ms, render: 1208ms)
+ GET /dashboard/campaigns 200 in 1163ms (compile: 28ms, render: 1135ms)
+ GET / 200 in 1162ms (compile: 123ms, render: 1039ms)
+ GET /dashboard/campaigns 200 in 893ms (compile: 74ms, render: 819ms)
+ GET / 200 in 1332ms (compile: 531ms, render: 801ms)
+ GET /dashboard/campaigns 200 in 729ms (compile: 10ms, render: 720ms)
+ GET / 200 in 638ms (compile: 26ms, render: 612ms)
+ GET /dashboard/campaigns 200 in 515ms (compile: 41ms, render: 474ms)
+ GET / 200 in 515ms (compile: 323ms, render: 192ms)
+ GET /about 200 in 389ms (compile: 343ms, render: 46ms)
+ GET / 200 in 2.6s (compile: 54ms, render: 2.6s)
+ GET /programs 200 in 546ms (compile: 506ms, render: 39ms)
+ GET /media 200 in 348ms (compile: 307ms, render: 41ms)
+ GET /contact 200 in 1868ms (compile: 1821ms, render: 47ms)
+ GET / 200 in 584ms (compile: 13ms, render: 570ms)
+✓ Compiled in 3.5s
+✓ Compiled in 791ms
+ GET /dashboard/campaigns 200 in 486ms (compile: 23ms, render: 464ms)
+ GET / 200 in 487ms (compile: 440ms, render: 47ms)
+ GET / 200 in 3.3s (compile: 75ms, render: 3.2s)
+✓ Compiled in 454ms
+✓ Compiled in 505ms
+ GET /inkind-donation 404 in 443ms (compile: 175ms, render: 267ms)
+ GET /inkind-donation 404 in 156ms (compile: 6ms, render: 150ms)
+ GET /dashboard/campaigns 200 in 2.1s (compile: 1996ms, render: 128ms)
+ GET /dashboard/campaigns 200 in 651ms (compile: 46ms, render: 605ms)
+ GET /dashboard/campaigns 200 in 557ms (compile: 15ms, render: 542ms)
+ GET /dashboard/campaigns 200 in 437ms (compile: 56ms, render: 381ms)
+ GET /dashboard/campaigns 200 in 59ms (compile: 1980µs, render: 57ms)
+ GET /dashboard/campaigns 200 in 63ms (compile: 5ms, render: 58ms)
+ GET /dashboard/campaigns 200 in 44ms (compile: 4ms, render: 40ms)
+ GET /dashboard/campaigns 200 in 24ms (compile: 3ms, render: 21ms)
+ GET /dashboard/campaigns 200 in 77ms (compile: 11ms, render: 65ms)
+ GET /dashboard/campaigns 200 in 49ms (compile: 2ms, render: 47ms)
+ GET /dashboard/campaigns 200 in 34ms (compile: 1768µs, render: 32ms)
+ GET /dashboard/campaigns 200 in 19ms (compile: 3ms, render: 16ms)
+ GET /dashboard/campaigns 200 in 18ms (compile: 2ms, render: 16ms)
+ GET /dashboard/campaigns 200 in 84ms (compile: 11ms, render: 73ms)
+ GET /dashboard/campaigns 200 in 93ms (compile: 2ms, render: 91ms)
+ GET /dashboard/campaigns 200 in 75ms (compile: 3ms, render: 72ms)
+ GET /dashboard/campaigns 200 in 58ms (compile: 2ms, render: 56ms)
+○ Compiling /inkind-donation ...
+ GET /dashboard/campaigns 200 in 72ms (compile: 3ms, render: 68ms)
+ GET /dashboard/campaigns 200 in 68ms (compile: 1943µs, render: 66ms)
+ GET /dashboard/campaigns 200 in 90ms (compile: 3ms, render: 87ms)
+ GET /dashboard/campaigns 200 in 75ms (compile: 1758µs, render: 73ms)
+ GET /dashboard/campaigns 200 in 77ms (compile: 1950µs, render: 75ms)
+ GET /dashboard/campaigns 200 in 92ms (compile: 2ms, render: 90ms)
+ GET /dashboard/campaigns 200 in 81ms (compile: 2ms, render: 79ms)
+ GET /dashboard/campaigns 200 in 64ms (compile: 3ms, render: 60ms)
+ GET /dashboard/campaigns 200 in 68ms (compile: 3ms, render: 65ms)
+ GET /dashboard/campaigns 200 in 73ms (compile: 1909µs, render: 71ms)
+ GET /dashboard/campaigns 200 in 62ms (compile: 6ms, render: 56ms)
+ GET /dashboard/campaigns 200 in 58ms (compile: 6ms, render: 52ms)
+ GET /dashboard/campaigns 200 in 55ms (compile: 4ms, render: 52ms)
+ GET /dashboard/campaigns 200 in 75ms (compile: 2ms, render: 72ms)
+ GET /dashboard/campaigns 200 in 78ms (compile: 1866µs, render: 76ms)
+ GET /dashboard/campaigns 200 in 82ms (compile: 2ms, render: 80ms)
+ GET /dashboard/campaigns 200 in 104ms (compile: 1989µs, render: 102ms)
+ GET /dashboard/campaigns 200 in 107ms (compile: 3ms, render: 104ms)
+ GET /dashboard/campaigns 200 in 88ms (compile: 2ms, render: 86ms)
+ GET /dashboard/campaigns 200 in 96ms (compile: 5ms, render: 91ms)
+ GET /dashboard/campaigns 200 in 91ms (compile: 3ms, render: 88ms)
+ GET /dashboard/campaigns 200 in 86ms (compile: 3ms, render: 83ms)
+ GET /dashboard/campaigns 200 in 87ms (compile: 3ms, render: 83ms)
+ GET /dashboard/campaigns 200 in 81ms (compile: 3ms, render: 77ms)
+ GET /dashboard/campaigns 200 in 65ms (compile: 3ms, render: 62ms)
+ GET /dashboard/campaigns 200 in 84ms (compile: 3ms, render: 81ms)
+ GET /dashboard/campaigns 200 in 83ms (compile: 4ms, render: 79ms)
+ GET /dashboard/campaigns 200 in 83ms (compile: 5ms, render: 78ms)
+ GET /dashboard/campaigns 200 in 80ms (compile: 3ms, render: 77ms)
+ GET /dashboard/campaigns 200 in 80ms (compile: 3ms, render: 78ms)
+ GET /dashboard/campaigns 200 in 87ms (compile: 2ms, render: 85ms)
+ GET /dashboard/campaigns 200 in 113ms (compile: 3ms, render: 110ms)
+ GET /dashboard/campaigns 200 in 158ms (compile: 2ms, render: 156ms)
+ GET /dashboard/campaigns 200 in 147ms (compile: 4ms, render: 143ms)
+ GET /dashboard/campaigns 200 in 157ms (compile: 6ms, render: 151ms)
+ GET /dashboard/campaigns 200 in 139ms (compile: 6ms, render: 134ms)
+ GET /dashboard/campaigns 200 in 148ms (compile: 5ms, render: 143ms)
+ GET /dashboard/campaigns 200 in 116ms (compile: 6ms, render: 110ms)
+ GET /dashboard/campaigns 200 in 85ms (compile: 8ms, render: 77ms)
+ GET /dashboard/campaigns 200 in 54ms (compile: 5ms, render: 50ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /dashboard/campaigns 200 in 134ms (compile: 65ms, render: 70ms)
+ GET /dashboard/campaigns 200 in 78ms (compile: 4ms, render: 74ms)
+ GET /dashboard/campaigns 200 in 34ms (compile: 3ms, render: 31ms)
+ GET /inkind-donation 500 in 5.9s (compile: 5.7s, render: 158ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 40ms (compile: 28ms, render: 12ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 17ms (compile: 6ms, render: 10ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 17ms (compile: 9ms, render: 9ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 18ms (compile: 7ms, render: 11ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 26ms (compile: 6ms, render: 20ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 32ms (compile: 21ms, render: 11ms)
+ GET /inkind-donation 500 in 32ms (compile: 23ms, render: 9ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 19ms (compile: 10ms, render: 9ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 16ms (compile: 6ms, render: 9ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 15ms (compile: 7ms, render: 8ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 14ms (compile: 6ms, render: 8ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 35ms (compile: 19ms, render: 16ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /inkind-donation 500 in 19ms (compile: 6ms, render: 13ms)
+⨯ ./app/inkind-donation/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/textarea'
+[0m [90m 3 |[39m [36mimport[39m { useState } [36mfrom[39m [32m"react"[39m
+ [90m 4 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m"@/components/ui/input"[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mTextarea[39m } [36mfrom[39m [32m"@/components/ui/textarea"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"@/components/ui/button"[39m
+ [90m 7 |[39m
+ [90m 8 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mInKindDonationPage[39m() {[0m
+
+Import map: aliased to relative './components/ui/textarea' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/inkind-donation/page.tsx [Client Component Browser]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/inkind-donation/page.tsx [Client Component SSR]
+    ./app/inkind-donation/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+✓ Compiled in 1386ms
+ GET /dashboard/campaigns 200 in 1341ms (compile: 169ms, render: 1172ms)
+ GET /inkind-donation 200 in 1435ms (compile: 1193ms, render: 242ms)
+ GET / 200 in 3.9s (compile: 757ms, render: 3.1s)
+ GET /inkind-donation 200 in 32ms (compile: 8ms, render: 23ms)
+ GET /donate 200 in 915ms (compile: 848ms, render: 67ms)
+ GET /joy-of-giving.jpg 404 in 422ms (compile: 258ms, render: 164ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /inkind-donation 200 in 22ms (compile: 6ms, render: 16ms)
+ GET /joy-of-giving.jpg 404 in 71ms (compile: 18ms, render: 52ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /inkind-donation 200 in 30ms (compile: 6ms, render: 24ms)
+ GET /joy-of-giving.jpg 404 in 103ms (compile: 32ms, render: 71ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /joy-of-giving.jpg 404 in 145ms (compile: 41ms, render: 103ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /joy-of-giving.jpg 404 in 106ms (compile: 34ms, render: 72ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /joy-of-giving.jpg 404 in 33ms (compile: 5ms, render: 28ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /inkind-donation 200 in 40ms (compile: 9ms, render: 31ms)
+ GET /joy-of-giving.jpg 404 in 247ms (compile: 12ms, render: 234ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+✓ Compiled in 1429ms
+⚠ Fast Refresh had to perform a full reload when ./app/inkind-donation/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload when ./app/inkind-donation/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /donate 200 in 669ms (compile: 57ms, render: 612ms)
+ GET /joy-of-giving.jpg 404 in 336ms (compile: 226ms, render: 109ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET / 200 in 5.1s (compile: 23ms, render: 5.1s)
+ GET / 200 in 5.2s (compile: 15ms, render: 5.2s)
+ GET /inkind-donation 200 in 492ms (compile: 431ms, render: 61ms)
+ GET /donate 200 in 35ms (compile: 12ms, render: 23ms)
+ GET /joy-of-giving.jpg 404 in 67ms (compile: 16ms, render: 51ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /inkind-donation 200 in 32ms (compile: 13ms, render: 19ms)
+ GET /joy-of-giving.jpg 404 in 55ms (compile: 16ms, render: 39ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /donate 200 in 28ms (compile: 8ms, render: 20ms)
+✓ Compiled in 1855ms
+ GET /donate 200 in 318ms (compile: 37ms, render: 281ms)
+ GET /dashboard/campaigns 200 in 319ms (compile: 118ms, render: 201ms)
+ GET /inkind-donation 200 in 494ms (compile: 303ms, render: 191ms)
+ GET / 200 in 5.6s (compile: 26ms, render: 5.6s)
+ GET / 200 in 3.2s (compile: 4ms, render: 3.2s)
+ GET /about 200 in 489ms (compile: 444ms, render: 46ms)
+ GET /programs 200 in 199ms (compile: 163ms, render: 36ms)
+ GET /media 200 in 249ms (compile: 188ms, render: 60ms)
+ GET /join-us 404 in 53ms (compile: 15ms, render: 37ms)
+ GET /join-us 404 in 35ms (compile: 4ms, render: 30ms)
+ GET /media 200 in 337ms (compile: 6ms, render: 330ms)
+ GET /events 404 in 32ms (compile: 11ms, render: 21ms)
+ GET /events 404 in 47ms (compile: 5ms, render: 42ms)
+ GET /media 200 in 115ms (compile: 7ms, render: 108ms)
+ GET /donate 200 in 34ms (compile: 9ms, render: 25ms)
+ GET /joy-of-giving.jpg 404 in 50ms (compile: 2ms, render: 48ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /contact 200 in 171ms (compile: 153ms, render: 18ms)
+ GET / 200 in 1599ms (compile: 48ms, render: 1552ms)
+ GET /about 200 in 83ms (compile: 47ms, render: 36ms)
+ GET / 200 in 3.5s (compile: 9ms, render: 3.5s)
+ GET / 200 in 3.1s (compile: 4ms, render: 3.1s)
+ GET / 200 in 2.9s (compile: 7ms, render: 2.9s)
+ GET / 200 in 2.9s (compile: 4ms, render: 2.9s)
+ GET / 200 in 3.9s (compile: 73ms, render: 3.8s)
+✓ Compiled in 1442ms
+✓ Compiled in 31ms
+ GET /inkind-donation 200 in 701ms (compile: 652ms, render: 49ms)
+ GET / 200 in 1028ms (compile: 173ms, render: 855ms)
+ GET /about 200 in 400ms (compile: 316ms, render: 84ms)
+ GET /programs 200 in 191ms (compile: 130ms, render: 61ms)
+ GET /media 200 in 115ms (compile: 100ms, render: 15ms)
+ GET /contact 200 in 124ms (compile: 103ms, render: 21ms)
+ GET / 200 in 953ms (compile: 10ms, render: 943ms)
+ GET / 200 in 4.1s (compile: 167ms, render: 3.9s)
+ GET /media 200 in 81ms (compile: 34ms, render: 47ms)
+ GET /programs 200 in 34ms (compile: 15ms, render: 19ms)
+ GET /about 200 in 46ms (compile: 14ms, render: 32ms)
+ GET / 200 in 743ms (compile: 7ms, render: 737ms)
+✓ Compiled in 4.3s
+ GET / 200 in 4.3s (compile: 1426ms, render: 2.9s)
+ GET / 200 in 3.0s (compile: 90ms, render: 2.9s)
+ GET / 200 in 1014ms (compile: 40ms, render: 974ms)
+✓ Compiled in 2.2s
+ GET / 200 in 4.3s (compile: 2.6s, render: 1629ms)
+ GET / 200 in 2.7s (compile: 68ms, render: 2.7s)
+ GET / 200 in 692ms (compile: 52ms, render: 640ms)
+ GET / 200 in 798ms (compile: 53ms, render: 745ms)
+✓ Compiled in 3.3s
+ GET / 200 in 3.2s (compile: 351ms, render: 2.8s)
+ GET / 200 in 4.9s (compile: 292ms, render: 4.6s)
+✓ Compiled in 2.3s
+prisma:query SELECT "public"."Campaign"."id", "public"."Campaign"."title", "public"."Campaign"."createdAt", "public"."Campaign"."goal", "public"."Campaign"."status" FROM "public"."Campaign" WHERE ("public"."Campaign"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "public"."Donation"."campaignId", "public"."Donation"."createdAt", "public"."Donation"."status", "public"."Donation"."userId" FROM "public"."Donation" WHERE ("public"."Donation"."status" = $1 AND "public"."Donation"."campaignId" IN ($2)) OFFSET $3
+ GET /campaigns/19df61e2-6e11-4853-90cb-ebe51a0b1f56 200 in 3.5s (compile: 881ms, render: 2.6s)
+prisma:query SELECT "public"."Campaign"."id", "public"."Campaign"."title", "public"."Campaign"."createdAt", "public"."Campaign"."goal", "public"."Campaign"."status" FROM "public"."Campaign" WHERE ("public"."Campaign"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "public"."Donation"."campaignId", "public"."Donation"."createdAt", "public"."Donation"."status", "public"."Donation"."userId" FROM "public"."Donation" WHERE ("public"."Donation"."status" = $1 AND "public"."Donation"."campaignId" IN ($2)) OFFSET $3
+ GET /campaigns/19df61e2-6e11-4853-90cb-ebe51a0b1f56 200 in 3.0s (compile: 7ms, render: 3.0s)
+prisma:query SELECT "public"."Campaign"."id", "public"."Campaign"."title", "public"."Campaign"."createdAt", "public"."Campaign"."goal", "public"."Campaign"."status" FROM "public"."Campaign" WHERE ("public"."Campaign"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "public"."Donation"."campaignId", "public"."Donation"."createdAt", "public"."Donation"."status", "public"."Donation"."userId" FROM "public"."Donation" WHERE ("public"."Donation"."status" = $1 AND "public"."Donation"."campaignId" IN ($2)) OFFSET $3
+ GET /campaigns/19df61e2-6e11-4853-90cb-ebe51a0b1f56 200 in 3.0s (compile: 58ms, render: 2.9s)
+prisma:query SELECT "public"."Campaign"."id", "public"."Campaign"."title", "public"."Campaign"."createdAt", "public"."Campaign"."goal", "public"."Campaign"."status" FROM "public"."Campaign" WHERE ("public"."Campaign"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "public"."Donation"."campaignId", "public"."Donation"."createdAt", "public"."Donation"."status", "public"."Donation"."userId" FROM "public"."Donation" WHERE ("public"."Donation"."status" = $1 AND "public"."Donation"."campaignId" IN ($2)) OFFSET $3
+ GET /campaigns/19df61e2-6e11-4853-90cb-ebe51a0b1f56 200 in 2.2s (compile: 9ms, render: 2.2s)
+prisma:query SELECT "public"."Campaign"."id", "public"."Campaign"."title", "public"."Campaign"."createdAt", "public"."Campaign"."goal", "public"."Campaign"."status" FROM "public"."Campaign" WHERE ("public"."Campaign"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "public"."Donation"."campaignId", "public"."Donation"."createdAt", "public"."Donation"."status", "public"."Donation"."userId" FROM "public"."Donation" WHERE ("public"."Donation"."status" = $1 AND "public"."Donation"."campaignId" IN ($2)) OFFSET $3
+ GET /campaigns/19df61e2-6e11-4853-90cb-ebe51a0b1f56 200 in 2.7s (compile: 10ms, render: 2.6s)
+prisma:query SELECT 1
+prisma:query SELECT "public"."Campaign"."id", "public"."Campaign"."title", "public"."Campaign"."createdAt", "public"."Campaign"."goal", "public"."Campaign"."status" FROM "public"."Campaign" WHERE ("public"."Campaign"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "public"."Donation"."campaignId", "public"."Donation"."createdAt", "public"."Donation"."status", "public"."Donation"."userId" FROM "public"."Donation" WHERE ("public"."Donation"."status" = $1 AND "public"."Donation"."campaignId" IN ($2)) OFFSET $3
+ GET /campaigns/f27238c0-e3fa-4052-b77d-78a117669e6c 200 in 836ms (compile: 23ms, render: 813ms)
+ GET / 200 in 2.9s (compile: 582ms, render: 2.3s)
+ GET / 200 in 2.0s (compile: 17ms, render: 2.0s)
+ GET /about 200 in 289ms (compile: 249ms, render: 40ms)
+ GET / 200 in 462ms (compile: 6ms, render: 456ms)
+ GET /about 200 in 59ms (compile: 19ms, render: 40ms)
+ GET /programs 200 in 280ms (compile: 246ms, render: 34ms)
+ GET / 200 in 521ms (compile: 17ms, render: 504ms)
+ GET /programs 200 in 26ms (compile: 7ms, render: 19ms)
+ GET /media 200 in 260ms (compile: 196ms, render: 64ms)
+○ Compiling /media/images ...
+ GET /media/images 200 in 5.2s (compile: 5.1s, render: 114ms)
+ GET /media/images 200 in 51ms (compile: 6ms, render: 45ms)
+ GET /contact 200 in 153ms (compile: 124ms, render: 29ms)
+ GET /about 200 in 52ms (compile: 17ms, render: 34ms)
+ GET /about 200 in 30ms (compile: 10ms, render: 20ms)
+ GET / 200 in 2.1s (compile: 9ms, render: 2.1s)
+prisma:query SELECT "public"."Campaign"."id", "public"."Campaign"."title", "public"."Campaign"."createdAt", "public"."Campaign"."goal", "public"."Campaign"."status" FROM "public"."Campaign" WHERE ("public"."Campaign"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "public"."Donation"."campaignId", "public"."Donation"."createdAt", "public"."Donation"."status", "public"."Donation"."userId" FROM "public"."Donation" WHERE ("public"."Donation"."status" = $1 AND "public"."Donation"."campaignId" IN ($2)) OFFSET $3
+ GET /campaigns/19df61e2-6e11-4853-90cb-ebe51a0b1f56 200 in 2.9s (compile: 20ms, render: 2.9s)
+ GET / 200 in 485ms (compile: 9ms, render: 476ms)
+ GET /inkind-donation 200 in 146ms (compile: 117ms, render: 29ms)
+ GET /about 200 in 91ms (compile: 14ms, render: 77ms)
+ GET / 200 in 464ms (compile: 8ms, render: 456ms)
+prisma:query SELECT 1
+prisma:query SELECT "public"."Campaign"."id", "public"."Campaign"."title", "public"."Campaign"."createdAt", "public"."Campaign"."goal", "public"."Campaign"."status" FROM "public"."Campaign" WHERE ("public"."Campaign"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "public"."Donation"."campaignId", "public"."Donation"."createdAt", "public"."Donation"."status", "public"."Donation"."userId" FROM "public"."Donation" WHERE ("public"."Donation"."status" = $1 AND "public"."Donation"."campaignId" IN ($2)) OFFSET $3
+ GET /campaigns/19df61e2-6e11-4853-90cb-ebe51a0b1f56 200 in 694ms (compile: 20ms, render: 674ms)
+ GET / 200 in 252ms (compile: 7ms, render: 244ms)
+ GET /inkind-donation 200 in 39ms (compile: 12ms, render: 27ms)
+ GET /donate 200 in 120ms (compile: 64ms, render: 56ms)
+ GET /joy-of-giving.jpg 404 in 143ms (compile: 19ms, render: 124ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /dashboard 200 in 159ms (compile: 121ms, render: 38ms)
+ GET /dashboard/campaigns 200 in 83ms (compile: 34ms, render: 49ms)
+ GET /dashboard/donors 200 in 106ms (compile: 74ms, render: 32ms)
+ GET /dashboard/campaigns 200 in 67ms (compile: 17ms, render: 50ms)
+ GET /dashboard/campaigns/create 200 in 69ms (compile: 50ms, render: 19ms)
+ GET /dashboard/donors 200 in 53ms (compile: 17ms, render: 36ms)
+○ Compiling /dashboard/donors/[id] ...
+ GET /dashboard/donors/D_001 200 in 4.1s (compile: 4.1s, render: 25ms)
+ GET /dashboard/donations 200 in 182ms (compile: 116ms, render: 67ms)
+ GET /dashboard/recurring 200 in 100ms (compile: 68ms, render: 32ms)
+ GET /dashboard/impact 200 in 93ms (compile: 59ms, render: 34ms)
+ GET /dashboard/reports 200 in 115ms (compile: 59ms, render: 56ms)
+ GET /dashboard/compliance 200 in 109ms (compile: 59ms, render: 50ms)
+ GET /dashboard/settings 200 in 99ms (compile: 66ms, render: 33ms)
+ GET /dashboard/donors 200 in 80ms (compile: 37ms, render: 43ms)
+ GET /dashboard/campaigns 200 in 91ms (compile: 19ms, render: 72ms)
+ GET / 200 in 702ms (compile: 60ms, render: 642ms)
+ GET /donate 200 in 96ms (compile: 28ms, render: 68ms)
+ GET /joy-of-giving.jpg 404 in 168ms (compile: 31ms, render: 137ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET / 200 in 533ms (compile: 14ms, render: 519ms)
+ GET /inkind-donation 200 in 198ms (compile: 96ms, render: 102ms)
+ GET /contact 200 in 78ms (compile: 23ms, render: 54ms)
+ GET /media 200 in 56ms (compile: 30ms, render: 27ms)
+ GET /contact 200 in 33ms (compile: 6ms, render: 27ms)
+ GET /media 200 in 57ms (compile: 16ms, render: 41ms)
+ GET /contact 200 in 29ms (compile: 6ms, render: 23ms)
+ GET /programs 200 in 74ms (compile: 24ms, render: 50ms)
+ GET /contact 200 in 41ms (compile: 12ms, render: 29ms)
+ GET /programs 200 in 23ms (compile: 5ms, render: 18ms)
+ GET /about 200 in 68ms (compile: 20ms, render: 49ms)
+ GET /contact 200 in 34ms (compile: 8ms, render: 25ms)
+ GET /programs 200 in 32ms (compile: 8ms, render: 25ms)
+ GET /about 200 in 57ms (compile: 14ms, render: 43ms)
+ GET /contact 200 in 27ms (compile: 9ms, render: 19ms)
+ GET / 200 in 548ms (compile: 23ms, render: 525ms)
+ GET / 200 in 284ms (compile: 8ms, render: 277ms)
+ GET /about 200 in 70ms (compile: 35ms, render: 35ms)
+ GET / 200 in 1991ms (compile: 35ms, render: 1955ms)
+ GET / 200 in 1898ms (compile: 9ms, render: 1889ms)
+ GET / 200 in 1955ms (compile: 4ms, render: 1951ms)
+ GET /about 200 in 74ms (compile: 39ms, render: 35ms)
+ GET /contact 200 in 33ms (compile: 10ms, render: 23ms)
+ GET /programs 200 in 25ms (compile: 7ms, render: 18ms)
+ GET /contact 200 in 28ms (compile: 5ms, render: 23ms)
+ GET /programs 200 in 25ms (compile: 7ms, render: 18ms)
+ GET /media 200 in 22ms (compile: 7ms, render: 14ms)
+ GET /about 200 in 32ms (compile: 9ms, render: 23ms)
+ GET / 200 in 2.6s (compile: 20ms, render: 2.6s)
+ GET /volunteer 404 in 64ms (compile: 16ms, render: 48ms)
+ GET /volunteer 404 in 50ms (compile: 6ms, render: 44ms)
+ GET / 200 in 1140ms (compile: 12ms, render: 1128ms)
+ GET /inkind-donation 200 in 41ms (compile: 13ms, render: 28ms)
+ GET /donate 200 in 38ms (compile: 12ms, render: 26ms)
+ GET /joy-of-giving.jpg 404 in 54ms (compile: 4ms, render: 50ms)
+⨯ The requested resource isn't a valid image for /joy-of-giving.jpg received null
+ GET /contact 200 in 40ms (compile: 11ms, render: 29ms)
+ GET / 200 in 2.2s (compile: 62ms, render: 2.1s)
+ GET / 200 in 2.9s (compile: 125ms, render: 2.8s)
+ GET / 200 in 286ms (compile: 15ms, render: 270ms)
