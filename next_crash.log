@@ -142,3 +142,31 @@ The width(-1) and height(-1) of chart should be greater than 0,
 ✓ Compiled in 723ms
  GET /programs 200 in 122ms (compile: 53ms, render: 69ms)
  GET / 200 in 2.9s (compile: 10ms, render: 2.9s)
+ GET / 200 in 3.7s (compile: 342ms, render: 3.3s)
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /dashboard 200 in 187ms (compile: 40ms, render: 147ms)
+○ Compiling /dashboard/donors ...
+ GET /dashboard/donors 200 in 3.3s (compile: 3.3s, render: 33ms)
+ GET /dashboard/settings 200 in 694ms (compile: 673ms, render: 21ms)
+ GET /dashboard/reports 200 in 1244ms (compile: 1221ms, render: 22ms)
+ GET /dashboard/compliance 200 in 496ms (compile: 482ms, render: 14ms)
+ GET /dashboard/reports 200 in 43ms (compile: 17ms, render: 26ms)
+ GET /dashboard/impact 200 in 784ms (compile: 768ms, render: 16ms)
+ GET /dashboard/recurring 200 in 778ms (compile: 739ms, render: 39ms)
+ GET /dashboard/donations 200 in 753ms (compile: 716ms, render: 37ms)
+ GET / 200 in 693ms (compile: 18ms, render: 675ms)
+✓ Compiled in 191ms
+ GET / 200 in 286ms (compile: 126ms, render: 160ms)
+✓ Compiled in 51ms
+ GET / 200 in 77ms (compile: 29ms, render: 49ms)

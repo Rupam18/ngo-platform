@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { prisma } from "../config/prisma";
+import { uploadToCloudinary } from "../config/cloudinary";
 
 // POST /api/campaign -> Create campaign (ADMIN only)
 export const createCampaign = async (req: Request, res: Response): Promise<any> => {
@@ -170,5 +171,55 @@ export const deleteCampaign = async (req: Request, res: Response): Promise<any> 
         return res.status(200).json({ success: true, data: {} });
     } catch (error) {
         return res.status(500).json({ success: false, message: "Server error", error });
+    }
+};
+
+// POST /api/campaign/:id/images -> Upload multiple images (ADMIN only)
+export const uploadCampaignImages = async (req: Request, res: Response): Promise<any> => {
+    try {
+        const campaignId = req.params.id as string;
+
+        // 1. Check if campaign exists
+        const campaign = await prisma.campaign.findUnique({ where: { id: campaignId } });
+        if (!campaign) {
+            return res.status(404).json({ success: false, message: "Campaign not found" });
+        }
+
+        // 2. Validate files
+        if (!req.files || !Array.isArray(req.files) || req.files.length === 0) {
+            return res.status(400).json({ success: false, message: "No images provided" });
+        }
+
+        const files = req.files as Express.Multer.File[];
+
+        // 3. Upload all files to Cloudinary concurrently
+        const uploadPromises = files.map(file => uploadToCloudinary(file.buffer, 'ngo_campaigns'));
+        const cloudinaryResults = await Promise.all(uploadPromises);
+
+        // 4. Save results to PostgreSQL mapping (CampaignImage table)
+        const imageRecords = cloudinaryResults.map(result => ({
+            campaignId: campaignId,
+            imageUrl: result.secure_url,
+            publicId: result.public_id
+        }));
+
+        await prisma.campaignImage.createMany({
+            data: imageRecords
+        });
+
+        // 5. Return JSON response
+        const savedImages = await prisma.campaignImage.findMany({
+            where: { campaignId }
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: "Images uploaded successfully",
+            data: savedImages
+        });
+
+    } catch (error: any) {
+        console.error("Error uploading images:", error);
+        return res.status(500).json({ success: false, message: error.message || "Failed to upload images" });
     }
 };

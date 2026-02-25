@@ -4,11 +4,12 @@ import {
     getCampaigns,
     getCampaignById,
     updateCampaign,
-    deleteCampaign
+    deleteCampaign,
+    uploadCampaignImages
 } from "../controllers/campaign.controller";
 import { protect } from "../middleware/auth.middleware";
 import { adminOnly } from "../middleware/role.middleware";
-import { upload } from "../config/cloudinary";
+import { upload, uploadMultiple } from "../config/cloudinary";
 
 const router = express.Router();
 
@@ -20,5 +21,14 @@ router.get("/:id", getCampaignById);
 router.post("/", protect, adminOnly, upload.single("image"), createCampaign);
 router.put("/:id", protect, adminOnly, upload.single("image"), updateCampaign);
 router.delete("/:id", protect, adminOnly, deleteCampaign);
+
+// Upload up to 5 images to an existing campaign
+router.post(
+    "/:id/images",
+    protect,
+    adminOnly,
+    uploadMultiple.array("images", 5),
+    uploadCampaignImages
+);
 
 export default router;

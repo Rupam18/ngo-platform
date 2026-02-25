@@ -24,6 +24,7 @@ model Campaign {
   goal       Int
   status     String
   coverImage String?
+  images     CampaignImage[]
   donations  Donation[]
 }
 
@@ -36,4 +37,16 @@ model Donation {
   userId     String
   campaign   Campaign @relation(fields: [campaignId], references: [id])
   user       User     @relation(fields: [userId], references: [id])
+}
+
+model CampaignImage {
+  id         String   @id @default(uuid())
+  campaignId String   @map("campaign_id")
+  imageUrl   String   @map("image_url")
+  publicId   String   @map("public_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  @@map("campaign_images")
 }
