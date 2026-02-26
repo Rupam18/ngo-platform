@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Eye, Target } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 import WhatDrivesUs from "@/components/about/WhatDrivesUs";
 import OurPurpose from "@/components/about/OurPurpose";
@@ -96,9 +97,11 @@ export default function AboutPage() {
 
                         {/* Buttons */}
                         <div className="flex flex-wrap gap-4 pt-4">
-                            <Button className="bg-blue-800 hover:bg-blue-900 text-white font-bold px-8 py-6 rounded-xl flex items-center gap-2 shadow-lg hover:shadow-xl transition-all group">
-                                KNOW MORE <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                            </Button>
+                            <Link href="/programs">
+                                <Button className="bg-blue-800 hover:bg-blue-900 text-white font-bold px-8 py-6 rounded-xl flex items-center gap-2 shadow-lg hover:shadow-xl transition-all group">
+                                    KNOW MORE <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                </Button>
+                            </Link>
                             <Button variant="outline" className="border-2 border-blue-800 text-blue-800 font-bold px-8 py-6 rounded-xl flex items-center gap-2 hover:bg-blue-50 transition-all">
                                 ANNUAL REPORT <Download size={20} />
                             </Button>

@@ -27,126 +27,151 @@ export default function InKindDonation() {
             <StickyHeader />
 
             {/* Main Content Area matching Donate Page Spacing */}
-            <section className="flex-grow max-w-7xl mx-auto px-6 py-6 mt-16 grid lg:grid-cols-12 gap-12 w-full mb-16">
+            {/* Main Content Area */}
+            <section className="flex-grow max-w-5xl mx-auto px-6 py-10 mt-8 w-full mb-16 space-y-12">
 
-                {/* LEFT SIDE - Impact Info (Col Span 5 matching stats) */}
+                {/* 🔵 SUPPORT CARD - NOW AT TOP */}
                 <motion.div
-                    initial={{ opacity: 0, x: -40 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="lg:col-span-5 flex flex-col justify-center space-y-10"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100 relative overflow-hidden group"
                 >
-                    <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-                        <h2 className="text-3xl font-extrabold text-blue-900 mb-6 border-b pb-4">
-                            Support Through
-                            <span className="text-blue-600 block mt-2"> In-Kind Donation</span>
-                        </h2>
+                    {/* Subtle decorative background blur */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-50 -z-10 group-hover:bg-blue-100 transition-colors duration-700" />
 
-                        <p className="text-gray-600 leading-relaxed text-lg mb-8 font-medium">
-                            Your non-monetary contributions such as clothes, books,
-                            grains, computers and educational supplies directly support
-                            children and communities in need.
-                        </p>
+                    <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-6 tracking-tight">
+                        Support Through <span className="text-blue-600">In-Kind Donation</span>
+                    </h1>
 
-                        <div className="space-y-6">
-                            <div className="flex items-center gap-4">
-                                <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-600 text-2xl shadow-sm">
-                                    👕
-                                </div>
-                                <div>
-                                    <h4 className="text-lg font-bold text-gray-900">Clothes & Essentials</h4>
-                                    <p className="text-sm font-medium text-gray-500">
-                                        Support families with basic necessities.
-                                    </p>
-                                </div>
+                    <p className="text-gray-600 text-lg leading-relaxed mb-10 max-w-3xl font-medium">
+                        Your non-monetary contributions such as clothes, books, grains,
+                        computers and educational supplies directly support children
+                        and communities in need.
+                    </p>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+
+                        <motion.div whileHover={{ y: -5 }} className="flex items-start gap-4">
+                            <div className="bg-blue-100 p-4 rounded-2xl text-2xl shadow-sm border border-blue-50">👕</div>
+                            <div>
+                                <h3 className="font-bold text-gray-900 text-lg">Clothes & Essentials</h3>
+                                <p className="text-sm font-medium text-gray-500 mt-1">
+                                    Support families with basic necessities.
+                                </p>
                             </div>
+                        </motion.div>
 
-                            <div className="flex items-center gap-4">
-                                <div className="w-14 h-14 rounded-2xl bg-yellow-100 flex items-center justify-center text-yellow-600 text-2xl shadow-sm">
-                                    📚
-                                </div>
-                                <div>
-                                    <h4 className="text-lg font-bold text-gray-900">Books & Stationery</h4>
-                                    <p className="text-sm font-medium text-gray-500">
-                                        Help children continue their education.
-                                    </p>
-                                </div>
+                        <motion.div whileHover={{ y: -5 }} className="flex items-start gap-4">
+                            <div className="bg-yellow-100 p-4 rounded-2xl text-2xl shadow-sm border border-yellow-50">📚</div>
+                            <div>
+                                <h3 className="font-bold text-gray-900 text-lg">Books & Stationery</h3>
+                                <p className="text-sm font-medium text-gray-500 mt-1">
+                                    Help children continue their education.
+                                </p>
                             </div>
+                        </motion.div>
 
-                            <div className="flex items-center gap-4">
-                                <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center text-purple-600 text-2xl shadow-sm">
-                                    💻
-                                </div>
-                                <div>
-                                    <h4 className="text-lg font-bold text-gray-900">Computers & Devices</h4>
-                                    <p className="text-sm font-medium text-gray-500">
-                                        Bridge the digital divide.
-                                    </p>
-                                </div>
+                        <motion.div whileHover={{ y: -5 }} className="flex items-start gap-4">
+                            <div className="bg-purple-100 p-4 rounded-2xl text-2xl shadow-sm border border-purple-50">💻</div>
+                            <div>
+                                <h3 className="font-bold text-gray-900 text-lg">Computers & Devices</h3>
+                                <p className="text-sm font-medium text-gray-500 mt-1">
+                                    Bridge the digital divide.
+                                </p>
                             </div>
-                        </div>
+                        </motion.div>
+
                     </div>
                 </motion.div>
 
-                {/* RIGHT SIDE - FORM (Col Span 7 matching donation form) */}
+                {/* 🟣 FORM CARD - NOW BELOW SUPPORT CARD */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.6 }}
-                    className="lg:col-span-7 relative bg-white shadow-[0_25px_80px_rgba(0,0,0,0.08)] border border-gray-100 rounded-3xl p-8 md:p-12 overflow-hidden group"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 p-1.5 rounded-[32px] shadow-2xl relative group"
                 >
-                    {/* Glowing Border Background */}
-                    <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-500 via-yellow-400 to-indigo-500 rounded-[24px] blur-sm opacity-20 group-hover:opacity-40 transition duration-700 pointer-events-none" />
+                    {/* Animated Border Glow */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 rounded-[32px] blur-xl opacity-20 group-hover:opacity-60 transition duration-700 pointer-events-none" />
 
-                    <div className="relative">
-                        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-900 tracking-tight">
-                            Donation <span className="text-blue-600">In Kind</span>
+                    <div className="bg-white rounded-[28px] p-8 md:p-12 relative z-10">
+
+                        <h2 className="text-3xl font-extrabold text-blue-900 mb-8 border-b border-gray-100 pb-6">
+                            Donation <span className="text-blue-600">In-Kind Form</span>
                         </h2>
-                        <p className="mt-2 text-gray-600 text-lg mb-8 border-b border-gray-200/60 pb-6">
-                            Fill out the secure form below. Our team will contact you shortly to coordinate the drop-off or pickup.
-                        </p>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
 
+                            {/* Section 1: Donor Info */}
                             <div className="grid md:grid-cols-2 gap-6">
-                                <input name="firstName" placeholder="First Name" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" required />
-                                <input name="lastName" placeholder="Last Name" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" required />
-                                <input name="email" type="email" placeholder="Email Address" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" required />
-                                <input name="mobile" placeholder="Phone Number" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" required />
+                                <input name="firstName" placeholder="First Name" className="premium-input font-medium" onChange={handleChange as any} required />
+                                <input name="lastName" placeholder="Last Name" className="premium-input font-medium" onChange={handleChange as any} required />
+                                <input name="email" type="email" placeholder="Email Address" className="premium-input font-medium" onChange={handleChange as any} required />
+                                <input name="mobile" placeholder="Phone Number" className="premium-input font-medium" onChange={handleChange as any} required />
+
+                                <textarea
+                                    name="address"
+                                    placeholder="Detailed Pickup Address"
+                                    rows={3}
+                                    className="premium-input md:col-span-2 font-medium resize-none"
+                                    onChange={handleChange as any}
+                                    required
+                                />
+
+                                <input
+                                    name="subject"
+                                    placeholder="Donation Purpose (Subject)"
+                                    className="premium-input md:col-span-2 font-medium"
+                                    onChange={handleChange as any}
+                                    required
+                                />
                             </div>
 
-                            <textarea name="address" placeholder="Detailed Pickup Address" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500 min-h-[100px] resize-none" required />
-                            <input name="subject" placeholder="Donation Purpose (Subject)" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" required />
-
-                            <h3 className="font-bold text-gray-700 mt-8 mb-4">
+                            {/* Section 2: Items */}
+                            <h3 className="text-xl font-bold text-gray-800 mt-10 mb-6">
                                 Items for Donation
                             </h3>
 
                             <div className="grid md:grid-cols-3 gap-6">
-                                <input name="clothes" placeholder="Clothes (Kg)" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" />
-                                <input name="books" placeholder="Books (Units)" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" />
-                                <input name="raddi" placeholder="Raddi (Kg)" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" />
-                                <input name="grains" placeholder="Grains (Kg)" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" />
-                                <input name="stationary" placeholder="Stationery (Units)" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" />
-                                <input name="computers" placeholder="Computers (Units)" onChange={handleChange as any} className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500" />
+                                <input name="clothes" placeholder="Clothes (Kg)" className="premium-input font-medium" onChange={handleChange as any} />
+                                <input name="books" placeholder="Books (Units)" className="premium-input font-medium" onChange={handleChange as any} />
+                                <input name="raddi" placeholder="Raddi (Kg)" className="premium-input font-medium" onChange={handleChange as any} />
+                                <input name="grains" placeholder="Grains (Kg)" className="premium-input font-medium" onChange={handleChange as any} />
+                                <input name="stationary" placeholder="Stationery (Units)" className="premium-input font-medium" onChange={handleChange as any} />
+                                <input name="computers" placeholder="Computers (Units)" className="premium-input font-medium" onChange={handleChange as any} />
                             </div>
 
-                            <textarea name="otherItems" placeholder="Other Items not listed above (Optional)..." className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500 min-h-[80px] resize-none" onChange={handleChange as any} />
-                            <textarea name="message" placeholder="Message or Special Instructions (Optional)" className="w-full px-4 py-4 rounded-xl border border-gray-300 bg-white/90 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm font-semibold text-gray-900 placeholder-gray-500 min-h-[100px] resize-none" onChange={handleChange as any} />
+                            <textarea
+                                name="otherItems"
+                                placeholder="Other Items not listed above (Optional)..."
+                                rows={2}
+                                className="premium-input mt-4 font-medium resize-none"
+                                onChange={handleChange as any}
+                            />
 
-                            <div className="pt-6">
+                            <textarea
+                                name="message"
+                                placeholder="Message or Special Instructions (Optional)"
+                                rows={3}
+                                className="premium-input mt-4 font-medium resize-none"
+                                onChange={handleChange as any}
+                            />
+
+                            <div className="pt-8">
                                 <motion.button
-                                    whileHover={{ scale: 1.03 }}
-                                    whileTap={{ scale: 0.97 }}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
                                     type="submit"
-                                    className="w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all text-lg flex items-center justify-center relative overflow-hidden group"
+                                    className="w-full py-5 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-lg shadow-xl hover:shadow-2xl hover:shadow-indigo-500/30 transition-all duration-300 flex items-center justify-center relative overflow-hidden group/btn"
                                 >
-                                    <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                                    <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></span>
                                     Submit Donation Request
                                 </motion.button>
                             </div>
 
                         </form>
+
                     </div>
                 </motion.div>
 

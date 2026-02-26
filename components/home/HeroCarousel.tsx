@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function HeroCarousel() {
     return (
@@ -45,18 +46,22 @@ export default function HeroCarousel() {
                     className="mt-12 flex flex-col sm:flex-row gap-6"
                 >
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button
-                            variant="outline"
-                            className="h-14 px-8 text-xl font-semibold border-2 border-white text-white bg-transparent hover:bg-white hover:text-black rounded-full transition-colors"
-                        >
-                            Become Volunteer
-                        </Button>
+                        <Link href="/volunteer">
+                            <Button
+                                variant="outline"
+                                className="h-14 px-8 text-xl font-semibold border-2 border-white text-white bg-transparent hover:bg-white hover:text-black rounded-full transition-colors"
+                            >
+                                Become Volunteer
+                            </Button>
+                        </Link>
                     </motion.div>
 
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button className="h-14 px-8 text-xl font-semibold bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg">
-                            Donate Now
-                        </Button>
+                        <Link href="/donate">
+                            <Button className="h-14 px-8 text-xl font-semibold bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg">
+                                Donate Now
+                            </Button>
+                        </Link>
                     </motion.div>
                 </motion.div>
             </div>

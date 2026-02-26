@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Facebook, Twitter, Youtube, Mail, Phone, MessageCircle } from "lucide-react";
+import { Facebook, Twitter, Youtube, Mail, Phone, MessageCircle, MapPin } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -11,7 +11,8 @@ export default function Footer() {
 
                 {/* Column 1: RISO Head Office */}
                 <div>
-                    <h3 className="text-xl font-semibold mb-6 tracking-wide uppercase">
+                    <h3 className="text-xl font-semibold mb-6 tracking-wide uppercase flex items-center gap-2">
+                        <MapPin className="text-yellow-400 w-5 h-5 -mt-1" />
                         Riso Head Office
                     </h3>
                     <p className="text-gray-300 leading-relaxed mb-4">
@@ -31,10 +32,16 @@ export default function Footer() {
                         Quick Links
                     </h3>
                     <ul className="space-y-3 text-gray-300">
-                        {['Home', 'About Us', 'Programs', 'Media', 'Join Us', 'Events', 'Donate'].map((item) => (
-                            <li key={item}>
-                                <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:text-yellow-400 transition-colors">
-                                    {item}
+                        {[
+                            { name: 'Home', path: '/' },
+                            { name: 'About Us', path: '/about' },
+                            { name: 'Programs', path: '/programs' },
+                            { name: 'Media', path: '/media' },
+                            { name: 'Donate', path: '/donate' }
+                        ].map((item) => (
+                            <li key={item.name}>
+                                <Link href={item.path} className="hover:text-yellow-400 transition-colors">
+                                    {item.name}
                                 </Link>
                             </li>
                         ))}

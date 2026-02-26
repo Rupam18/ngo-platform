@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function CTASection() {
     return (
@@ -25,19 +26,23 @@ export default function CTASection() {
 
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button
-                            className="h-14 px-8 text-xl font-bold rounded-full bg-yellow-500 text-black hover:bg-yellow-400 border-none shadow-[0_0_15px_rgba(234,179,8,0.5)] hover:shadow-[0_0_25px_rgba(234,179,8,0.8)] transition-all duration-300"
-                        >
-                            Become Volunteer
-                        </Button>
+                        <Link href="/volunteer">
+                            <Button
+                                className="h-14 px-8 text-xl font-bold rounded-full bg-yellow-500 text-black hover:bg-yellow-400 border-none shadow-[0_0_15px_rgba(234,179,8,0.5)] hover:shadow-[0_0_25px_rgba(234,179,8,0.8)] transition-all duration-300"
+                            >
+                                Become Volunteer
+                            </Button>
+                        </Link>
                     </motion.div>
 
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button
-                            className="h-14 px-8 text-xl font-bold rounded-full bg-red-600 text-white hover:bg-red-700 shadow-[0_0_15px_rgba(220,38,38,0.5)] hover:shadow-[0_0_25px_rgba(220,38,38,0.8)] transition-all duration-300"
-                        >
-                            Donate Now
-                        </Button>
+                        <Link href="/donate">
+                            <Button
+                                className="h-14 px-8 text-xl font-bold rounded-full bg-red-600 text-white hover:bg-red-700 shadow-[0_0_15px_rgba(220,38,38,0.5)] hover:shadow-[0_0_25px_rgba(220,38,38,0.8)] transition-all duration-300"
+                            >
+                                Donate Now
+                            </Button>
+                        </Link>
                     </motion.div>
                 </div>
             </div>
