@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Mail, Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
+import { Menu, X, Phone, Mail, Facebook, Twitter, MessageCircle, Youtube } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 
 export default function StickyHeader() {
@@ -67,9 +67,9 @@ export default function StickyHeader() {
                     <div className="hidden xl:flex items-center gap-6">
                         {/* SOCIAL ICONS */}
                         <div className="flex gap-4">
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="ultra-icon fb"><Facebook size={18} /></a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="ultra-icon linkedin"><Linkedin size={18} /></a>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="ultra-icon insta"><Instagram size={18} /></a>
+                            <a href="https://www.facebook.com/rostrumindiasocial/" target="_blank" rel="noopener noreferrer" className="ultra-icon fb"><Facebook size={18} /></a>
+                            <a href="https://x.com/rostrumindia?lang=en" target="_blank" rel="noopener noreferrer" className="ultra-icon tw"><Twitter size={18} /></a>
+                            <a href="https://api.whatsapp.com/send/?phone=919860133100&text=Thank+you+for+Connecting+with+Rostrum+India&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="ultra-icon wa"><MessageCircle size={18} /></a>
                             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="ultra-icon yt"><Youtube size={18} /></a>
                         </div>
 

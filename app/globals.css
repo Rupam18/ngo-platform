@@ -180,13 +180,13 @@ html {
   color: white;
 }
 
-.ultra-icon.linkedin:hover {
-  background: #0a66c2;
+.ultra-icon.tw:hover {
+  background: #000000;
   color: white;
 }
 
-.ultra-icon.insta:hover {
-  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+.ultra-icon.wa:hover {
+  background: #25D366;
   color: white;
 }
 
@@ -215,6 +215,23 @@ svg {
 svg:hover {
   transform: scale(1.05);
   filter: drop-shadow(0 30px 60px rgba(59, 130, 246, 0.35));
+}
+
+/* Premium Form Inputs */
+.premium-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.7);
+  outline: none;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.premium-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
 
 :root {

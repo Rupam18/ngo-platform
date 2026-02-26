@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Facebook, Twitter, Linkedin, Youtube, Mail, Phone } from "lucide-react";
+import { Facebook, Twitter, Youtube, Mail, Phone, MessageCircle } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -69,35 +69,38 @@ export default function Footer() {
                     <div className="flex gap-4 mt-8">
                         {/* Facebook */}
                         <a
-                            href="#"
+                            href="https://www.facebook.com/rostrumindiasocial/"
                             className="group w-12 h-12 flex items-center justify-center rounded-xl 
                             bg-white/10 backdrop-blur-md border border-white/20 
                             shadow-lg transition-all duration-300 
                             hover:bg-[#1877F2] hover:scale-110"
+                            target="_blank" rel="noopener noreferrer"
                         >
                             <Facebook className="w-5 h-5 text-white group-hover:text-white" />
                         </a>
 
                         {/* Twitter */}
                         <a
-                            href="#"
+                            href="https://x.com/rostrumindia?lang=en"
                             className="group w-12 h-12 flex items-center justify-center rounded-xl 
                             bg-white/10 backdrop-blur-md border border-white/20 
                             shadow-lg transition-all duration-300 
-                            hover:bg-[#1DA1F2] hover:scale-110"
+                            hover:bg-[#000000] hover:scale-110"
+                            target="_blank" rel="noopener noreferrer"
                         >
                             <Twitter className="w-5 h-5 text-white group-hover:text-white" />
                         </a>
 
-                        {/* LinkedIn */}
+                        {/* WhatsApp */}
                         <a
-                            href="#"
+                            href="https://api.whatsapp.com/send/?phone=919860133100&text=Thank+you+for+Connecting+with+Rostrum+India&type=phone_number&app_absent=0"
                             className="group w-12 h-12 flex items-center justify-center rounded-xl 
                             bg-white/10 backdrop-blur-md border border-white/20 
                             shadow-lg transition-all duration-300 
-                            hover:bg-[#0077B5] hover:scale-110"
+                            hover:bg-[#25D366] hover:scale-110"
+                            target="_blank" rel="noopener noreferrer"
                         >
-                            <Linkedin className="w-5 h-5 text-white group-hover:text-white" />
+                            <MessageCircle className="w-5 h-5 text-white group-hover:text-white" />
                         </a>
 
                         {/* YouTube */}
@@ -107,6 +110,7 @@ export default function Footer() {
                             bg-white/10 backdrop-blur-md border border-white/20 
                             shadow-lg transition-all duration-300 
                             hover:bg-[#FF0000] hover:scale-110"
+                            target="_blank" rel="noopener noreferrer"
                         >
                             <Youtube className="w-5 h-5 text-white group-hover:text-white" />
                         </a>
