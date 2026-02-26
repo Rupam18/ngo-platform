@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import {
     BookOpen,
@@ -106,7 +106,28 @@ const keyInitiatives = [
 
 export default function KeyInitiatives() {
     const sliderRef = useRef<HTMLDivElement>(null);
+    const isHovered = useRef(false);
     const [expandedCards, setExpandedCards] = useState<number[]>([]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (!isHovered.current && sliderRef.current) {
+                // Pause auto-scroll if any card is fully expanded for reading
+                if (expandedCards.length > 0) return;
+
+                const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+
+                // If we reached the end (with a small 10px leniency), reset to start
+                if (Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 10) {
+                    sliderRef.current.scrollTo({ left: 0, behavior: "smooth" });
+                } else {
+                    sliderRef.current.scrollBy({ left: 350, behavior: "smooth" });
+                }
+            }
+        }, 4000); // Auto-rotate every 4 seconds
+
+        return () => clearInterval(interval);
+    }, [expandedCards]);
 
     const scrollLeft = () => {
         if (sliderRef.current) {
@@ -198,7 +219,11 @@ export default function KeyInitiatives() {
                 </div>
 
                 {/* --- KEY INITIATIVES (PREMIUM EXPANDABLE SLIDER) --- */}
-                <div className="relative">
+                <div
+                    className="relative"
+                    onMouseEnter={() => isHovered.current = true}
+                    onMouseLeave={() => isHovered.current = false}
+                >
                     {/* Centered Premium Header */}
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}

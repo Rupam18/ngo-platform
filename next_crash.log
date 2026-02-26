@@ -1190,3 +1190,125 @@ prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "pub
 ✓ Compiled in 1091ms
  GET / 200 in 6.7s (compile: 2.9s, render: 3.8s)
 ✓ Compiled in 308ms
+ GET /inkind-donation 200 in 3.1s (compile: 2.3s, render: 814ms)
+ GET /inkind-donation 200 in 218ms (compile: 60ms, render: 158ms)
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ GET /dashboard 200 in 2.4s (compile: 150ms, render: 2.2s)
+ GET /dashboard/campaigns 200 in 90ms (compile: 49ms, render: 41ms)
+ GET /dashboard/compliance 200 in 99ms (compile: 68ms, render: 31ms)
+ GET /dashboard/donors 200 in 137ms (compile: 95ms, render: 42ms)
+ GET /dashboard/donations 200 in 126ms (compile: 77ms, render: 48ms)
+ GET /dashboard/donors 200 in 56ms (compile: 15ms, render: 42ms)
+ GET /dashboard/donations 200 in 29ms (compile: 7ms, render: 22ms)
+✓ Compiled in 2.2s
+ GET /dashboard/compliance 200 in 1982ms (compile: 1850ms, render: 132ms)
+ GET /dashboard/compliance 200 in 39ms (compile: 3ms, render: 36ms)
+✓ Compiled in 391ms
+✓ Compiled in 187ms
+✓ Compiled in 159ms
+✓ Compiled in 62ms
+ GET /dashboard 200 in 148ms (compile: 46ms, render: 102ms)
+ GET / 200 in 4.3s (compile: 388ms, render: 3.9s)
+ GET /about 200 in 187ms (compile: 85ms, render: 102ms)
+ GET / 200 in 500ms (compile: 10ms, render: 490ms)
+ GET /about 200 in 46ms (compile: 14ms, render: 32ms)
+ GET /programs 200 in 99ms (compile: 54ms, render: 44ms)
+ GET /about 200 in 32ms (compile: 7ms, render: 25ms)
+ GET /media 200 in 96ms (compile: 57ms, render: 39ms)
+ GET /contact 200 in 275ms (compile: 251ms, render: 24ms)
+ GET /contact 200 in 13ms (compile: 1952µs, render: 12ms)
+ GET /programs 200 in 58ms (compile: 22ms, render: 36ms)
+ GET /media 200 in 76ms (compile: 25ms, render: 52ms)
+ GET /contact 200 in 57ms (compile: 22ms, render: 35ms)
+ GET /programs 200 in 62ms (compile: 22ms, render: 40ms)
+ GET /media 200 in 33ms (compile: 7ms, render: 26ms)
+✓ Compiled in 1205ms
+✓ Compiled in 10ms
+ GET /contact 200 in 2.2s (compile: 1290ms, render: 922ms)
+ GET /contact 200 in 288ms (compile: 55ms, render: 233ms)
+ GET /programs 200 in 124ms (compile: 32ms, render: 92ms)
+ GET /contact 200 in 77ms (compile: 16ms, render: 61ms)
+✓ Compiled in 241ms
+ GET /commun.jpg 404 in 163ms (compile: 61ms, render: 102ms)
+⨯ The requested resource isn't a valid image for /commun.jpg received null
+✓ Compiled in 125ms
+ GET /community.jpg 404 in 75ms (compile: 9ms, render: 66ms)
+⨯ The requested resource isn't a valid image for /community.jpg received null
+✓ Compiled in 104ms
+ GET /community-deve.jpg 404 in 105ms (compile: 22ms, render: 84ms)
+⨯ The requested resource isn't a valid image for /community-deve.jpg received null
+✓ Compiled in 127ms
+✓ Compiled in 104ms
+ GET /community-development .jpg 404 in 60ms (compile: 11ms, render: 49ms)
+⨯ The requested resource isn't a valid image for /community-development .jpg received null
+✓ Compiled in 90ms
+ GET /media 200 in 91ms (compile: 36ms, render: 55ms)
+ GET /about 200 in 53ms (compile: 24ms, render: 29ms)
+✓ Compiled in 248ms
+ GET /about-.png 404 in 110ms (compile: 22ms, render: 87ms)
+⨯ The requested resource isn't a valid image for /about-.png received null
+✓ Compiled in 147ms
+ GET /abou.png 404 in 69ms (compile: 9ms, render: 61ms)
+⨯ The requested resource isn't a valid image for /abou.png received null
+✓ Compiled in 110ms
+ GET /.png 404 in 72ms (compile: 7ms, render: 66ms)
+⨯ The requested resource isn't a valid image for /.png received null
+✓ Compiled in 109ms
+✓ Compiled in 68ms
+ GET /aboutus00.png 404 in 58ms (compile: 6ms, render: 52ms)
+⨯ The requested resource isn't a valid image for /aboutus00.png received null
+✓ Compiled in 104ms
+ GET /aboutus00. 404 in 100ms (compile: 5ms, render: 95ms)
+⨯ The requested resource isn't a valid image for /aboutus00. received null
+✓ Compiled in 103ms
+✓ Compiled in 163ms
+✓ Compiled in 304ms
+ GET /image2.jpg 404 in 162ms (compile: 24ms, render: 138ms)
+⨯ The requested resource isn't a valid image for /image2.jpg received null
+✓ Compiled in 157ms
+ GET / 200 in 3.4s (compile: 127ms, render: 3.3s)
+ GET / 200 in 2.3s (compile: 14ms, render: 2.3s)
+ GET /about 200 in 2.4s (compile: 2.2s, render: 139ms)
+ GET /programs 200 in 123ms (compile: 35ms, render: 88ms)
+ GET /media 200 in 78ms (compile: 28ms, render: 50ms)
+ GET /contact 200 in 287ms (compile: 262ms, render: 25ms)
+ GET /programs 200 in 37ms (compile: 14ms, render: 23ms)
+ GET /media 200 in 28ms (compile: 7ms, render: 22ms)
+ GET /programs 200 in 50ms (compile: 9ms, render: 41ms)
+ GET /media 200 in 46ms (compile: 14ms, render: 32ms)
+ GET /contact 200 in 52ms (compile: 21ms, render: 31ms)
+ GET / 200 in 547ms (compile: 12ms, render: 536ms)
+✓ Compiled in 206ms
+prisma:query SELECT "public"."Campaign"."id", "public"."Campaign"."title", "public"."Campaign"."createdAt", "public"."Campaign"."goal", "public"."Campaign"."status" FROM "public"."Campaign" WHERE ("public"."Campaign"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "public"."Donation"."campaignId", "public"."Donation"."createdAt", "public"."Donation"."status", "public"."Donation"."userId" FROM "public"."Donation" WHERE ("public"."Donation"."status" = $1 AND "public"."Donation"."campaignId" IN ($2)) OFFSET $3
+ GET /campaigns/19df61e2-6e11-4853-90cb-ebe51a0b1f56 200 in 4.6s (compile: 1350ms, render: 3.2s)
+ GET /campaigns 200 in 2.9s (compile: 102ms, render: 2.8s)
+ GET / 200 in 639ms (compile: 324ms, render: 315ms)
+ GET /about 200 in 196ms (compile: 134ms, render: 62ms)
+ GET /programs 200 in 117ms (compile: 50ms, render: 67ms)
+ GET /media 200 in 114ms (compile: 47ms, render: 67ms)
+ GET /programs 200 in 80ms (compile: 21ms, render: 59ms)
+ GET /media 200 in 78ms (compile: 21ms, render: 58ms)
+✓ Compiled in 1703ms
+✓ Compiled in 1518ms
+ GET /contact 200 in 373ms (compile: 109ms, render: 264ms)
+ GET /programs 200 in 129ms (compile: 19ms, render: 110ms)
+ GET /contact 200 in 68ms (compile: 12ms, render: 57ms)
+ GET /about 200 in 109ms (compile: 24ms, render: 85ms)
+ GET / 200 in 2.8s (compile: 64ms, render: 2.8s)
+ GET /about 200 in 422ms (compile: 8ms, render: 414ms)
+ GET / 200 in 2.3s (compile: 26ms, render: 2.3s)
+ GET /about 200 in 87ms (compile: 18ms, render: 69ms)
+ GET / 200 in 472ms (compile: 5ms, render: 467ms)
+✓ Compiled in 2.7s

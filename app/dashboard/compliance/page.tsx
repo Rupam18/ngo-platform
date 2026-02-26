@@ -34,7 +34,7 @@ export function CompliancePage() {
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Generate Manual Receipt</h3>
                     <p className="text-gray-500 text-sm mb-6">Create a single, formatted PDF donation receipt for offline contributions or corrections.</p>
-                    <Button className="w-full bg-blue-50 text-blue-700 hover:bg-blue-100 border-none shadow-none font-semibold">
+                    <Button className="w-full !bg-blue-50 !text-blue-700 hover:!bg-blue-100 border-none shadow-none font-semibold">
                         Create Receipt
                     </Button>
                 </motion.div>
@@ -46,7 +46,7 @@ export function CompliancePage() {
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">80G Tax Certificates</h3>
                     <p className="text-gray-500 text-sm mb-6">Verify donor PAN details and issue Section 80G certificates for tax exemption benefits.</p>
-                    <Button className="w-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border-none shadow-none font-semibold">
+                    <Button className="w-full !bg-emerald-50 !text-emerald-700 hover:!bg-emerald-100 border-none shadow-none font-semibold">
                         Manage 80G Queue
                     </Button>
                 </motion.div>
@@ -57,8 +57,8 @@ export function CompliancePage() {
                         <Mail size={28} />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Annual Tax Statements</h3>
-                    <p className="text-gray-500 text-sm mb-6">Automatically send a consolidated PDF summary of all donations made in the fiscal year.</p>
-                    <Button className="w-full bg-purple-50 text-purple-700 hover:bg-purple-100 border-none shadow-none font-semibold">
+                    <p className="text-gray-500 text-sm mb-6">Automatically send a PDF summary of all donations made in the fiscal year.</p>
+                    <Button className="w-full !bg-purple-50 !text-purple-700 hover:!bg-purple-100 border-none shadow-none font-semibold">
                         Dispatch FY2025 Reports
                     </Button>
                 </motion.div>

@@ -120,7 +120,7 @@ export default function AboutPage() {
                             {/* Styling matching the prompt's organic shape feel */}
                             <div className="absolute inset-0 rounded-[40px] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden shadow-2xl border-4 border-white">
                                 <Image
-                                    src="/about-riso.png"
+                                    src="/Image2.jpg"
                                     alt="About RISO Community"
                                     fill
                                     className="object-cover hover:scale-105 transition-transform duration-700"

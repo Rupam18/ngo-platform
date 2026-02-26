@@ -126,7 +126,7 @@ export default function HeroSlider() {
     };
 
     return (
-        <section className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] overflow-hidden bg-gray-900 group">
+        <section className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden bg-gray-900 group">
 
             {/* 1. BACKGROUND LAYER (Cinematic Zoom) */}
             <AnimatePresence mode="wait">

@@ -11,36 +11,35 @@ export default function ContactPage() {
         <main className="min-h-screen flex flex-col bg-gray-50/50">
             <StickyHeader />
 
-            {/* 1. HERO SECTION */}
-            <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
+            {/* 1. HERO SECTION (Aligned with Programs Page) */}
+            <section className="relative w-full h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden">
                 <Image
-                    src="/community-development.jpg" // High quality NGO placeholder
+                    src="/community-development.jpg" // Matched to Programs Page
                     alt="Contact Us Background"
                     fill
                     className="object-cover object-center"
                     priority
                 />
-                {/* Dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 flex flex-col items-center justify-center px-4">
+                <div className="absolute inset-0 bg-black/50 md:bg-black/60 flex items-center justify-center">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        transition={{ duration: 0.6 }}
                         className="text-center"
                     >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-widest uppercase drop-shadow-lg mb-4">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-widest uppercase drop-shadow-lg mb-4 mt-8 md:mt-0">
                             Contact Us
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-medium drop-shadow-md">
+                        <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-medium drop-shadow-md hidden md:block">
                             We’d love to hear from you and collaborate for social impact.
                         </p>
-                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-red-500 rounded-full mx-auto mt-6 shadow-lg shadow-black/50" />
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-red-500 rounded-full mx-auto mt-4 shadow-lg shadow-black/50" />
                     </motion.div>
                 </div>
             </section>
 
             {/* 2. CONTACT INFO + FORM SECTION */}
-            <section className="relative -mt-20 md:-mt-32 z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-20">
+            <section className="relative -mt-10 md:-mt-16 z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-20">
                 <div className="grid lg:grid-cols-5 gap-8 bg-white/40 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none rounded-3xl p-2 md:p-0">
 
                     {/* LEFT COLUMN: Contact Info (Glassmorphism Style) */}
