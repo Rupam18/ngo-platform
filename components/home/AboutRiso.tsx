@@ -91,7 +91,7 @@ export default function AboutRiso() {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
-                                    <Button className="relative h-14 px-8 bg-gradient-to-r from-blue-900 to-blue-700 hover:from-blue-800 hover:to-blue-600 text-white font-bold text-lg rounded-full shadow-[0_10px_20px_rgba(30,58,138,0.3)] hover:shadow-[0_15px_30px_rgba(30,58,138,0.4)] transition-all flex items-center gap-3 overflow-hidden group">
+                                    <Button variant="secondary" size="lg" className="rounded-full flex items-center gap-3 overflow-hidden group shadow-[0_4px_14px_0_rgba(0,0,0,0.08)]">
                                         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                                         <span className="relative z-10">KNOW MORE</span>
                                         <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
@@ -104,7 +104,7 @@ export default function AboutRiso() {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
-                                    <Button variant="outline" className="h-14 px-8 border-2 border-blue-900 text-blue-900 font-bold text-lg rounded-full hover:bg-blue-50 transition-all flex items-center gap-3 group shadow-md hover:shadow-lg">
+                                    <Button variant="outline" size="lg" className="rounded-full flex items-center gap-3 group shadow-sm hover:shadow-md">
                                         ANNUAL REPORT
                                         <motion.div
                                             variants={{

@@ -27,9 +27,7 @@ export default function CTASection() {
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Link href="/volunteer">
-                            <Button
-                                className="h-14 px-8 text-xl font-bold rounded-full bg-yellow-500 text-black hover:bg-yellow-400 border-none shadow-[0_0_15px_rgba(234,179,8,0.5)] hover:shadow-[0_0_25px_rgba(234,179,8,0.8)] transition-all duration-300"
-                            >
+                            <Button variant="secondary" size="lg" className="rounded-full">
                                 Become Volunteer
                             </Button>
                         </Link>
@@ -37,9 +35,7 @@ export default function CTASection() {
 
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Link href="/donate">
-                            <Button
-                                className="h-14 px-8 text-xl font-bold rounded-full bg-red-600 text-white hover:bg-red-700 shadow-[0_0_15px_rgba(220,38,38,0.5)] hover:shadow-[0_0_25px_rgba(220,38,38,0.8)] transition-all duration-300"
-                            >
+                            <Button variant="primary" size="lg" className="rounded-full">
                                 Donate Now
                             </Button>
                         </Link>

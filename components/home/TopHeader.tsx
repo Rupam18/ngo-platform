@@ -32,10 +32,10 @@ export default function TopHeader() {
 
                 {/* Right: Buttons */}
                 <div className="flex flex-wrap justify-center gap-3 shrink-0">
-                    <Button variant="outline" className="h-10 px-6 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold">
+                    <Button variant="secondary">
                         Donate In Kind
                     </Button>
-                    <Button className="h-10 px-6 bg-red-600 hover:bg-red-700 text-white font-semibold shadow-md">
+                    <Button variant="primary">
                         Donate NOW
                     </Button>
                 </div>

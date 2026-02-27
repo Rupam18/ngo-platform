@@ -5,6 +5,7 @@ import Footer from "@/components/home/Footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { MapPin, Phone, Mail, Send, User, MessageSquare, Briefcase } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function ContactPage() {
     return (
@@ -14,7 +15,7 @@ export default function ContactPage() {
             {/* 1. HERO SECTION (Aligned with Programs Page) */}
             <section className="relative w-full h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden">
                 <Image
-                    src="/community-development.jpg" // Matched to Programs Page
+                    src="/headerbanner-riso.jpg" // Matched to Programs Page
                     alt="Contact Us Background"
                     fill
                     className="object-cover object-center"
@@ -209,18 +210,16 @@ export default function ContactPage() {
                             </div>
 
                             {/* Submit Button */}
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                type="submit"
-                                className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-blue-600/30 flex items-center justify-center gap-2 transition-all relative overflow-hidden group/btn"
-                            >
-                                <span className="relative z-10 flex items-center gap-2">
+                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto text-center sm:text-left">
+                                <Button
+                                    type="submit"
+                                    variant="primary"
+                                    size="lg"
+                                    className="w-full sm:w-auto px-8 py-4 text-lg rounded-xl flex items-center justify-center gap-2 group/btn shadow-[0_4px_14px_0_rgba(0,0,0,0.08)]"
+                                >
                                     Send Message <Send size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                                </span>
-                                {/* Ripple glow on hover */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 z-0" />
-                            </motion.button>
+                                </Button>
+                            </motion.div>
                         </form>
                     </motion.div>
 

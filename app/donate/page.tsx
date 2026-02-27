@@ -6,6 +6,7 @@ import Image from "next/image";
 import StickyHeader from "@/components/home/StickyHeader";
 import Footer from "@/components/home/Footer";
 import { ShieldCheck, CheckCircle, Receipt, Lock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function DonatePage() {
     const [selectedAmount, setSelectedAmount] = useState<number | null>(1000);
@@ -152,8 +153,8 @@ export default function DonatePage() {
                                     type="button"
                                     onClick={() => setSelectedAmount(amount)}
                                     className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 border-2 ${selectedAmount === amount
-                                        ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-transparent shadow-lg scale-105"
-                                        : "bg-white text-blue-900 border-blue-200 hover:border-blue-500 hover:shadow-md hover:scale-105"
+                                        ? "bg-[#0056A6] text-white border-transparent shadow-[0_4px_14px_0_rgba(0,0,0,0.08)] scale-105"
+                                        : "bg-white text-[#0056A6] border-[#0056A6]/30 hover:border-[#0056A6] hover:shadow-[0_4px_14px_0_rgba(0,0,0,0.08)] hover:scale-105"
                                         }`}
                                 >
                                     ₹{amount.toLocaleString('en-IN')}
@@ -228,15 +229,17 @@ export default function DonatePage() {
                             </div>
 
                             {/* CTA Button */}
-                            <motion.button
-                                whileHover={{ scale: 1.03 }}
-                                whileTap={{ scale: 0.97 }}
-                                type="submit"
-                                className="relative w-full py-4 text-lg font-bold rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-xl overflow-hidden group flex items-center justify-center gap-3"
-                            >
-                                <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-                                <Lock size={20} /> Proceed Securely
-                            </motion.button>
+                            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                                <Button
+                                    type="submit"
+                                    variant="primary"
+                                    size="lg"
+                                    className="w-full py-4 text-lg rounded-2xl flex items-center justify-center gap-3 relative overflow-hidden group"
+                                >
+                                    <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                                    <Lock size={20} /> Proceed Securely
+                                </Button>
+                            </motion.div>
                             <p className="text-center text-xs text-gray-500 mt-4 font-medium flex items-center justify-center gap-1">
                                 <Lock size={12} /> Encrypted & Secure Payment Gateway
                             </p>

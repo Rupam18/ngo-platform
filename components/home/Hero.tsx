@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const slides = [
   {
@@ -101,20 +102,18 @@ export default function Hero() {
                 className="flex flex-col sm:flex-row gap-5"
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link
-                    href="/donate"
-                    className="inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded-lg px-6 py-3 shadow-lg text-lg"
-                  >
-                    DONATE 
+                  <Link href="/donate">
+                    <Button variant="primary" size="lg">
+                      DONATE
+                    </Button>
                   </Link>
                 </motion.div>
 
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link
-                    href="/volunteer"
-                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg px-6 py-3 shadow-lg text-lg"
-                  >
-                    VOLUNTEER
+                  <Link href="/volunteer">
+                    <Button variant="secondary" size="lg">
+                      VOLUNTEER
+                    </Button>
                   </Link>
                 </motion.div>
               </motion.div>

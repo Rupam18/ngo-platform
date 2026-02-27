@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Plus, Minus } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 // Extend the link type to support sub-menus
 export interface NavLink {
@@ -172,16 +173,16 @@ export default function MobileMenu({ isOpen, setIsOpen, navLinks }: Props) {
 
                         {/* Sticky Bottom Footer (Donate & In-Kind) */}
                         <div className="px-8 py-5 bg-white border-t border-gray-100 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.05)] w-full flex flex-col gap-2.5">
-                            <Link href="/donate" onClick={() => setIsOpen(false)}>
-                                <button className="w-full py-3 text-sm font-bold text-gray-900 uppercase tracking-wide transition-all duration-300 rounded-lg shadow-sm bg-yellow-400 hover:bg-yellow-500 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2">
+                            <Link href="/donate" onClick={() => setIsOpen(false)} className="w-full">
+                                <Button variant="primary" className="w-full">
                                     Donate Now
-                                </button>
+                                </Button>
                             </Link>
 
-                            <Link href="/inkind-donation" onClick={() => setIsOpen(false)}>
-                                <span className="w-full py-3 text-sm font-bold text-white uppercase tracking-wide transition-all duration-300 rounded-lg shadow-sm bg-blue-600 hover:bg-blue-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 inline-flex items-center justify-center cursor-pointer">
+                            <Link href="/inkind-donation" onClick={() => setIsOpen(false)} className="w-full">
+                                <Button variant="secondary" className="w-full">
                                     Donate in Kind
-                                </span>
+                                </Button>
                             </Link>
                         </div>
                     </motion.div>

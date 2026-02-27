@@ -99,14 +99,14 @@ export default function StickyHeader() {
                         {/* BUTTONS */}
                         <div className="flex items-center gap-3">
                             <Link href="/donate">
-                                <button className="bg-yellow-400 px-6 py-2 rounded-lg font-semibold shadow-lg hover:shadow-yellow-300/40 hover:scale-105 transition hover:bg-yellow-500 text-gray-900">
+                                <Button variant="primary">
                                     DONATE NOW
-                                </button>
+                                </Button>
                             </Link>
                             <Link href="/inkind-donation">
-                                <span className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold shadow transition inline-block text-center cursor-pointer">
+                                <Button variant="secondary">
                                     DONATE IN KIND
-                                </span>
+                                </Button>
                             </Link>
                         </div>
                     </div>

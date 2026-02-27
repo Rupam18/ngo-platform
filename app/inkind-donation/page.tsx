@@ -158,16 +158,18 @@ export default function InKindDonation() {
                                 onChange={handleChange as any}
                             />
 
-                            <div className="pt-8">
-                                <motion.button
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    type="submit"
-                                    className="w-full py-5 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-bold text-lg shadow-xl hover:shadow-2xl hover:shadow-indigo-500/30 transition-all duration-300 flex items-center justify-center relative overflow-hidden group/btn"
-                                >
-                                    <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></span>
-                                    Submit Donation Request
-                                </motion.button>
+                            <div className="pt-8 w-full">
+                                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                                    <Button
+                                        type="submit"
+                                        variant="primary"
+                                        size="lg"
+                                        className="w-full py-5 rounded-2xl text-lg flex items-center justify-center relative overflow-hidden group/btn"
+                                    >
+                                        <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></span>
+                                        Submit Donation Request
+                                    </Button>
+                                </motion.div>
                             </div>
 
                         </form>

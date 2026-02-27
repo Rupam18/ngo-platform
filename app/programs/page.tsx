@@ -14,7 +14,7 @@ export default function ProgramsPage() {
             {/* Banner Section matching 'Our Work' visual */}
             <section className="relative w-full h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden">
                 <Image
-                    src="/environmentalcare.jpg" // Safe fallback image that spans wide nicely
+                    src="/headerbanner-riso.jpg" // Safe fallback image that spans wide nicely
                     alt="Our Programs Background"
                     fill
                     className="object-cover object-center"

@@ -205,12 +205,12 @@ export default function KeyInitiatives() {
                                 </div>
 
                                 {/* Title (Changes color on hover) */}
-                                <h3 className="text-xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300 relative group-hover:-translate-y-4">
+                                <h3 className="text-2xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300 relative group-hover:-translate-y-4">
                                     {item.title}
                                 </h3>
 
                                 {/* Description (Changes color on hover) */}
-                                <p className="text-sm text-gray-600 mt-2 group-hover:text-gray-200 transition-colors duration-300 relative group-hover:-translate-y-4 line-clamp-3">
+                                <p className="text-base text-gray-600 mt-2 group-hover:text-gray-200 transition-colors duration-300 relative group-hover:-translate-y-4 line-clamp-3">
                                     {item.description}
                                 </p>
                             </div>
@@ -319,7 +319,7 @@ export default function KeyInitiatives() {
                                         <div className="flex justify-between items-start mb-6">
                                             <motion.span
                                                 whileHover={{ scale: 1.05 }}
-                                                className={`inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase 
+                                                className={`inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase 
                                                 bg-gradient-to-r ${initiative.categoryColor} 
                                                 text-white rounded-full shadow-md border border-white/20`}
                                             >
@@ -338,15 +338,15 @@ export default function KeyInitiatives() {
 
                                         {/* Middle: Text Content */}
                                         <div className="flex-grow space-y-4">
-                                            <h3 className={`text-2xl font-bold transition-colors duration-300 drop-shadow-sm
-                                                ${!isExpanded ? 'text-gray-900 group-hover:text-white' : 'text-gray-900 text-3xl mb-4'}
+                                            <h3 className={`text-3xl font-bold transition-colors duration-300 drop-shadow-sm
+                                                ${!isExpanded ? 'text-gray-900 group-hover:text-white' : 'text-gray-900 text-4xl mb-4'}
                                             `}>
                                                 {initiative.title}
                                             </h3>
 
                                             {/* Short Description */}
-                                            <p className={`text-sm leading-relaxed transition-colors duration-300
-                                                ${!isExpanded ? 'text-gray-600 group-hover:text-gray-200 line-clamp-4' : 'text-gray-600 text-base'}
+                                            <p className={`text-lg leading-relaxed transition-colors duration-300
+                                                ${!isExpanded ? 'text-gray-600 group-hover:text-gray-200 line-clamp-4' : 'text-gray-600 text-xl'}
                                             `}>
                                                 {initiative.shortDesc || initiative.description}
                                             </p>
@@ -361,7 +361,7 @@ export default function KeyInitiatives() {
                                                         className="overflow-hidden"
                                                     >
                                                         <div className="pt-4 border-t border-gray-100 mt-4">
-                                                            <p className="text-gray-700 leading-relaxed text-base">
+                                                            <p className="text-gray-700 leading-relaxed text-lg">
                                                                 {initiative.fullDesc}
                                                             </p>
                                                         </div>
@@ -376,7 +376,7 @@ export default function KeyInitiatives() {
                                         `}>
                                             <div className="flex items-center justify-between">
                                                 <button
-                                                    className={`flex items-center gap-2 text-sm font-bold transition-colors duration-300 group/link
+                                                    className={`flex items-center gap-2 text-base font-bold transition-colors duration-300 group/link
                                                         ${!isExpanded ? 'text-blue-600 group-hover:text-yellow-400' : 'text-blue-700'}
                                                     `}
                                                     onClick={(e) => {

@@ -5,6 +5,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 const slides = [
     {
@@ -126,7 +127,7 @@ export default function HeroSlider() {
     };
 
     return (
-        <section className="relative w-full h-[400px] md:h-[450px] lg:h-[550px] overflow-hidden bg-gray-900 group">
+        <section className="relative w-full h-[500px] sm:h-[450px] md:h-[500px] lg:h-[550px] overflow-hidden bg-gray-900 group">
 
             {/* 1. BACKGROUND LAYER (Cinematic Zoom) */}
             <AnimatePresence mode="wait">
@@ -154,7 +155,7 @@ export default function HeroSlider() {
             </AnimatePresence>
 
             {/* 2. CONTENT LAYER */}
-            <div className="absolute inset-0 z-20 flex flex-col justify-center px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto h-full pt-20">
+            <div className="absolute inset-0 z-20 flex flex-col justify-center px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto h-full pt-10 md:pt-20 pb-12">
                 <div className="max-w-5xl w-full"> {/* Increased max-width for more breathing room */}
                     <AnimatePresence mode="wait">
                         <motion.div
@@ -163,7 +164,7 @@ export default function HeroSlider() {
                             initial="hidden"
                             animate="visible"
                             exit={{ opacity: 0, y: -20, transition: { duration: 0.5 } }}
-                            className="flex flex-col items-start gap-6 md:gap-8"
+                            className="flex flex-col items-start gap-4 md:gap-8"
                         >
                             {/* Premium Headline */}
                             <motion.h1
@@ -178,7 +179,7 @@ export default function HeroSlider() {
                             <motion.p
                                 variants={fadeInUp}
                                 custom={1}
-                                className="text-lg md:text-xl text-blue-50/90 font-medium max-w-2xl leading-relaxed drop-shadow-md"
+                                className="text-sm sm:text-lg md:text-xl text-blue-50/90 font-medium max-w-2xl leading-relaxed drop-shadow-md"
                             >
                                 Empowering underserved communities through impactful programs aligned with the UN Sustainable Development Goals.
                             </motion.p>
@@ -187,30 +188,21 @@ export default function HeroSlider() {
                             <motion.div
                                 variants={fadeInUp}
                                 custom={2}
-                                className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto mt-6"
+                                className="flex flex-col sm:flex-row gap-3 sm:gap-5 w-full sm:w-auto mt-2 md:mt-6"
                             >
                                 {/* Donate Button */}
-                                <Link href="/donate" className="relative group">
-                                    <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500" />
-                                    <motion.div
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="relative bg-gradient-to-r from-yellow-400 to-yellow-500 text-blue-950 font-bold rounded-full px-8 py-4 shadow-2xl flex items-center justify-center gap-3 transition-all duration-300 uppercase tracking-wide text-base md:text-lg"
-                                    >
+                                <Link href="/donate" className="w-full sm:w-auto">
+                                    <Button variant="primary" size="lg" className="group w-full sm:w-auto rounded-full pl-6 md:pl-8 pr-5 md:pr-6 py-4 md:py-4 text-sm md:text-lg tracking-wide uppercase shadow-2xl">
                                         Donate Now
-                                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                    </motion.div>
+                                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                                    </Button>
                                 </Link>
 
                                 {/* Volunteer Button */}
-                                <Link href="/volunteer">
-                                    <motion.div
-                                        whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="relative overflow-hidden bg-white/10 text-white font-bold rounded-full px-8 py-4 shadow-xl flex items-center justify-center gap-3 transition-all duration-300 uppercase tracking-wide text-base md:text-lg border border-white/20 backdrop-blur-md"
-                                    >
+                                <Link href="/volunteer" className="w-full sm:w-auto">
+                                    <Button variant="secondary" size="lg" className="w-full sm:w-auto rounded-full px-6 md:px-8 py-4 md:py-4 text-sm md:text-lg tracking-wide uppercase shadow-xl backdrop-blur-md border border-white/20">
                                         Be a Volunteer
-                                    </motion.div>
+                                    </Button>
                                 </Link>
                             </motion.div>
                         </motion.div>
@@ -232,7 +224,7 @@ export default function HeroSlider() {
                         <button
                             key={idx}
                             onClick={() => setCurrent(idx)}
-                            className={`h-2.5 rounded-full transition-all duration-500 ${current === idx ? "bg-yellow-400 w-10 shadow-[0_0_15px_rgba(250,204,21,0.6)]" : "bg-white/30 w-2.5 hover:bg-white/50"}`}
+                            className={`h-2.5 rounded-full transition-all duration-500 ${current === idx ? "bg-blue-600 w-10 shadow-[0_0_15px_rgba(37,99,235,0.6)]" : "bg-white/30 w-2.5 hover:bg-white/50"}`}
                             aria-label={`Go to slide ${idx + 1}`}
                         />
                     ))}
@@ -252,7 +244,7 @@ export default function HeroSlider() {
                     <button
                         key={idx}
                         onClick={() => setCurrent(idx)}
-                        className={`h-2 rounded-full transition-all duration-300 ${current === idx ? "bg-yellow-400 w-8 shadow-[0_0_10px_rgba(250,204,21,0.5)]" : "bg-white/30 w-2"}`}
+                        className={`h-2 rounded-full transition-all duration-300 ${current === idx ? "bg-blue-600 w-8 shadow-[0_0_10px_rgba(37,99,235,0.5)]" : "bg-white/30 w-2"}`}
                         aria-label={`Go to slide ${idx + 1}`}
                     />
                 ))}

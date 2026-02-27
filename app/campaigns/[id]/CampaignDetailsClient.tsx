@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Heart, Activity, ArrowLeft, Target, Users } from "lucide-react";
 
 export default function CampaignDetailsClient({ campaign, raisedAmount, progress }: any) {
     const [showDonate, setShowDonate] = useState(false);
@@ -11,81 +12,136 @@ export default function CampaignDetailsClient({ campaign, raisedAmount, progress
 
     return (
         <>
-            <div className="max-w-4xl mx-auto px-6">
-                <Link href="/campaigns">
-                    <Button variant="outline" className="mb-6 font-semibold">← Back to Campaigns</Button>
+            <div className="max-w-5xl mx-auto px-6">
+                <Link href="/">
+                    <Button variant="outline" size="sm" className="mb-8 font-semibold flex items-center gap-2 text-gray-600 border-gray-300 hover:bg-gray-100 hover:text-gray-900 shadow-sm">
+                        <ArrowLeft size={16} /> Back to Home
+                    </Button>
                 </Link>
 
-                {/* Campaign Content */}
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                    <img
-                        src={campaign.image || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070"}
-                        alt={campaign.title}
-                        className="w-full h-[450px] object-cover"
-                    />
-                    <div className="p-8 md:p-12">
-                        <h1 className="text-4xl font-extrabold mb-6 text-gray-900 tracking-tight">{campaign.title}</h1>
+                {/* Main Content Layout */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden border border-gray-100 flex flex-col md:flex-row"
+                >
+                    {/* Image Section (Reduced Height for Desktop, Responsive) */}
+                    <div className="md:w-1/2 relative h-[300px] md:h-auto overflow-hidden group">
+                        <motion.img
+                            initial={{ scale: 1.05 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.8 }}
+                            src={campaign.image || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070"}
+                            alt={campaign.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80" />
 
-                        <div className="mb-8 p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                            <div className="h-3 w-full bg-gray-200 rounded-full overflow-hidden mb-3">
-                                <div
-                                    className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full transition-all duration-1000"
-                                    style={{ width: `${Math.min(progress, 100)}%` }}
-                                />
-                            </div>
-                            <div className="flex justify-between items-center text-sm font-medium">
-                                <div className="text-gray-500">Raised: <span className="font-bold text-blue-700 text-xl block md:inline md:ml-2">₹{raisedAmount.toLocaleString('en-IN')}</span></div>
-                                <div className="text-gray-500 text-right">Goal: <span className="font-bold text-gray-900 text-xl block md:inline md:ml-2">₹{campaign.goal.toLocaleString('en-IN')}</span></div>
+                        {/* Status Badge overlay */}
+                        <div className="absolute top-6 left-6 z-10">
+                            <span className="bg-white/95 backdrop-blur-md text-[#800000] text-xs font-bold px-4 py-2 rounded-full shadow-lg uppercase tracking-wide">
+                                Active Campaign
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="md:w-1/2 p-8 md:p-10 flex flex-col justify-between">
+                        <div>
+                            <h1 className="text-3xl lg:text-4xl font-extrabold mb-4 text-gray-900 tracking-tight leading-tight">{campaign.title}</h1>
+                            <p className="text-gray-600 text-lg leading-relaxed mb-8 line-clamp-3">
+                                {campaign.description || "A wonderful campaign to support and bring meaningful change to those who need it most. Every contribution matters."}
+                            </p>
+
+                            {/* Progress Metrics */}
+                            <div className="mb-8 p-6 bg-gray-50/80 rounded-2xl border border-gray-100 shadow-sm">
+                                <div className="flex justify-between items-end mb-3">
+                                    <div className="flex items-center gap-2">
+                                        <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                                            <Activity size={18} />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Raised</p>
+                                            <p className="font-bold text-[#0056A6] text-2xl">₹{raisedAmount.toLocaleString('en-IN')}</p>
+                                        </div>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Goal</p>
+                                        <p className="font-bold text-gray-900 text-xl">₹{campaign.goal.toLocaleString('en-IN')}</p>
+                                    </div>
+                                </div>
+                                <div className="h-2.5 w-full bg-gray-200 rounded-full overflow-hidden mt-4">
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${Math.min(progress, 100)}%` }}
+                                        transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+                                        className="h-full bg-gradient-to-r from-[#0056A6] to-blue-400 rounded-full"
+                                    />
+                                </div>
                             </div>
                         </div>
 
-                        <p className="text-gray-700 text-lg leading-relaxed mb-10 whitespace-pre-wrap">
-                            {campaign.description || "A wonderful campaign to support."}
-                        </p>
-
-                        <button
-                            onClick={() => {
-                                setShowDonate(true);
-                                // Slightly scroll to bring the form into view smoothly
-                                setTimeout(() => window.scrollBy({ top: 500, behavior: "smooth" }), 50);
-                            }}
-                            className="w-full py-5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-xl hover:scale-[1.02] hover:shadow-xl transition-all duration-300"
-                        >
-                            Donate Now
-                        </button>
+                        {/* CTA Setup */}
+                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                            <Button
+                                onClick={() => {
+                                    setShowDonate(true);
+                                    setTimeout(() => window.scrollBy({ top: 600, behavior: "smooth" }), 50);
+                                }}
+                                variant="primary"
+                                size="lg"
+                                className="w-full py-5 rounded-2xl text-xl flex items-center justify-center gap-3 shadow-xl hover:shadow-[#800000]/30"
+                            >
+                                <Heart className="fill-white" size={24} /> Donate Now
+                            </Button>
+                        </motion.div>
                     </div>
+                </motion.div>
+            </div>
+
+            {/* Sub-Description Section (Full details) */}
+            <div className="max-w-4xl mx-auto px-6 mt-12 mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">About the Campaign</h3>
+                <div className="prose prose-lg text-gray-700 w-full max-w-none">
+                    <p className="whitespace-pre-wrap leading-relaxed">{campaign.description}</p>
                 </div>
             </div>
 
-            {/* Animated Donate Section */}
+            {/* Animated Donate Form Section */}
             <AnimatePresence>
                 {showDonate && (
                     <motion.div
-                        initial={{ opacity: 0, y: 80 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 80 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        className="mt-16 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-700 py-24 px-6 relative"
+                        initial={{ opacity: 0, scale: 0.95, y: 40 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 40 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        className="mt-12 bg-[#F5F7FA] py-20 px-6 border-t border-gray-200"
                     >
-                        <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-2xl rounded-3xl shadow-2xl p-8 md:p-12 border border-white/20">
+                        <div className="max-w-3xl mx-auto bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
 
-                            <h2 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-3 tracking-tight">
-                                Complete Your Donation
-                            </h2>
-                            <p className="text-gray-600 mb-10 text-lg">
-                                Your contribution directly supports <span className="font-bold text-blue-700">{campaign.title}</span>.
-                            </p>
+                            <div className="text-center mb-10">
+                                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 text-[#0056A6] mb-4">
+                                    <Heart size={32} />
+                                </div>
+                                <h2 className="text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">
+                                    Complete Your Donation
+                                </h2>
+                                <p className="text-gray-600 text-lg">
+                                    You are supporting <span className="font-bold text-[#0056A6]">{campaign.title}</span>
+                                </p>
+                            </div>
 
                             {/* Amount Options */}
-                            <div className="flex gap-4 flex-wrap mb-8">
+                            <div className="flex gap-4 flex-wrap mb-8 justify-center">
                                 {[500, 1000, 2500, 5000].map((amt) => (
                                     <button
                                         key={amt}
                                         type="button"
                                         onClick={() => setSelectedAmount(amt)}
-                                        className={`px-6 py-4 rounded-full border-2 font-bold text-lg transition-all duration-300 ${selectedAmount === amt
-                                                ? "bg-blue-600 text-white border-blue-600 shadow-lg scale-105"
-                                                : "border-blue-200 text-blue-600 hover:border-blue-500 hover:shadow-md hover:scale-105 bg-white"
+                                        className={`px-8 py-4 rounded-xl border-2 font-bold text-lg transition-all duration-300 ${selectedAmount === amt
+                                            ? "bg-[#0056A6] text-white border-transparent shadow-[0_4px_14px_0_rgba(0,0,0,0.08)] scale-105"
+                                            : "border-gray-200 text-gray-600 hover:border-[#0056A6]/40 hover:text-[#0056A6] bg-white hover:scale-105 shadow-sm"
                                             }`}
                                     >
                                         ₹{amt.toLocaleString('en-IN')}
@@ -93,57 +149,56 @@ export default function CampaignDetailsClient({ campaign, raisedAmount, progress
                                 ))}
                             </div>
 
-                            {/* Form */}
+                            {/* Form Elements */}
                             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                                {/* Custom Amount */}
-                                <div className="mb-2">
-                                    <div className="relative">
-                                        <span className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-lg">₹</span>
-                                        <input
-                                            type="number"
-                                            placeholder="Enter Custom Amount"
-                                            onChange={(e) => setSelectedAmount(Number(e.target.value) || null)}
-                                            value={selectedAmount && ![500, 1000, 2500, 5000].includes(selectedAmount) ? selectedAmount : ""}
-                                            className="premium-input pl-10 font-bold text-gray-900"
-                                        />
-                                    </div>
+                                <div className="relative mb-8">
+                                    <span className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 font-bold text-xl">₹</span>
+                                    <input
+                                        type="number"
+                                        placeholder="Enter Custom Amount"
+                                        onChange={(e) => setSelectedAmount(Number(e.target.value) || null)}
+                                        value={selectedAmount && ![500, 1000, 2500, 5000].includes(selectedAmount) ? selectedAmount : ""}
+                                        className="w-full bg-gray-50 border border-gray-200 pl-12 pr-6 py-5 rounded-2xl text-xl font-bold text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#0056A6]/50 focus:border-[#0056A6] outline-none transition-all"
+                                    />
                                 </div>
 
                                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                                     <input
                                         type="text"
                                         placeholder="Full Name"
-                                        className="premium-input font-medium"
+                                        className="w-full bg-gray-50 border border-gray-200 px-6 py-4 rounded-xl text-gray-900 font-medium focus:bg-white focus:ring-2 focus:ring-[#0056A6]/50 focus:border-[#0056A6] outline-none transition-all shadow-sm"
                                         required
                                     />
                                     <input
                                         type="email"
                                         placeholder="Email Address"
-                                        className="premium-input font-medium"
+                                        className="w-full bg-gray-50 border border-gray-200 px-6 py-4 rounded-xl text-gray-900 font-medium focus:bg-white focus:ring-2 focus:ring-[#0056A6]/50 focus:border-[#0056A6] outline-none transition-all shadow-sm"
                                         required
                                     />
                                     <input
-                                        type="text"
+                                        type="tel"
                                         placeholder="Phone Number"
-                                        className="premium-input font-medium"
+                                        className="w-full bg-gray-50 border border-gray-200 px-6 py-4 rounded-xl text-gray-900 font-medium focus:bg-white focus:ring-2 focus:ring-[#0056A6]/50 focus:border-[#0056A6] outline-none transition-all shadow-sm"
                                         required
                                     />
                                     <input
                                         type="text"
-                                        placeholder="Donation Purpose (Optional)"
-                                        className="premium-input font-medium"
+                                        placeholder="Pan Card (Optional)"
+                                        className="w-full bg-gray-50 border border-gray-200 px-6 py-4 rounded-xl text-gray-900 font-medium focus:bg-white focus:ring-2 focus:ring-[#0056A6]/50 focus:border-[#0056A6] outline-none transition-all shadow-sm"
                                     />
                                 </div>
 
-                                <button type="submit" className="w-full py-5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-xl shadow-xl hover:scale-[1.02] hover:shadow-2xl transition-all duration-300">
-                                    Proceed to Payment
-                                </button>
+                                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                                    <Button type="submit" variant="primary" size="lg" className="w-full py-5 rounded-2xl text-xl shadow-[0_4px_14px_0_rgba(0,0,0,0.08)]">
+                                        Proceed to Payment
+                                    </Button>
+                                </motion.div>
                             </form>
 
                             <div className="mt-8 text-center">
                                 <button
                                     onClick={() => setShowDonate(false)}
-                                    className="text-sm font-bold text-gray-400 hover:text-gray-800 transition uppercase tracking-wider"
+                                    className="text-sm font-bold text-gray-500 hover:text-red-600 transition uppercase tracking-wider"
                                 >
                                     Cancel & Return
                                 </button>

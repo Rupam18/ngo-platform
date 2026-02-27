@@ -35,7 +35,7 @@ export default function AboutSection() {
                     </div>
 
                     <div className="mt-8">
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all">
+                        <Button variant="secondary" size="lg" className="rounded-full shadow-[0_4px_14px_0_rgba(0,0,0,0.08)] text-lg px-8 py-6">
                             Know More About Us
                         </Button>
                     </div>
@@ -49,7 +49,7 @@ export default function AboutSection() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 relative"
                 >
-                    <div className="absolute top-0 right-0 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                    <div className="absolute top-0 right-0 bg-[#800000] text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-xl">
                         URGENT CAUSE
                     </div>
 
@@ -82,7 +82,7 @@ export default function AboutSection() {
                         </div>
                     </div>
 
-                    <Button className="w-full mt-8 bg-red-600 hover:bg-red-700 text-white py-6 text-lg font-bold shadow-md">
+                    <Button variant="primary" size="lg" className="w-full mt-8 rounded-xl shadow-[0_4px_14px_0_rgba(0,0,0,0.08)] py-6 text-lg">
                         Donate Now
                     </Button>
                 </motion.div>

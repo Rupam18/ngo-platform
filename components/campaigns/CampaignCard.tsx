@@ -48,7 +48,7 @@ export default function CampaignCard({
         </div>
 
         <Link href={`/campaigns/${id}`}>
-          <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">
+          <Button variant="primary" className="w-full mt-4">
             Donate Now
           </Button>
         </Link>

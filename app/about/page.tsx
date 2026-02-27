@@ -18,6 +18,36 @@ export default function AboutPage() {
         <main className="min-h-screen bg-white">
             <StickyHeader />
 
+            {/* 1. HERO SECTION (Aligned with Programs Page) */}
+            <section className="relative w-full h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden">
+                <Image
+                    src="/headerbanner-riso.jpg"
+                    alt="About Us Background"
+                    fill
+                    className="object-cover object-center"
+                    priority
+                />
+                <div className="absolute inset-0 bg-black/50 md:bg-black/60 flex items-center justify-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center px-4"
+                    >
+                        <span className="text-yellow-400 font-bold tracking-wider uppercase text-sm mb-3 block drop-shadow-md">
+                            Who We Are
+                        </span>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-widest uppercase drop-shadow-lg mb-4 mt-2">
+                            About Us
+                        </h1>
+                        <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-medium drop-shadow-md hidden md:block">
+                            Discover our story, our vision, and the impact we strive to make.
+                        </p>
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-red-500 rounded-full mx-auto mt-6 shadow-lg shadow-black/50" />
+                    </motion.div>
+                </div>
+            </section>
+
             <section className="relative py-20 overflow-hidden">
                 {/* Top Wave Decoration (Optional/Subtle) */}
                 <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
@@ -65,9 +95,6 @@ export default function AboutPage() {
                                 whileHover={{ y: -5 }}
                                 className="bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 relative group overflow-hidden"
                             >
-                                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                    <Eye size={80} className="text-blue-600" />
-                                </div>
                                 <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                                     <Eye size={24} />
                                 </div>
@@ -82,9 +109,6 @@ export default function AboutPage() {
                                 whileHover={{ y: -5 }}
                                 className="bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 relative group overflow-hidden"
                             >
-                                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                    <Target size={80} className="text-yellow-500" />
-                                </div>
                                 <div className="w-12 h-12 rounded-xl bg-yellow-100 flex items-center justify-center text-yellow-600 mb-4 group-hover:bg-yellow-500 group-hover:text-white transition-colors">
                                     <Target size={24} />
                                 </div>
@@ -102,7 +126,7 @@ export default function AboutPage() {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
-                                    <Button className="relative h-14 px-8 bg-gradient-to-r from-blue-900 to-blue-700 hover:from-blue-800 hover:to-blue-600 text-white font-bold text-lg rounded-full shadow-[0_10px_20px_rgba(30,58,138,0.3)] hover:shadow-[0_15px_30px_rgba(30,58,138,0.4)] transition-all flex items-center gap-3 overflow-hidden group">
+                                    <Button variant="secondary" size="lg" className="rounded-full flex items-center gap-3 overflow-hidden group shadow-[0_4px_14px_0_rgba(0,0,0,0.08)]">
                                         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                                         <span className="relative z-10">KNOW MORE</span>
                                         <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
@@ -115,7 +139,7 @@ export default function AboutPage() {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
-                                    <Button variant="outline" className="h-14 px-8 border-2 border-blue-900 text-blue-900 font-bold text-lg rounded-full hover:bg-blue-50 transition-all flex items-center gap-3 group shadow-md hover:shadow-lg">
+                                    <Button variant="outline" size="lg" className="rounded-full flex items-center gap-3 group shadow-sm hover:shadow-md">
                                         ANNUAL REPORT
                                         <motion.div
                                             variants={{

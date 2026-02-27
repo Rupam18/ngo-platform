@@ -39,24 +39,34 @@ export default function MediaHubPage() {
         <main className="min-h-screen flex flex-col bg-gray-50/50">
             <StickyHeader />
 
-            {/* Core Section Banner */}
-            <section className="relative pt-20 pb-12 overflow-hidden text-center px-4">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
-                        Media Center
-                    </span>
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-blue-900 drop-shadow-sm mb-4">
-                        Our <span className="text-red-600">Stories & Impact</span>
-                    </h1>
-                    <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                        Explore and share our journey as we work towards a brighter, more sustainable future together.
-                    </p>
-                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-red-600 rounded-full mx-auto mt-6" />
-                </motion.div>
+            {/* 1. HERO SECTION (Aligned with Programs Page) */}
+            <section className="relative w-full h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden mb-12">
+                <Image
+                    src="/headerbanner-riso.jpg"
+                    alt="Media Center Background"
+                    fill
+                    className="object-cover object-center"
+                    priority
+                />
+                <div className="absolute inset-0 bg-black/50 md:bg-black/60 flex items-center justify-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center px-4"
+                    >
+                        <span className="text-yellow-400 font-bold tracking-wider uppercase text-sm mb-3 block drop-shadow-md">
+                            Media Center
+                        </span>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-widest uppercase drop-shadow-lg mb-4 mt-2">
+                            Media
+                        </h1>
+                        <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-medium drop-shadow-md hidden md:block">
+                            Explore and share our journey as we work towards a brighter, more sustainable future together.
+                        </p>
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-red-500 rounded-full mx-auto mt-6 shadow-lg shadow-black/50" />
+                    </motion.div>
+                </div>
             </section>
 
             {/* 3 Large Sections */}

@@ -28,10 +28,10 @@ export default function About() {
                         action to create a better world.
                     </p>
                     <div className="mt-8 flex gap-4">
-                        <Button className="h-12 px-8 text-lg bg-blue-600 hover:bg-blue-700">
+                        <Button variant="secondary" size="lg">
                             Read Our Story
                         </Button>
-                        <Button variant="outline" className="h-12 px-8 text-lg">
+                        <Button variant="outline" size="lg">
                             Contact Us
                         </Button>
                     </div>
