@@ -80,27 +80,17 @@ export default function ImpactStories() {
                             <div className="h-full bg-white/5 backdrop-blur-md border border-white/10 rounded-[24px] overflow-hidden hover:bg-white/10 hover:border-white/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all duration-500 flex flex-col group-hover:-translate-y-2">
 
                                 {/* Image / Video Thumbnail Section */}
-                                <div className="relative h-64 overflow-hidden w-full bg-slate-800">
-                                    {/* Blurred Background */}
-                                    <div className="absolute inset-0 z-0">
-                                        <Image
-                                            src={story.image}
-                                            alt={story.title}
-                                            fill
-                                            className="object-cover opacity-20 blur-2xl scale-125"
-                                        />
-                                    </div>
-
+                                <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-800 rounded-t-[24px]">
                                     {/* Main Image */}
                                     <Image
                                         src={story.image}
                                         alt={story.title}
                                         fill
-                                        className="object-contain relative z-10 transition-transform duration-700 ease-out group-hover:scale-105"
+                                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                     />
 
-                                    {/* Overlay Gradient (Subtle) */}
-                                    <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent pointer-events-none" />
+                                    {/* Overlay Gradient (Subtle) for Readability */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none z-10" />
 
                                     {/* Featured Badge */}
                                     {story.featured && (

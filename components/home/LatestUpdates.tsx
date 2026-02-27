@@ -14,7 +14,7 @@ const updates = [
         date: "November 15, 2025",
         title: "RISO Library Opens 50th Reading Center",
         description: "Expanding access to quality books and learning resources for children in rural areas.",
-        image: "/library.jpg",
+        image: "/libraryopening.jpg",
         badgeGradient: "from-blue-500 to-indigo-600"
     },
     {
@@ -23,7 +23,7 @@ const updates = [
         date: "November 20, 2025",
         title: "Mobile Health Camps Reach 10,000+ Beneficiaries",
         description: "Providing essential healthcare services and medical check-ups in remote villages.",
-        image: "/community-development.jpg",
+        image: "/mobilehealth.png",
         badgeGradient: "from-red-500 to-rose-600"
     },
     {
@@ -179,27 +179,21 @@ export default function LatestUpdates() {
                                             <div className="absolute inset-0 rounded-[20px] bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
 
                                             {/* Image Section */}
-                                            <div className="relative h-64 overflow-hidden z-10 rounded-t-[20px] bg-gray-100 group-hover:bg-gray-200 transition-colors">
-                                                {/* Blurred Background Layer for "Fill" effect */}
-                                                <div className="absolute inset-0 z-0">
-                                                    <Image
-                                                        src={item.image}
-                                                        alt={item.title}
-                                                        fill
-                                                        className="object-cover opacity-30 blur-xl scale-110"
-                                                    />
-                                                </div>
-
-                                                {/* Main Image - Contained & Full Visible */}
+                                            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-[20px]">
                                                 <Image
                                                     src={item.image}
                                                     alt={item.title}
                                                     fill
-                                                    className="object-contain relative z-10 p-2 transition-transform duration-700 ease-out group-hover:scale-105"
+                                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                                 />
 
+                                                {/* Soft gradient overlay for readability */}
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+
                                                 {/* Category Badge */}
-                                                <div className={`absolute top-5 left-5 z-20 px-4 py-1.5 rounded-full text-[11px] font-bold text-white uppercase tracking-wider shadow-lg bg-gradient-to-r ${item.badgeGradient} group-hover:brightness-110 transition-all transform group-hover:scale-105`}>
+                                                <div
+                                                    className={`absolute top-5 left-5 z-20 px-4 py-1.5 rounded-full text-[11px] font-bold text-white uppercase tracking-wider shadow-lg bg-gradient-to-r ${item.badgeGradient} group-hover:brightness-110 transition-all transform group-hover:scale-105`}
+                                                >
                                                     {item.category}
                                                 </div>
                                             </div>

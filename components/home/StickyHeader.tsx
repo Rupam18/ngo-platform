@@ -90,7 +90,7 @@ export default function StickyHeader() {
                             </a>
 
                             {/* YouTube */}
-                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
+                            <a href="https://www.youtube.com/@rostrumindiasocialorganiza5331" target="_blank" rel="noopener noreferrer"
                                 className="w-11 h-11 flex items-center justify-center rounded-full bg-black/5 backdrop-blur-md border border-black/10 text-gray-800 shadow-sm transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#A12C2C]/40 hover:text-[#A12C2C]">
                                 <Youtube size={18} />
                             </a>

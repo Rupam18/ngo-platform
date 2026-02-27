@@ -1518,3 +1518,11 @@ prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "pub
 ✓ Finished filesystem cache database compaction in 11.1s
 ✓ Compiled in 231ms
  GET / 200 in 5.7s (compile: 2.8s, render: 2.9s)
+✓ Compiled in 2.4s
+✓ Compiled in 7.6s
+✓ Compiled in 1079ms
+ GET / 200 in 8.9s (compile: 3.8s, render: 5.1s)
+ GET / 200 in 1232ms (compile: 37ms, render: 1195ms)
+✓ Compiled in 19.3s
+✓ Finished writing to filesystem cache in 10.5s
+✓ Compiled in 877ms
