@@ -8,7 +8,7 @@ export default function CTASection() {
     return (
         <section
             className="relative py-16 md:py-20 bg-fixed bg-cover bg-center overflow-hidden"
-            style={{ backgroundImage: "url('/banner.png')" }} // Replace with actual 'hands raised' image
+            style={{ backgroundImage: "url('/together.avif')" }} // Replace with actual 'hands raised' image
         >
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/60" />

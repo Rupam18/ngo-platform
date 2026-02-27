@@ -86,7 +86,7 @@ export default function CSRPartners() {
     const smoothSponsors = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
 
     return (
-        <section className="relative py-12 md:py-16 bg-gradient-to-br from-emerald-50 via-teal-50 to-blue-50 overflow-hidden">
+        <section className="relative py-12 md:py-16 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 overflow-hidden">
 
             {/* 1. Animated Particles Background */}
             <div className="absolute inset-0 pointer-events-none">
@@ -122,7 +122,7 @@ export default function CSRPartners() {
                 <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-blue-50 to-transparent z-20" />
 
                 {/* Moving Track */}
-                <div className="flex w-max animate-premium-scroll hover:[animation-play-state:paused] py-10">
+                <div className="flex w-max animate-premium-scroll py-10">
                     {smoothSponsors.map((partner, index) => (
                         <div
                             key={`${partner.name}-${index}`}
@@ -132,9 +132,17 @@ export default function CSRPartners() {
                                 whileHover={{
                                     scale: 1.05,
                                     y: -8,
-                                    boxShadow: "0 20px 40px -5px rgba(59, 130, 246, 0.15)"
+                                    boxShadow: "0 20px 40px -5px rgba(59, 130, 246, 0.25)"
                                 }}
-                                className="group relative bg-white/80 backdrop-blur-xl rounded-2xl p-8 h-40 flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/60 hover:border-blue-200/50 transition-all duration-500 cursor-pointer"
+                                onMouseEnter={(e) => {
+                                    const track = e.currentTarget.closest(".animate-premium-scroll") as HTMLElement;
+                                    if (track) track.style.animationPlayState = "paused";
+                                }}
+                                onMouseLeave={(e) => {
+                                    const track = e.currentTarget.closest(".animate-premium-scroll") as HTMLElement;
+                                    if (track) track.style.animationPlayState = "running";
+                                }}
+                                className="group relative bg-white rounded-2xl p-8 h-40 flex items-center justify-center shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer hover:bg-gradient-to-br hover:from-blue-50 hover:to-purple-50"
                             >
                                 {/* Shine Effect on Hover */}
                                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/0 via-white/50 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -144,7 +152,7 @@ export default function CSRPartners() {
                                         src={partner.logo}
                                         alt={partner.name}
                                         fill
-                                        className="object-contain p-2 grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all duration-500 will-change-transform"
+                                        className="object-contain p-2 transition-all duration-500 will-change-transform group-hover:drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]"
                                     />
                                 </div>
                             </motion.div>
