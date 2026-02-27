@@ -37,7 +37,7 @@ const whatWeDo = [
     {
         icon: <Users size={32} />,
         title: "Women Empowerment",
-        description: "Creating opportunities for women to be self-reliant and financially independent.",
+        description: "Creating opportunities for women to be self-reliant.",
         color: "bg-pink-100 text-pink-600",
         image: "/women.avif"
     },
@@ -279,8 +279,8 @@ export default function KeyInitiatives() {
                                     viewport={{ once: true }}
                                     whileHover={!isExpanded ? { scale: 1.02, translateY: -8 } : {}}
                                     className={`group relative rounded-2xl p-8 overflow-hidden 
-                                    bg-white/60 backdrop-blur-xl border border-white/60
-                                    shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(37,99,235,0.15)] 
+                                    bg-white/60 backdrop-blur-xl
+                                    shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(37,99,235,0.25)] hover:-translate-y-2
                                     transition-all duration-500 snap-center cursor-pointer flex flex-col justify-between
                                     ${isExpanded ? 'min-w-[400px] md:min-w-[500px] bg-white ring-2 ring-blue-100' : 'min-w-[320px] md:min-w-[360px] h-[450px]'}
                                     `}
@@ -397,8 +397,6 @@ export default function KeyInitiatives() {
                                         </div>
                                     </div>
 
-                                    {/* Glow Border Effect */}
-                                    <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-blue-400/30 transition-colors duration-500 pointer-events-none z-20" />
                                 </motion.div>
                             );
                         })}

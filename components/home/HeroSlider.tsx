@@ -21,7 +21,7 @@ const slides = [
     },
     {
         id: 3,
-        image: "/with-text-3.png",
+        image: "/herosec1.jpg",
         text: "Together We Can Change Lives",
         highlights: ["Change Lives"],
     },
@@ -126,7 +126,7 @@ export default function HeroSlider() {
     };
 
     return (
-        <section className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden bg-gray-900 group">
+        <section className="relative w-full h-[400px] md:h-[450px] lg:h-[550px] overflow-hidden bg-gray-900 group">
 
             {/* 1. BACKGROUND LAYER (Cinematic Zoom) */}
             <AnimatePresence mode="wait">

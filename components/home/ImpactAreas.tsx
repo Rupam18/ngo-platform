@@ -101,12 +101,11 @@ export default function ImpactAreas() {
                                     onMouseEnter={() => setActiveIndex(index)}
                                     onMouseLeave={() => setActiveIndex(null)}
                                     className={`
-                                    relative p-4 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer
-                                    ${activeIndex === index ? 'ring-2 ring-offset-2 scale-[1.02]' : ''}
+                                    relative p-4 rounded-2xl bg-white border border-gray-100/80 transition-all duration-300 group cursor-pointer
+                                    ${activeIndex === index ? 'shadow-[0_20px_60px_rgba(37,99,235,0.25)] -translate-y-2' : 'shadow-sm hover:shadow-[0_20px_60px_rgba(37,99,235,0.25)] hover:-translate-y-2'}
                                 `}
                                     style={{
-                                        // Dynamic border color on active
-                                        borderColor: activeIndex === index ? item.color : 'transparent'
+                                        borderColor: activeIndex === index ? item.color : ''
                                     }}
                                 >
                                     <div className="flex items-center justify-between mb-3">

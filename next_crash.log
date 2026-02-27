@@ -1465,3 +1465,56 @@ prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "pub
  GET / 200 in 2.4s (compile: 154ms, render: 2.2s)
  GET / 200 in 2.1s (compile: 129ms, render: 2.0s)
  GET / 200 in 1010ms (compile: 41ms, render: 969ms)
+✓ Compiled in 6s
+✓ Compiled in 271ms
+✓ Compiled in 282ms
+✓ Compiled in 124ms
+✓ Compiled in 105ms
+✓ Compiled in 70ms
+ GET /about 200 in 7.3s (compile: 6.9s, render: 418ms)
+✓ Compiled in 3.4s
+✓ Compiled in 62ms
+ GET / 200 in 5.4s (compile: 2.3s, render: 3.0s)
+✓ Compiled in 5.7s
+ GET / 200 in 19.4s (compile: 13.0s, render: 6.4s)
+ GET /about 200 in 361ms (compile: 196ms, render: 166ms)
+ GET / 200 in 1267ms (compile: 43ms, render: 1225ms)
+✓ Compiled in 7.2s
+✓ Finished writing to filesystem cache in 11.0s
+✓ Compiled in 3.1s
+✓ Finished filesystem cache database compaction in 10.7s
+✓ Compiled in 1573ms
+ GET /inkind-donation 200 in 9.5s (compile: 8.8s, render: 643ms)
+ GET / 200 in 3.5s (compile: 401ms, render: 3.1s)
+✓ Compiled in 3.1s
+✓ Compiled in 76ms
+ GET /about 200 in 2.5s (compile: 2.3s, render: 196ms)
+ GET /programs 200 in 1390ms (compile: 1325ms, render: 65ms)
+ GET /media 200 in 2.2s (compile: 538ms, render: 1652ms)
+ GET /media 200 in 1635ms (compile: 8ms, render: 1627ms)
+ GET /contact 200 in 1303ms (compile: 1247ms, render: 56ms)
+ GET / 200 in 3.1s (compile: 294ms, render: 2.8s)
+✓ Compiled in 2.6s
+✓ Compiled in 60ms
+ GET / 200 in 6.9s (compile: 1851ms, render: 5.0s)
+✓ Compiled in 2.2s
+✓ Compiled in 1161ms
+✓ Finished filesystem cache database compaction in 11.8s
+✓ Compiled in 1538ms
+✓ Compiled in 1279ms
+✓ Compiled in 1889ms
+✓ Compiled in 4.2s
+✓ Compiled in 1394ms
+✓ Compiled in 607ms
+✓ Compiled in 947ms
+ GET /about 200 in 1165ms (compile: 529ms, render: 637ms)
+ GET / 200 in 2.8s (compile: 4ms, render: 2.8s)
+ GET / 200 in 2.9s (compile: 14ms, render: 2.9s)
+ GET / 200 in 5.9s (compile: 2.7s, render: 3.1s)
+✓ Compiled in 1308ms
+✓ Compiled in 9.1s
+✓ Finished filesystem cache database compaction in 21.0s
+✓ Compiled in 2.5s
+✓ Finished filesystem cache database compaction in 11.1s
+✓ Compiled in 231ms
+ GET / 200 in 5.7s (compile: 2.8s, render: 2.9s)

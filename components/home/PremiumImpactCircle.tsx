@@ -100,7 +100,7 @@ export default function PremiumImpactCircle() {
                 </motion.svg>
 
                 {/* 4. Center Dynamic Content (AnimatePresence for smooth swap) */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-10 pointer-events-none z-20 text-center">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 text-center">
                     <AnimatePresence mode="wait">
                         {activeSegment ? (
                             // HOVER STATE: Show Stats
@@ -126,22 +126,19 @@ export default function PremiumImpactCircle() {
                             // DEFAULT STATE: Show Logo
                             <motion.div
                                 key="logo"
-                                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.8, y: -10 }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
-                                className="relative w-32 h-32 md:w-44 md:h-44 bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/60 shadow-inner group"
+                                className="relative w-[58%] h-[58%] bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center shadow-[inset_0_0_30px_rgba(0,0,0,0.05)] group"
                             >
-                                <div className="relative w-24 h-24 md:w-32 md:h-32 animate-pulse-slow">
+                                <div className="relative w-[85%] h-[85%] animate-pulse-slow">
                                     <Image
                                         src="/RISO_LOGO_Final2.png"
                                         alt="RISO Logo"
                                         fill
-                                        className="object-contain drop-shadow-sm opacity-90 group-hover:opacity-100 transition-opacity"
+                                        className="object-contain drop-shadow-md opacity-90 group-hover:opacity-100 transition-opacity"
                                     />
-                                </div>
-                                <div className="absolute -bottom-8 w-full text-center">
-                                    <span className="text-[10px] md:text-xs font-bold text-gray-400 tracking-[0.2em] uppercase">100% Transparency</span>
                                 </div>
                             </motion.div>
                         )}
