@@ -10,7 +10,7 @@ interface FeaturedCampaignsProps {
 
 export default function FeaturedCampaigns({ campaigns }: FeaturedCampaignsProps) {
     return (
-        <section className="w-full py-16 bg-gray-50">
+        <section className="w-full py-12 md:py-16 bg-gray-50">
             <div className="max-w-7xl mx-auto px-6">
 
                 {/* Heading */}

@@ -106,7 +106,7 @@ export default function LatestUpdates() {
     };
 
     return (
-        <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden relative">
+        <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden relative">
             {/* Background Decor */}
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent pointer-events-none z-10" />
             <div className="absolute -left-20 top-40 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl pointer-events-none" />

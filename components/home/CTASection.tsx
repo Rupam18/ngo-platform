@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function CTASection() {
     return (
         <section
-            className="relative py-20 md:py-32 bg-fixed bg-cover bg-center overflow-hidden"
+            className="relative py-16 md:py-20 bg-fixed bg-cover bg-center overflow-hidden"
             style={{ backgroundImage: "url('/banner.png')" }} // Replace with actual 'hands raised' image
         >
             {/* Dark Overlay */}

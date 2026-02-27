@@ -36,7 +36,7 @@ export default function TopHeader() {
                         Donate In Kind
                     </Button>
                     <Button className="h-10 px-6 bg-red-600 hover:bg-red-700 text-white font-semibold shadow-md">
-                        Donate Now
+                        Donate NOW
                     </Button>
                 </div>
             </div>

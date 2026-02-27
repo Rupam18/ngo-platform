@@ -86,7 +86,7 @@ export default function CSRPartners() {
     const smoothSponsors = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
 
     return (
-        <section className="relative py-24 bg-gradient-to-br from-emerald-50 via-teal-50 to-blue-50 overflow-hidden">
+        <section className="relative py-12 md:py-16 bg-gradient-to-br from-emerald-50 via-teal-50 to-blue-50 overflow-hidden">
 
             {/* 1. Animated Particles Background */}
             <div className="absolute inset-0 pointer-events-none">
@@ -161,9 +161,9 @@ export default function CSRPartners() {
                 transition={{ delay: 0.5 }}
                 className="text-center mt-8 relative z-10"
             >
-                <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/50 backdrop-blur-md border border-white/60 shadow-sm text-gray-600 text-sm md:text-base">
+                <div className="inline-flex flex-wrap items-center justify-center gap-1.5 md:gap-2 px-4 md:px-6 py-3 rounded-full md:rounded-full rounded-2xl bg-white/50 backdrop-blur-md border border-white/60 shadow-sm text-gray-600 text-[13px] sm:text-sm md:text-base w-[90%] md:w-auto">
                     <span>Proudly supported by</span>
-                    <span className="text-xl font-bold text-blue-600"><SimpleCounter to={50} />+</span>
+                    <span className="text-lg md:text-xl font-bold text-blue-600"><SimpleCounter to={50} />+</span>
                     <span>CSR partners across India</span>
                 </div>
             </motion.div>

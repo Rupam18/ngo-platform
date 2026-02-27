@@ -49,7 +49,7 @@ export default function ImpactAreas() {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     return (
-        <section className="relative z-0 mt-0 pt-[120px] pb-[120px] bg-gradient-to-b from-gray-50/50 via-white to-white overflow-hidden" id="impact">
+        <section className="relative z-0 py-12 md:py-16 bg-gradient-to-b from-gray-50/50 via-white to-white overflow-hidden" id="impact">
             {/* Divider / Separation */}
             {/* <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" /> */}
             <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-white to-transparent pointer-events-none" />

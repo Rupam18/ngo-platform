@@ -105,7 +105,7 @@ export default function Hero() {
                     href="/donate"
                     className="inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-bold rounded-lg px-6 py-3 shadow-lg text-lg"
                   >
-                    DONATE
+                    DONATE 
                   </Link>
                 </motion.div>
 

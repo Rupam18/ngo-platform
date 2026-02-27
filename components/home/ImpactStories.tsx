@@ -28,7 +28,7 @@ const stories = [
 
 export default function ImpactStories() {
     return (
-        <section className="relative py-24 bg-slate-900 overflow-hidden">
+        <section className="relative py-12 md:py-16 bg-slate-900 overflow-hidden">
             {/* Background with Dark Blue Gradient Overlay & Blur */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-slate-900/95 to-slate-900 z-0" />
 

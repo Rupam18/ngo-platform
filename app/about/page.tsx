@@ -98,13 +98,36 @@ export default function AboutPage() {
                         {/* Buttons */}
                         <div className="flex flex-wrap gap-4 pt-4">
                             <Link href="/programs">
-                                <Button className="bg-blue-800 hover:bg-blue-900 text-white font-bold px-8 py-6 rounded-xl flex items-center gap-2 shadow-lg hover:shadow-xl transition-all group">
-                                    KNOW MORE <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                                </Button>
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <Button className="relative h-14 px-8 bg-gradient-to-r from-blue-900 to-blue-700 hover:from-blue-800 hover:to-blue-600 text-white font-bold text-lg rounded-full shadow-[0_10px_20px_rgba(30,58,138,0.3)] hover:shadow-[0_15px_30px_rgba(30,58,138,0.4)] transition-all flex items-center gap-3 overflow-hidden group">
+                                        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                                        <span className="relative z-10">KNOW MORE</span>
+                                        <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+                                    </Button>
+                                </motion.div>
                             </Link>
-                            <Button variant="outline" className="border-2 border-blue-800 text-blue-800 font-bold px-8 py-6 rounded-xl flex items-center gap-2 hover:bg-blue-50 transition-all">
-                                ANNUAL REPORT <Download size={20} />
-                            </Button>
+
+                            <Link href="/reports">
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <Button variant="outline" className="h-14 px-8 border-2 border-blue-900 text-blue-900 font-bold text-lg rounded-full hover:bg-blue-50 transition-all flex items-center gap-3 group shadow-md hover:shadow-lg">
+                                        ANNUAL REPORT
+                                        <motion.div
+                                            variants={{
+                                                hover: { y: [0, -4, 0], transition: { repeat: Infinity, duration: 1.5 } }
+                                            }}
+                                            whileHover="hover"
+                                        >
+                                            <Download size={20} className="group-hover:text-blue-700" />
+                                        </motion.div>
+                                    </Button>
+                                </motion.div>
+                            </Link>
                         </div>
                     </div>
 

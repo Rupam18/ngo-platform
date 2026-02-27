@@ -38,9 +38,7 @@ export default async function Home() {
     <main className="min-h-screen bg-white">
       <StickyHeader />
       <HeroSlider />
-      <div className="mt-16">
-        <AboutRiso />
-      </div>
+      <AboutRiso />
       <FeaturedCampaigns campaigns={activeCampaigns} />
       <ImpactStats />
       <ImpactAreas />

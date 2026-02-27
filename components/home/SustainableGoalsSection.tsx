@@ -66,7 +66,7 @@ const sdgGoals = [
 
 export default function SustainableGoalsSection() {
     return (
-        <section className="relative py-24 overflow-hidden bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white">
+        <section className="relative py-12 md:py-16 overflow-hidden bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-white">
 
             {/* Soft Multicolor Gradient Overlay */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-500/20 via-purple-500/20 to-transparent opacity-60 mix-blend-overlay pointer-events-none" />

@@ -50,7 +50,7 @@ export default function StickyHeader() {
                 {/* =======================
                TOP ROW: Logo + Actions
                ======================= */}
-                <div className={`max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 flex items-center justify-between transition-all duration-300 ${isScrolled ? "py-2" : "py-3"
+                <div className={`w-full px-4 md:px-6 lg:px-8 flex items-center justify-between transition-all duration-300 ${isScrolled ? "py-2" : "py-3"
                     }`}>
                     {/* LOGO */}
                     <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
@@ -101,10 +101,10 @@ export default function StickyHeader() {
                BOTTOM ROW: Menu + Contact
                ======================= */}
                 <div className="hidden xl:block border-t border-gray-100">
-                    <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 py-3 flex justify-between items-center">
+                    <div className="w-full px-4 lg:px-8 py-3 flex justify-between items-center">
 
                         {/* NAV LINKS */}
-                        <nav className="flex gap-8">
+                        <nav className="flex gap-5">
                             {navLinks.map((link) => {
                                 const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
                                 return (

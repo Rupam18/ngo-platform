@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function AboutRiso() {
     return (
-        <section className="py-20 md:py-24 bg-white overflow-hidden relative">
+        <section className="py-12 md:py-16 bg-white overflow-hidden relative">
             <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
 
                 {/* CENTERED HEADING */}
