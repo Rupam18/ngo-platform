@@ -40,7 +40,7 @@ export default function MediaHubPage() {
             <StickyHeader />
 
             {/* 1. HERO SECTION (Aligned with Programs Page) */}
-            <section className="relative w-full h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden mb-12">
+            <section className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden mb-12">
                 <Image
                     src="/headerbanner-riso.jpg"
                     alt="Media Center Background"

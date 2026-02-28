@@ -19,7 +19,7 @@ export default function AboutPage() {
             <StickyHeader />
 
             {/* 1. HERO SECTION (Aligned with Programs Page) */}
-            <section className="relative w-full h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden">
+            <section className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden">
                 <Image
                     src="/headerbanner-riso.jpg"
                     alt="About Us Background"
@@ -56,7 +56,7 @@ export default function AboutPage() {
                     </svg>
                 </div>
 
-                <div className="max-w-[1440px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center mt-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mt-12 md:mt-16">
 
                     {/* LEFT CONTENT */}
                     <div className="space-y-8">

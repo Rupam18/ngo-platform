@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Facebook, Twitter, Youtube, Mail, Phone, MessageCircle, MapPin } from "lucide-react";
+import { Facebook, Twitter, Youtube, Mail, Phone, MessageCircle, MapPin, ChevronRight } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -40,7 +40,11 @@ export default function Footer() {
                             { name: 'Donate', path: '/donate' }
                         ].map((item) => (
                             <li key={item.name}>
-                                <Link href={item.path} className="hover:text-yellow-400 transition-colors">
+                                <Link
+                                    href={item.path}
+                                    className="group flex items-center gap-2 hover:text-yellow-400 transition-colors"
+                                >
+                                    <ChevronRight className="w-4 h-4 text-blue-500 group-hover:text-yellow-400 group-hover:translate-x-1 transition-all" />
                                     {item.name}
                                 </Link>
                             </li>

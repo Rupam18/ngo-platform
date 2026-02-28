@@ -97,7 +97,7 @@ export default function ProgramsSection() {
     const currentTabInfo = programsData.find((p) => p.id === activeTab) || programsData[0];
 
     return (
-        <section className="py-16 md:py-24 bg-gray-50/50 relative overflow-hidden">
+        <section className="pt-10 md:pt-16 pb-16 md:pb-24 bg-gray-50/50 relative overflow-hidden">
             <div className="max-w-[1240px] mx-auto px-4 md:px-8">
 
                 {/* Tabs Row */}

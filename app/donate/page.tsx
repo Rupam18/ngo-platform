@@ -16,12 +16,12 @@ export default function DonatePage() {
         <main className="min-h-screen flex flex-col bg-gray-50/50">
             <StickyHeader />
 
-            {/* Cinematic Hero Section */}
-            <section className="relative h-[400px] flex items-center justify-center text-white mt-16 overflow-hidden">
+            {/* Cinematic Hero Section (Aligned with consistent banners) */}
+            <section className="relative w-full h-[250px] md:h-[300px] lg:h-[400px] flex items-center justify-center text-white mt-16 overflow-hidden">
                 <Image
-                    src="/joy-of-giving.jpg"
+                    src="/together.avif"
                     fill
-                    className="object-cover"
+                    className="object-cover object-[center_35%]"
                     alt="Make a Donation"
                     priority
                 />

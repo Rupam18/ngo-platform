@@ -12,7 +12,7 @@ export default function ProgramsPage() {
             <StickyHeader />
 
             {/* Banner Section matching 'Our Work' visual */}
-            <section className="relative w-full h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden">
+            <section className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden">
                 <Image
                     src="/headerbanner-riso.jpg" // Safe fallback image that spans wide nicely
                     alt="Our Programs Background"

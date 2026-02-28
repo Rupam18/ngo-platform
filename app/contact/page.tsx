@@ -13,7 +13,7 @@ export default function ContactPage() {
             <StickyHeader />
 
             {/* 1. HERO SECTION (Aligned with Programs Page) */}
-            <section className="relative w-full h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden">
+            <section className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden">
                 <Image
                     src="/headerbanner-riso.jpg" // Matched to Programs Page
                     alt="Contact Us Background"
