@@ -111,34 +111,38 @@ export default function KeyInitiatives() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (!isHovered.current && sliderRef.current) {
-                // Pause auto-scroll if any card is fully expanded for reading
-                if (expandedCards.length > 0) return;
+            if (!sliderRef.current || isHovered.current || expandedCards.length > 0) return;
 
-                const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+            const slider = sliderRef.current;
+            const card = slider.firstElementChild as HTMLElement;
+            if (!card) return;
 
-                // If we reached the end (with a small 10px leniency), reset to start
-                if (Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 10) {
-                    sliderRef.current.scrollTo({ left: 0, behavior: "smooth" });
-                } else {
-                    sliderRef.current.scrollBy({ left: 350, behavior: "smooth" });
-                }
+            const cardWidth = card.offsetWidth + 24; // 24 = gap-6
+            const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+
+            // Optional: +10 buffer to avoid sub-pixel float issues preventing reset
+            if (slider.scrollLeft + cardWidth >= maxScrollLeft - 10) {
+                slider.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+                slider.scrollBy({ left: cardWidth, behavior: "smooth" });
             }
-        }, 4000); // Auto-rotate every 4 seconds
+        }, 3500); // every 3.5 sec
 
         return () => clearInterval(interval);
     }, [expandedCards]);
 
     const scrollLeft = () => {
-        if (sliderRef.current) {
-            sliderRef.current.scrollBy({ left: -350, behavior: "smooth" });
-        }
+        if (!sliderRef.current) return;
+        const card = sliderRef.current.firstElementChild as HTMLElement;
+        const cardWidth = card.offsetWidth + 24;
+        sliderRef.current.scrollBy({ left: -cardWidth, behavior: "smooth" });
     };
 
     const scrollRight = () => {
-        if (sliderRef.current) {
-            sliderRef.current.scrollBy({ left: 350, behavior: "smooth" });
-        }
+        if (!sliderRef.current) return;
+        const card = sliderRef.current.firstElementChild as HTMLElement;
+        const cardWidth = card.offsetWidth + 24;
+        sliderRef.current.scrollBy({ left: cardWidth, behavior: "smooth" });
     };
 
     const toggleExpand = (id: number) => {
@@ -172,7 +176,7 @@ export default function KeyInitiatives() {
                 </motion.div>
 
                 {/* --- WHAT WE DO (CIRCULAR IMPACT CARDS) --- */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-28 justify-items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16 justify-items-center">
                     {whatWeDo.map((item, index) => (
                         <motion.div
                             key={index}
@@ -262,8 +266,10 @@ export default function KeyInitiatives() {
 
                     <div
                         ref={sliderRef}
-                        className="flex gap-6 overflow-x-auto pb-12 scrollbar-hide snap-x snap-mandatory px-2 items-stretch min-h-[500px]"
+                        className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-2 items-stretch"
                         style={{ scrollBehavior: 'smooth' }}
+                        onTouchStart={() => isHovered.current = true}
+                        onTouchEnd={() => isHovered.current = false}
                     >
                         {keyInitiatives.map((initiative, index) => {
                             const isExpanded = expandedCards.includes(initiative.id);
@@ -282,7 +288,7 @@ export default function KeyInitiatives() {
                                     bg-white/60 backdrop-blur-xl
                                     shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(37,99,235,0.25)] hover:-translate-y-2
                                     transition-all duration-500 snap-center cursor-pointer flex flex-col justify-between
-                                    ${isExpanded ? 'min-w-[400px] md:min-w-[500px] bg-white ring-2 ring-blue-100' : 'min-w-[320px] md:min-w-[360px] h-[450px]'}
+                                    ${isExpanded ? 'min-w-[400px] md:min-w-[500px] bg-white ring-2 ring-blue-100' : 'min-w-[320px] md:min-w-[360px]'}
                                     `}
                                     onClick={() => hasFullDesc && toggleExpand(initiative.id)}
                                 >
@@ -400,6 +406,22 @@ export default function KeyInitiatives() {
                                 </motion.div>
                             );
                         })}
+                    </div>
+
+                    {/* Mobile Navigation Buttons */}
+                    <div className="flex justify-center gap-4 mt-6 md:hidden">
+                        <button
+                            onClick={scrollLeft}
+                            className="px-6 py-2 bg-blue-600 text-white rounded-full shadow-md font-medium hover:bg-blue-700 transition"
+                        >
+                            Prev
+                        </button>
+                        <button
+                            onClick={scrollRight}
+                            className="px-6 py-2 bg-blue-600 text-white rounded-full shadow-md font-medium hover:bg-blue-700 transition"
+                        >
+                            Next
+                        </button>
                     </div>
                 </div>
 

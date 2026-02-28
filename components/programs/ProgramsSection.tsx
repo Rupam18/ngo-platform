@@ -97,11 +97,11 @@ export default function ProgramsSection() {
     const currentTabInfo = programsData.find((p) => p.id === activeTab) || programsData[0];
 
     return (
-        <section className="pt-10 md:pt-16 pb-16 md:pb-24 bg-gray-50/50 relative overflow-hidden">
+        <section className="pt-4 md:pt-8 pb-16 md:pb-20 bg-gray-50/50 relative overflow-hidden">
             <div className="max-w-[1240px] mx-auto px-4 md:px-8">
 
                 {/* Tabs Row */}
-                <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-10 md:mb-16">
+                <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-6 md:mb-10">
                     {programsData.map((tab) => {
                         const isActive = activeTab === tab.id;
                         return (
@@ -110,12 +110,12 @@ export default function ProgramsSection() {
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`px-5 py-2.5 rounded-full text-[11px] md:text-sm font-bold uppercase tracking-wide transition-all duration-300 flex items-center gap-2 whitespace-nowrap shadow-sm
                                     ${isActive
-                                        ? "bg-blue-600 outline outline-2 outline-offset-2 outline-blue-600 text-white"
-                                        : "bg-white text-gray-500 hover:text-blue-600 hover:bg-blue-50 border border-gray-100"
+                                        ? "bg-primary outline outline-2 outline-offset-2 outline-primary text-white"
+                                        : "bg-white text-gray-500 hover:text-primary hover:bg-primary/5 border border-gray-100"
                                     }`}
                             >
                                 {tab.tabLabel}
-                                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white ml-0.5" />}
+                                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-secondary ml-0.5" />}
                             </button>
                         );
                     })}
@@ -137,15 +137,15 @@ export default function ProgramsSection() {
                             <div className="w-full lg:w-1/2 bg-[#f8fbfe] rounded-[1.5rem] p-8 md:p-12 relative overflow-hidden flex flex-col justify-center">
 
                                 {/* Top decorative blur circle */}
-                                <div className="absolute top-0 right-0 w-48 h-48 bg-blue-100/50 rounded-full blur-[50px] -mr-10 -mt-20 z-0 pointer-events-none" />
+                                <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-[50px] -mr-10 -mt-20 z-0 pointer-events-none" />
 
                                 <div className="relative z-10">
-                                    <h2 className="text-3xl md:text-4xl font-extrabold text-blue-900 mb-6 drop-shadow-sm">
+                                    <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6 drop-shadow-sm">
                                         {currentTabInfo.title}
                                     </h2>
 
                                     {/* Quote Block */}
-                                    <div className="bg-white shadow-sm border-l-4 border-blue-500 rounded-r-xl p-5 mb-6 relative">
+                                    <div className="bg-white shadow-sm border-l-4 border-primary rounded-r-xl p-5 mb-6 relative">
                                         <p className="italic text-gray-700 text-[15px] md:text-base font-medium leading-relaxed">
                                             {currentTabInfo.quote}
                                         </p>
@@ -160,14 +160,14 @@ export default function ProgramsSection() {
                                     <div className="space-y-4">
                                         {currentTabInfo.bullets.map((point, idx) => (
                                             <div key={idx} className="flex items-start gap-4 group">
-                                                <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-blue-600 transition-colors">
+                                                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-primary transition-colors">
                                                     <svg
                                                         width="14"
                                                         height="14"
                                                         viewBox="0 0 24 24"
                                                         fill="none"
                                                         stroke="currentColor"
-                                                        className="text-blue-600 group-hover:text-white transition-colors"
+                                                        className="text-primary group-hover:text-white transition-colors"
                                                         strokeWidth="3"
                                                         strokeLinecap="round"
                                                         strokeLinejoin="round"
@@ -196,14 +196,14 @@ export default function ProgramsSection() {
                                     />
                                 </div>
 
-                                <div className="bg-blue-700 text-white text-center py-8 px-6 relative overflow-hidden">
+                                <div className="bg-primary text-white text-center py-8 px-6 relative overflow-hidden">
                                     {/* Subtle gradient shine */}
-                                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-blue-400/20 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]" />
+                                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]" />
 
                                     <div className="text-4xl md:text-5xl font-extrabold mb-2 relative z-10">
                                         {currentTabInfo.statValue}
                                     </div>
-                                    <div className="text-xs md:text-sm font-bold tracking-widest uppercase text-blue-100 relative z-10">
+                                    <div className="text-xs md:text-sm font-bold tracking-widest uppercase text-white/80 relative z-10">
                                         {currentTabInfo.statLabel}
                                     </div>
                                 </div>

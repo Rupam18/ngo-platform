@@ -1805,3 +1805,192 @@ prisma:query SELECT "public"."Donation"."id", "public"."Donation"."amount", "pub
  GET /dashboard/compliance 200 in 78ms (compile: 23ms, render: 55ms)
  GET /dashboard/settings 200 in 64ms (compile: 28ms, render: 36ms)
  GET / 200 in 2.9s (compile: 138ms, render: 2.8s)
+ GET /about 200 in 1786ms (compile: 389ms, render: 1397ms)
+ GET /programs 200 in 257ms (compile: 76ms, render: 181ms)
+ GET /media 200 in 215ms (compile: 63ms, render: 152ms)
+ GET /contact 200 in 213ms (compile: 82ms, render: 131ms)
+ GET / 200 in 3.2s (compile: 323ms, render: 2.8s)
+✓ Compiled in 5.9s
+ GET /about 200 in 436ms (compile: 130ms, render: 306ms)
+ GET /programs 200 in 164ms (compile: 37ms, render: 127ms)
+ GET /about 200 in 89ms (compile: 30ms, render: 59ms)
+ GET / 200 in 5.5s (compile: 4.9s, render: 638ms)
+ GET / 200 in 1947ms (compile: 9ms, render: 1938ms)
+ GET / 200 in 2.0s (compile: 4ms, render: 2.0s)
+ GET /about 200 in 93ms (compile: 23ms, render: 69ms)
+ GET / 200 in 576ms (compile: 42ms, render: 534ms)
+ GET /about 200 in 57ms (compile: 23ms, render: 34ms)
+ GET /programs 200 in 48ms (compile: 14ms, render: 33ms)
+ GET /media 200 in 74ms (compile: 42ms, render: 32ms)
+✓ Compiled in 1537ms
+ GET / 200 in 4.0s (compile: 3.4s, render: 633ms)
+✓ Compiled in 1220ms
+✓ Compiled in 2.5s
+✓ Compiled in 1911ms
+ GET / 200 in 12.7s (compile: 6.3s, render: 6.4s)
+ GET / 200 in 536ms (compile: 23ms, render: 513ms)
+✓ Compiled in 4.5s
+✓ Compiled in 162ms
+ GET /about 200 in 1040ms (compile: 468ms, render: 572ms)
+ GET /programs 200 in 233ms (compile: 91ms, render: 142ms)
+✓ Compiled in 2.1s
+✓ Compiled in 1518ms
+✓ Compiled in 1043ms
+ GET /donate 200 in 834ms (compile: 346ms, render: 488ms)
+✓ Compiled in 2.2s
+✓ Compiled in 2.3s
+✓ Compiled in 3.8s
+ GET /inkind-donation 200 in 860ms (compile: 418ms, render: 442ms)
+ GET / 200 in 3.6s (compile: 26ms, render: 3.6s)
+ GET / 200 in 11.4s (compile: 7.0s, render: 4.4s)
+✓ Compiled in 6.3s
+✓ Finished filesystem cache database compaction in 24.0s
+ GET /inkind-donation 200 in 11.2s (compile: 10.2s, render: 971ms)
+✓ Compiled in 2.5s
+✓ Compiled in 329ms
+✓ Compiled in 1866ms
+ GET /donate 200 in 4.3s (compile: 4.0s, render: 277ms)
+ GET /inkind-donation 200 in 447ms (compile: 385ms, render: 62ms)
+ GET / 200 in 2.9s (compile: 43ms, render: 2.9s)
+ GET /volunteer 200 in 412ms (compile: 304ms, render: 107ms)
+✓ Compiled in 5.6s
+✓ Compiled in 3.1s
+ GET /volunteer 200 in 9.5s (compile: 7.7s, render: 1774ms)
+ GET /dashboard/settings 200 in 581ms (compile: 166ms, render: 415ms)
+✓ Compiled in 661ms
+✓ Compiled in 3.6s
+ GET /volunteer 200 in 5.2s (compile: 4.9s, render: 318ms)
+ GET /dashboard/settings 200 in 5.0s (compile: 4.9s, render: 107ms)
+✓ Compiled in 639ms
+✓ Compiled in 896ms
+✓ Compiled in 96ms
+✓ Compiled in 1526ms
+✓ Finished filesystem cache database compaction in 11.0s
+✓ Compiled in 848ms
+✓ Compiled in 110ms
+✓ Compiled in 109ms
+✓ Compiled in 882ms
+✓ Compiled in 95ms
+✓ Compiled in 87ms
+✓ Compiled in 106ms
+✓ Compiled in 209ms
+✓ Compiled in 109ms
+✓ Compiled in 250ms
+✓ Compiled in 104ms
+✓ Compiled in 192ms
+✓ Compiled in 231ms
+✓ Compiled in 107ms
+✓ Compiled in 86ms
+✓ Compiled in 185ms
+✓ Compiled in 146ms
+✓ Compiled in 415ms
+✓ Compiled in 366ms
+✓ Compiled in 129ms
+✓ Compiled in 848ms
+✓ Compiled in 579ms
+✓ Compiled in 112ms
+ GET /contact 200 in 885ms (compile: 389ms, render: 496ms)
+✓ Compiled in 5s
+ GET /media 200 in 815ms (compile: 364ms, render: 451ms)
+ GET /contact 200 in 6.9s (compile: 6.5s, render: 409ms)
+ GET / 200 in 2.9s (compile: 137ms, render: 2.8s)
+ GET / 200 in 559ms (compile: 34ms, render: 525ms)
+ GET / 200 in 273ms (compile: 7ms, render: 266ms)
+ GET / 200 in 325ms (compile: 12ms, render: 313ms)
+ GET / 200 in 276ms (compile: 7ms, render: 269ms)
+ GET / 200 in 254ms (compile: 12ms, render: 242ms)
+ GET / 200 in 252ms (compile: 6ms, render: 247ms)
+ GET / 200 in 509ms (compile: 39ms, render: 469ms)
+ GET / 200 in 639ms (compile: 72ms, render: 567ms)
+✓ Compiled in 1734ms
+✓ Compiled in 1880ms
+✓ Compiled in 1527ms
+ GET / 200 in 8.0s (compile: 7.2s, render: 773ms)
+ GET /dashboard/settings 200 in 454ms (compile: 92ms, render: 362ms)
+✓ Compiled in 1126ms
+✓ Compiled in 248ms
+✓ Compiled in 787ms
+✓ Compiled in 584ms
+✓ Compiled in 1064ms
+✓ Compiled in 6.9s
+✓ Finished writing to filesystem cache in 10.0s
+ GET /dashboard/settings 200 in 16.2s (compile: 15.7s, render: 476ms)
+ GET / 200 in 16.5s (compile: 13.6s, render: 2.9s)
+✓ Finished filesystem cache database compaction in 10.9s
+✓ Compiled in 1386ms
+✓ Compiled in 4.6s
+✓ Compiled in 307ms
+✓ Compiled in 1362ms
+✓ Compiled in 1007ms
+✓ Compiled in 1930ms
+✓ Compiled in 5.7s
+✓ Compiled in 604ms
+✓ Compiled in 1120ms
+✓ Compiled in 2.1s
+✓ Compiled in 1158ms
+✓ Compiled in 1486ms
+✓ Finished filesystem cache database compaction in 25.9s
+✓ Finished writing to filesystem cache in 20.6s
+✓ Compiled in 305ms
+✓ Compiled in 658ms
+✓ Compiled in 224ms
+✓ Compiled in 1118ms
+✓ Compiled in 1058ms
+✓ Compiled in 291ms
+✓ Compiled in 423ms
+✓ Compiled in 567ms
+✓ Compiled in 1392ms
+✓ Compiled in 362ms
+✓ Compiled in 331ms
+✓ Compiled in 842ms
+✓ Finished filesystem cache database compaction in 18.8s
+✓ Finished writing to filesystem cache in 15.3s
+✓ Compiled in 1532ms
+✓ Compiled in 1824ms
+✓ Compiled in 382ms
+✓ Compiled in 1216ms
+ GET /about 200 in 10.2s (compile: 9.4s, render: 755ms)
+ GET / 200 in 4.0s (compile: 938ms, render: 3.0s)
+ GET /about 200 in 193ms (compile: 74ms, render: 120ms)
+ GET /programs 200 in 591ms (compile: 540ms, render: 51ms)
+ GET /media 200 in 585ms (compile: 517ms, render: 68ms)
+ GET /contact 200 in 587ms (compile: 525ms, render: 62ms)
+ GET /donate 200 in 545ms (compile: 501ms, render: 44ms)
+ GET /inkind-donation 200 in 468ms (compile: 432ms, render: 36ms)
+ GET /donate 200 in 49ms (compile: 18ms, render: 31ms)
+ GET /inkind-donation 200 in 78ms (compile: 18ms, render: 60ms)
+ GET /media 200 in 106ms (compile: 37ms, render: 69ms)
+ GET /programs 200 in 251ms (compile: 32ms, render: 219ms)
+ GET /about 200 in 224ms (compile: 25ms, render: 199ms)
+ GET / 200 in 2.7s (compile: 34ms, render: 2.6s)
+ GET /donate 200 in 197ms (compile: 98ms, render: 99ms)
+ GET / 200 in 682ms (compile: 52ms, render: 630ms)
+ GET /volunteer 200 in 1038ms (compile: 828ms, render: 210ms)
+ GET / 200 in 534ms (compile: 20ms, render: 514ms)
+ GET /donate 200 in 90ms (compile: 24ms, render: 67ms)
+✓ Compiled in 6s
+ GET / 200 in 21.3s (compile: 15.1s, render: 6.3s)
+✓ Compiled in 5.6s
+✓ Finished writing to filesystem cache in 36.3s
+✓ Finished filesystem cache database compaction in 11.9s
+ GET /donate 200 in 14.8s (compile: 14.1s, render: 625ms)
+✓ Compiled in 4.2s
+✓ Compiled in 590ms
+✓ Compiled in 1435ms
+ GET /donate 200 in 7.3s (compile: 6.7s, render: 645ms)
+ GET /dashboard/settings 200 in 7.2s (compile: 7.0s, render: 240ms)
+✓ Compiled in 653ms
+✓ Compiled in 690ms
+✓ Compiled in 4.6s
+✓ Compiled in 1222ms
+✓ Compiled in 745ms
+✓ Finished filesystem cache database compaction in 13.1s
+ GET / 200 in 4.6s (compile: 608ms, render: 4.0s)
+ GET /donate 200 in 7.0s (compile: 6.7s, render: 276ms)
+ GET /contact 200 in 5.1s (compile: 4.8s, render: 332ms)
+ GET /media 200 in 738ms (compile: 676ms, render: 62ms)
+ GET /donate 200 in 143ms (compile: 53ms, render: 89ms)
+✓ Compiled in 1592ms
+ GET /contact 200 in 640ms (compile: 288ms, render: 352ms)
+ GET /programs 200 in 3.8s (compile: 3.6s, render: 142ms)
+✓ Compiled in 4s

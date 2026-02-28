@@ -1,6 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { motion } from "framer-motion"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -8,18 +11,51 @@ import { Button } from "@/components/ui/button"
 import StickyHeader from "@/components/home/StickyHeader"
 import Footer from "@/components/home/Footer"
 
+const inKindSchema = z.object({
+    firstName: z.string().min(2, "First name is required").regex(/^[A-Za-z\s]+$/, "Only letters are allowed"),
+    lastName: z.string().regex(/^[A-Za-z\s]*$/, "Only letters are allowed").optional(),
+    email: z.string().email("Enter valid email"),
+    phone: z.string().regex(/^[6-9]\d{9}$/, "Enter valid 10-digit Indian number"),
+    address: z.string().min(10, "Pickup address is required"),
+    subject: z.string().min(1, "Please select donation purpose"),
+    clothes: z.number().int().min(0).optional(),
+    books: z.number().int().min(0).optional(),
+    raddi: z.number().int().min(0).optional(),
+    grains: z.number().int().min(0).optional(),
+    stationery: z.number().int().min(0).optional(),
+    computers: z.number().int().min(0).optional(),
+    otherItems: z.string().optional(),
+    message: z.string().optional(),
+}).refine((data) => {
+    return (
+        (data.clothes ?? 0) > 0 ||
+        (data.books ?? 0) > 0 ||
+        (data.raddi ?? 0) > 0 ||
+        (data.grains ?? 0) > 0 ||
+        (data.stationery ?? 0) > 0 ||
+        (data.computers ?? 0) > 0 ||
+        (data.otherItems && data.otherItems.trim().length > 0)
+    );
+}, {
+    message: "Please add at least one donation item",
+    path: ["clothes"]
+});
+
+type InKindFormData = z.infer<typeof inKindSchema>;
+
 export default function InKindDonation() {
-    const [formData, setFormData] = useState({})
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isValid },
+    } = useForm<InKindFormData>({
+        resolver: zodResolver(inKindSchema),
+        mode: "onChange",
+    })
 
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-    }
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        console.log(formData)
+    const onSubmit = (data: InKindFormData) => {
+        console.log("Validated In-Kind Donation:", data)
+        // 🔥 Send to backend / store in DB
     }
 
     return (
@@ -101,31 +137,69 @@ export default function InKindDonation() {
                             Donation <span className="text-blue-600">In-Kind Form</span>
                         </h2>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 
                             {/* Section 1: Donor Info */}
                             <div className="grid md:grid-cols-2 gap-6">
-                                <input name="firstName" placeholder="First Name" className="premium-input font-medium" onChange={handleChange as any} required />
-                                <input name="lastName" placeholder="Last Name" className="premium-input font-medium" onChange={handleChange as any} required />
-                                <input name="email" type="email" placeholder="Email Address" className="premium-input font-medium" onChange={handleChange as any} required />
-                                <input name="mobile" placeholder="Phone Number" className="premium-input font-medium" onChange={handleChange as any} required />
+                                <div>
+                                    <input
+                                        {...register("firstName")}
+                                        placeholder="First Name"
+                                        className={`premium-input font-medium w-full ${errors.firstName ? "border-red-500" : ""}`}
+                                    />
+                                    {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>}
+                                </div>
+                                <div>
+                                    <input
+                                        {...register("lastName")}
+                                        placeholder="Last Name (Optional)"
+                                        className={`premium-input font-medium w-full ${errors.lastName ? "border-red-500" : ""}`}
+                                    />
+                                    {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>}
+                                </div>
+                                <div>
+                                    <input
+                                        type="email"
+                                        {...register("email")}
+                                        placeholder="Email Address"
+                                        className={`premium-input font-medium w-full ${errors.email ? "border-red-500" : ""}`}
+                                    />
+                                    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+                                </div>
+                                <div>
+                                    <input
+                                        type="tel"
+                                        {...register("phone")}
+                                        placeholder="Phone Number"
+                                        className={`premium-input font-medium w-full ${errors.phone ? "border-red-500" : ""}`}
+                                    />
+                                    {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>}
+                                </div>
 
-                                <textarea
-                                    name="address"
-                                    placeholder="Detailed Pickup Address"
-                                    rows={3}
-                                    className="premium-input md:col-span-2 font-medium resize-none"
-                                    onChange={handleChange as any}
-                                    required
-                                />
+                                <div className="md:col-span-2">
+                                    <textarea
+                                        {...register("address")}
+                                        placeholder="Detailed Pickup Address"
+                                        rows={3}
+                                        className={`premium-input font-medium resize-none w-full ${errors.address ? "border-red-500" : ""}`}
+                                    />
+                                    {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address.message}</p>}
+                                </div>
 
-                                <input
-                                    name="subject"
-                                    placeholder="Donation Purpose (Subject)"
-                                    className="premium-input md:col-span-2 font-medium"
-                                    onChange={handleChange as any}
-                                    required
-                                />
+                                <div className="md:col-span-2">
+                                    <select
+                                        {...register("subject")}
+                                        className={`premium-input font-medium w-full ${errors.subject ? "border-red-500" : ""}`}
+                                    >
+                                        <option value="">Select Donation Purpose</option>
+                                        <option value="education">Child Education Support</option>
+                                        <option value="health">Healthcare Assistance</option>
+                                        <option value="community">Community Welfare</option>
+                                        <option value="digital">Digital Empowerment</option>
+                                        <option value="general">General NGO Support</option>
+                                    </select>
+                                    {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>}
+                                </div>
                             </div>
 
                             {/* Section 2: Items */}
@@ -134,39 +208,43 @@ export default function InKindDonation() {
                             </h3>
 
                             <div className="grid md:grid-cols-3 gap-6">
-                                <input name="clothes" placeholder="Clothes (Kg)" className="premium-input font-medium" onChange={handleChange as any} />
-                                <input name="books" placeholder="Books (Units)" className="premium-input font-medium" onChange={handleChange as any} />
-                                <input name="raddi" placeholder="Raddi (Kg)" className="premium-input font-medium" onChange={handleChange as any} />
-                                <input name="grains" placeholder="Grains (Kg)" className="premium-input font-medium" onChange={handleChange as any} />
-                                <input name="stationary" placeholder="Stationery (Units)" className="premium-input font-medium" onChange={handleChange as any} />
-                                <input name="computers" placeholder="Computers (Units)" className="premium-input font-medium" onChange={handleChange as any} />
+                                <input type="number" min={0} step="1" {...register("clothes", { valueAsNumber: true })} placeholder="Clothes (Kg)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("books", { valueAsNumber: true })} placeholder="Books (Units)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("raddi", { valueAsNumber: true })} placeholder="Raddi (Kg)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("grains", { valueAsNumber: true })} placeholder="Grains (Kg)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("stationery", { valueAsNumber: true })} placeholder="Stationery (Units)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("computers", { valueAsNumber: true })} placeholder="Computers (Units)" className="premium-input font-medium" />
                             </div>
 
                             <textarea
-                                name="otherItems"
+                                {...register("otherItems")}
                                 placeholder="Other Items not listed above (Optional)..."
                                 rows={2}
-                                className="premium-input mt-4 font-medium resize-none"
-                                onChange={handleChange as any}
+                                className="premium-input mt-4 font-medium resize-none w-full"
                             />
 
+                            {errors.clothes && (
+                                <p className="text-red-500 text-sm mt-2">{errors.clothes.message}</p>
+                            )}
+
                             <textarea
-                                name="message"
+                                {...register("message")}
                                 placeholder="Message or Special Instructions (Optional)"
                                 rows={3}
-                                className="premium-input mt-4 font-medium resize-none"
-                                onChange={handleChange as any}
+                                className="premium-input mt-4 font-medium resize-none w-full"
                             />
 
                             <div className="pt-8 w-full">
-                                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                                <motion.div whileHover={isValid ? { scale: 1.02 } : {}} whileTap={isValid ? { scale: 0.98 } : {}}>
                                     <Button
                                         type="submit"
+                                        disabled={!isValid}
                                         variant="primary"
                                         size="lg"
-                                        className="w-full py-5 rounded-2xl text-lg flex items-center justify-center relative overflow-hidden group/btn"
+                                        className={`w-full py-5 rounded-2xl text-lg flex items-center justify-center relative overflow-hidden transition-all ${!isValid ? "opacity-50 cursor-not-allowed group" : "group/btn"
+                                            }`}
                                     >
-                                        <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></span>
+                                        <span className={`absolute inset-0 bg-white/10 translate-x-[-100%] transition-transform duration-700 ${!isValid ? "" : "group-hover/btn:translate-x-[100%]"}`}></span>
                                         Submit Donation Request
                                     </Button>
                                 </motion.div>

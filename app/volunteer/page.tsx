@@ -1,43 +1,101 @@
 "use client"
 
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import Image from "next/image"
 import StickyHeader from "@/components/home/StickyHeader"
 import Footer from "@/components/home/Footer"
+import { Button } from "@/components/ui/button"
+
+const volunteerSchema = z.object({
+    fullName: z
+        .string()
+        .min(3, "Full name is required")
+        .regex(/^[A-Za-z\s]+$/, "Only letters allowed"),
+
+    dob: z.string().refine((date) => {
+        if (!date) return false;
+        const age = new Date().getFullYear() - new Date(date).getFullYear()
+        return age >= 16
+    }, "You must be at least 16 years old"),
+
+    gender: z.string().min(1, "Please select gender"),
+
+    nationality: z
+        .string()
+        .min(2, "Nationality is required")
+        .regex(/^[A-Za-z\s]+$/, "Only letters allowed"),
+
+    address: z.string().min(10, "Permanent address required"),
+
+    city: z
+        .string()
+        .min(2, "City is required")
+        .regex(/^[A-Za-z\s]+$/, "Only letters allowed"),
+
+    state: z
+        .string()
+        .min(2, "State is required")
+        .regex(/^[A-Za-z\s]+$/, "Only letters allowed"),
+
+    country: z
+        .string()
+        .min(2, "Country is required")
+        .regex(/^[A-Za-z\s]+$/, "Only letters allowed"),
+
+    pincode: z.string().regex(/^\d{6}$/, "Enter valid 6-digit PIN"),
+
+    phone: z.string().regex(/^[6-9]\d{9}$/, "Enter valid 10-digit number"),
+
+    email: z.string().email("Enter valid email"),
+})
+
+type VolunteerFormData = z.infer<typeof volunteerSchema>
 
 export default function VolunteerPage() {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isValid },
+    } = useForm<VolunteerFormData>({
+        resolver: zodResolver(volunteerSchema),
+        mode: "onChange",
+    })
+
+    const onSubmit = (data: VolunteerFormData) => {
+        console.log("Volunteer Application:", data)
+        // 🔥 Send to backend / DB
+    }
     return (
         <main className="min-h-screen flex flex-col bg-gradient-to-r from-blue-100 via-yellow-50 to-purple-100">
             <StickyHeader />
 
-            <section className="flex-grow py-20 px-6 mt-16">
-                <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+            <section className="flex-grow pt-12 pb-16 px-4 md:px-6">
+                <div className="max-w-6xl mx-auto space-y-10">
 
-                    {/* LEFT SIDE - IMPACT CARD */}
-                    <div className="bg-white/70 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-white/40">
-
-                        <h3 className="text-2xl font-semibold text-blue-900 mb-6">
-                            Why Volunteer With Us?
-                        </h3>
-
-                        <div className="space-y-6">
+                    {/* 🔵 Volunteer Stats - Horizontal */}
+                    <div className="bg-white/70 backdrop-blur-xl rounded-3xl p-4 md:p-8 shadow-md border border-gray-100">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-center">
                             <div>
-                                <h4 className="text-3xl font-bold text-blue-700">1000+</h4>
-                                <p className="text-gray-600">Active Volunteers</p>
+                                <h3 className="text-4xl font-extrabold text-blue-700">1000+</h3>
+                                <p className="text-gray-600 font-medium mt-2">Active Volunteers</p>
                             </div>
 
                             <div>
-                                <h4 className="text-3xl font-bold text-yellow-600">10+</h4>
-                                <p className="text-gray-600">Active Projects</p>
+                                <h3 className="text-4xl font-extrabold text-yellow-600">10+</h3>
+                                <p className="text-gray-600 font-medium mt-2">Active Projects</p>
                             </div>
 
                             <div>
-                                <h4 className="text-3xl font-bold text-purple-600">500+</h4>
-                                <p className="text-gray-600">Children Helped</p>
+                                <h3 className="text-4xl font-extrabold text-purple-600">500+</h3>
+                                <p className="text-gray-600 font-medium mt-2">Children Helped</p>
                             </div>
                         </div>
                     </div>
 
-                    {/* RIGHT SIDE - FORM */}
-                    <div className="md:col-span-2 bg-white/80 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-white/50">
+                    {/* 🟣 Volunteer Form */}
+                    <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-7 shadow-2xl border border-white/50">
 
                         <h2 className="text-4xl font-bold text-blue-900 mb-2">
                             Become a Volunteer
@@ -46,7 +104,7 @@ export default function VolunteerPage() {
                             Join our mission to support children, education & healthcare.
                         </p>
 
-                        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
 
                             {/* PERSONAL INFO */}
                             <div>
@@ -55,30 +113,43 @@ export default function VolunteerPage() {
                                 </h3>
 
                                 <div className="grid md:grid-cols-2 gap-6">
-                                    <input
-                                        type="text"
-                                        placeholder="Full Name"
-                                        className="premium-input"
-                                    />
+                                    <div>
+                                        <input
+                                            {...register("fullName")}
+                                            placeholder="Full Name"
+                                            className={`premium-input w-full ${errors.fullName ? "border-red-500" : ""}`}
+                                        />
+                                        {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>}
+                                    </div>
 
-                                    <input
-                                        type="date"
-                                        className="premium-input"
-                                        aria-label="Date of Birth"
-                                    />
+                                    <div>
+                                        <input
+                                            type="date"
+                                            {...register("dob")}
+                                            className={`premium-input w-full ${errors.dob ? "border-red-500" : ""}`}
+                                            aria-label="Date of Birth"
+                                        />
+                                        {errors.dob && <p className="text-red-500 text-sm mt-1">{errors.dob.message}</p>}
+                                    </div>
 
-                                    <select className="premium-input">
-                                        <option>Select Gender</option>
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Other</option>
-                                    </select>
+                                    <div>
+                                        <select {...register("gender")} className={`premium-input w-full ${errors.gender ? "border-red-500" : ""}`}>
+                                            <option value="">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        {errors.gender && <p className="text-red-500 text-sm mt-1">{errors.gender.message}</p>}
+                                    </div>
 
-                                    <input
-                                        type="text"
-                                        placeholder="Nationality"
-                                        className="premium-input"
-                                    />
+                                    <div>
+                                        <input
+                                            {...register("nationality")}
+                                            placeholder="Nationality"
+                                            className={`premium-input w-full ${errors.nationality ? "border-red-500" : ""}`}
+                                        />
+                                        {errors.nationality && <p className="text-red-500 text-sm mt-1">{errors.nationality.message}</p>}
+                                    </div>
                                 </div>
                             </div>
 
@@ -89,57 +160,85 @@ export default function VolunteerPage() {
                                 </h3>
 
                                 <div className="grid md:grid-cols-2 gap-6">
-                                    <input
-                                        type="text"
-                                        placeholder="Permanent Address"
-                                        className="premium-input md:col-span-2"
-                                    />
+                                    <div className="md:col-span-2">
+                                        <textarea
+                                            {...register("address")}
+                                            placeholder="Permanent Address"
+                                            rows={2}
+                                            className={`premium-input w-full resize-none ${errors.address ? "border-red-500" : ""}`}
+                                        />
+                                        {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address.message}</p>}
+                                    </div>
 
-                                    <input
-                                        type="text"
-                                        placeholder="City"
-                                        className="premium-input"
-                                    />
+                                    <div>
+                                        <input
+                                            {...register("city")}
+                                            placeholder="City"
+                                            className={`premium-input w-full ${errors.city ? "border-red-500" : ""}`}
+                                        />
+                                        {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city.message}</p>}
+                                    </div>
 
-                                    <input
-                                        type="text"
-                                        placeholder="State"
-                                        className="premium-input"
-                                    />
+                                    <div>
+                                        <input
+                                            {...register("state")}
+                                            placeholder="State"
+                                            className={`premium-input w-full ${errors.state ? "border-red-500" : ""}`}
+                                        />
+                                        {errors.state && <p className="text-red-500 text-sm mt-1">{errors.state.message}</p>}
+                                    </div>
 
-                                    <input
-                                        type="text"
-                                        placeholder="Country"
-                                        className="premium-input"
-                                    />
+                                    <div>
+                                        <input
+                                            {...register("country")}
+                                            placeholder="Country"
+                                            className={`premium-input w-full ${errors.country ? "border-red-500" : ""}`}
+                                        />
+                                        {errors.country && <p className="text-red-500 text-sm mt-1">{errors.country.message}</p>}
+                                    </div>
 
-                                    <input
-                                        type="text"
-                                        placeholder="Pin Code"
-                                        className="premium-input"
-                                    />
+                                    <div>
+                                        <input
+                                            {...register("pincode")}
+                                            placeholder="Pin Code"
+                                            className={`premium-input w-full ${errors.pincode ? "border-red-500" : ""}`}
+                                        />
+                                        {errors.pincode && <p className="text-red-500 text-sm mt-1">{errors.pincode.message}</p>}
+                                    </div>
 
-                                    <input
-                                        type="text"
-                                        placeholder="Phone Number"
-                                        className="premium-input"
-                                    />
+                                    <div>
+                                        <input
+                                            type="tel"
+                                            {...register("phone")}
+                                            placeholder="Phone Number"
+                                            className={`premium-input w-full ${errors.phone ? "border-red-500" : ""}`}
+                                        />
+                                        {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>}
+                                    </div>
 
-                                    <input
-                                        type="email"
-                                        placeholder="Email Address"
-                                        className="premium-input"
-                                    />
+                                    <div>
+                                        <input
+                                            type="email"
+                                            {...register("email")}
+                                            placeholder="Email Address"
+                                            className={`premium-input w-full ${errors.email ? "border-red-500" : ""}`}
+                                        />
+                                        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+                                    </div>
                                 </div>
                             </div>
 
                             {/* BUTTON */}
-                            <button
+                            <Button
                                 type="submit"
-                                className="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg shadow-lg hover:scale-105 transition duration-300"
+                                disabled={!isValid}
+                                className={`w-full py-6 rounded-2xl text-white font-bold text-lg transition-all shadow-lg ${!isValid
+                                    ? "bg-gray-400 cursor-not-allowed opacity-50"
+                                    : "bg-gradient-to-r from-blue-600 to-purple-600 hover:scale-[1.02] hover:shadow-xl"
+                                    }`}
                             >
                                 Submit Application
-                            </button>
+                            </Button>
 
                         </form>
                     </div>

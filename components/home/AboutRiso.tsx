@@ -63,8 +63,8 @@ export default function AboutRiso() {
                                 <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4 text-blue-600">
                                     <Eye size={24} />
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-2">Our Vision</h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">
+                                <h3 className="text-3xl font-bold text-gray-900 mb-3">Our Vision</h3>
+                                <p className="text-gray-600 text-base leading-relaxed">
                                     Our vision at RISO is to spread social awareness, empower the rural as well as urban communities of our society, in order to bring a positive and constructive change.
                                 </p>
                             </motion.div>
@@ -77,8 +77,8 @@ export default function AboutRiso() {
                                 <div className="w-12 h-12 bg-yellow-50 rounded-full flex items-center justify-center mb-4 text-yellow-600">
                                     <Target size={24} />
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-2">Our Mission</h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">
+                                <h3 className="text-3xl font-bold text-gray-900 mb-3">Our Mission</h3>
+                                <p className="text-gray-600 text-base leading-relaxed">
                                     To inspire and mobilize Indian youth and gather active public support in order to work for the betterment of the society in all ways possible.
                                 </p>
                             </motion.div>
@@ -122,27 +122,33 @@ export default function AboutRiso() {
 
                     {/* RIGHT IMAGE */}
                     <motion.div
-                        className="relative h-full min-h-[500px] lg:min-h-[600px] w-full lg:ml-auto lg:w-[95%] lg:translate-x-4 xl:translate-x-8"
+                        className="relative w-full max-w-[520px] mx-auto lg:mx-0 lg:ml-auto"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                     >
-                        <div className="relative w-full h-full rounded-[3rem] rounded-tr-[6rem] rounded-bl-[6rem] overflow-hidden shadow-2xl animate-[float_6s_ease-in-out_infinite] border-4 border-white/50">
+                        <div className="relative aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] 
+                                        rounded-[2.5rem] lg:rounded-[3rem] 
+                                        overflow-hidden shadow-2xl 
+                                        border-4 border-white/50">
+
                             <Image
                                 src="/aboutus.png"
                                 alt="RISO Activities"
                                 fill
-                                className="object-cover hover:scale-105 transition-transform duration-700"
-                                sizes="(max-width: 768px) 100vw, 50vw"
+                                priority
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 520px"
+                                className="object-cover object-center transition-transform duration-700 hover:scale-105"
                             />
+
                             {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/25 via-transparent to-transparent" />
                         </div>
 
-                        {/* Decorative Blob */}
-                        <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-yellow-400 rounded-full blur-[60px] opacity-40 -z-10" />
-                        <div className="absolute -top-8 -right-8 w-56 h-56 bg-blue-600 rounded-full blur-[70px] opacity-30 -z-10" />
+                        {/* Decorative Blur Effects */}
+                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-yellow-400 rounded-full blur-[70px] opacity-40 -z-10" />
+                        <div className="absolute -top-10 -right-10 w-56 h-56 bg-blue-600 rounded-full blur-[80px] opacity-30 -z-10" />
                     </motion.div>
                 </div>
             </div>
