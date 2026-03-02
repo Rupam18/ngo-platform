@@ -122,16 +122,16 @@ export default function LatestUpdates() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-center mb-16"
                 >
-                    <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
+                    <span className="text-[#0056A6] font-bold tracking-wider uppercase text-sm mb-3 block">
                         Recent News
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
-                        Latest <span className="text-yellow-500">Updates</span>
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#0056A6] mb-4">
+                        Latest <span className="text-[#900000]">Updates</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                         Stay informed about our recent activities and impact
                     </p>
-                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mt-6 shadow-lg shadow-blue-500/20" />
+                    <div className="w-24 h-1.5 bg-[#0056A6] rounded-full mx-auto mt-6 shadow-lg shadow-[#0056A6]/20" />
                 </motion.div>
 
                 {/* Carousel */}

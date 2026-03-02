@@ -20,72 +20,73 @@ export default function AboutRiso() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
+                        <span className="text-[#0056A6] font-bold tracking-wider uppercase text-sm mb-3 block">
                             Who We Are
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
-                            About <span className="text-yellow-500">RISO</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#0056A6] mb-4">
+                            About <span className="text-[#900000]">RISO</span>
                         </h2>
-                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto" />
+                        <div className="w-24 h-1.5 bg-[#0056A6] rounded-full mx-auto" />
                     </motion.div>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
 
                     {/* LEFT CONTENT */}
                     <motion.div
-                        className="space-y-8"
+                        className="flex flex-col justify-between h-full"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
+                        <div className="space-y-8">
+                            {/* Description */}
+                            <div className="space-y-5 text-gray-600 text-lg leading-relaxed text-balance">
+                                <p>
+                                    <span className="font-semibold text-gray-800">RISO</span> is registered as a Non-profit organization (NGO) based in Pune, Maharashtra (INDIA).
+                                    RISO is registered under section 25 of the Companies act of 1956. Rostrum India Social Organization is an initiative triggered by the alliance of the youth from all sections of our society.
+                                </p>
+                                <p>
+                                    The youth of this country has a tremendous potential, primarily due to its sheer size.
+                                    We strive to mobilize them in order to make them understand their responsibilities towards the society and inspire them to take up social work, which will lead to a better tomorrow.
+                                </p>
+                            </div>
 
-                        {/* Description */}
-                        <div className="space-y-5 text-gray-600 text-lg leading-relaxed text-balance">
-                            <p>
-                                <span className="font-semibold text-gray-800">RISO</span> is registered as a Non-profit organization (NGO) based in Pune, Maharashtra (INDIA).
-                                RISO is registered under section 25 of the Companies act of 1956. Rostrum India Social Organization is an initiative triggered by the alliance of the youth from all sections of our society.
-                            </p>
-                            <p>
-                                The youth of this country has a tremendous potential, primarily due to its sheer size.
-                                We strive to mobilize them in order to make them understand their responsibilities towards the society and inspire them to take up social work, which will lead to a better tomorrow.
-                            </p>
+                            {/* Cards: Vision & Mission */}
+                            <div className="grid md:grid-cols-2 gap-5">
+                                {/* Vision Card */}
+                                <motion.div
+                                    whileHover={{ y: -5 }}
+                                    className="bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 relative group overflow-hidden"
+                                >
+                                    <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mb-4 group-hover:bg-[#0056A6] group-hover:text-white transition-colors">
+                                        <Eye size={24} />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-2">Our Vision</h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        Our vision at RISO is to spread social awareness, empower the rural as well as urban communities of our society, in order to bring a positive and constructive change.
+                                    </p>
+                                </motion.div>
+
+                                {/* Mission Card */}
+                                <motion.div
+                                    whileHover={{ y: -5 }}
+                                    className="bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 relative group overflow-hidden"
+                                >
+                                    <div className="w-12 h-12 rounded-xl bg-yellow-100 flex items-center justify-center text-yellow-600 mb-4 group-hover:bg-yellow-500 group-hover:text-white transition-colors">
+                                        <Target size={24} />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-2">Our Mission</h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        To inspire and mobilize Indian youth and gather active public support in order to work for the betterment of the society in all ways possible.
+                                    </p>
+                                </motion.div>
+                            </div>
                         </div>
 
-                        {/* Cards: Vision & Mission */}
-                        <div className="grid md:grid-cols-2 gap-5">
-                            {/* Vision */}
-                            <motion.div
-                                whileHover={{ y: -5 }}
-                                className="bg-white p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
-                            >
-                                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4 text-blue-600">
-                                    <Eye size={24} />
-                                </div>
-                                <h3 className="text-3xl font-bold text-gray-900 mb-3">Our Vision</h3>
-                                <p className="text-gray-600 text-base leading-relaxed">
-                                    Our vision at RISO is to spread social awareness, empower the rural as well as urban communities of our society, in order to bring a positive and constructive change.
-                                </p>
-                            </motion.div>
-
-                            {/* Mission */}
-                            <motion.div
-                                whileHover={{ y: -5 }}
-                                className="bg-white p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300"
-                            >
-                                <div className="w-12 h-12 bg-yellow-50 rounded-full flex items-center justify-center mb-4 text-yellow-600">
-                                    <Target size={24} />
-                                </div>
-                                <h3 className="text-3xl font-bold text-gray-900 mb-3">Our Mission</h3>
-                                <p className="text-gray-600 text-base leading-relaxed">
-                                    To inspire and mobilize Indian youth and gather active public support in order to work for the betterment of the society in all ways possible.
-                                </p>
-                            </motion.div>
-                        </div>
-
-                        {/* Buttons */}
-                        <div className="flex flex-wrap gap-4 pt-4">
+                        {/* Buttons Container aligned to bottom */}
+                        <div className="flex flex-wrap gap-4 pt-4 mt-8">
                             <Link href="/about">
                                 <motion.div
                                     whileHover={{ scale: 1.05 }}
@@ -122,13 +123,13 @@ export default function AboutRiso() {
 
                     {/* RIGHT IMAGE */}
                     <motion.div
-                        className="relative w-full max-w-[520px] mx-auto lg:mx-0 lg:ml-auto"
+                        className="relative h-full flex justify-end ml-4 lg:ml-6"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                     >
-                        <div className="relative aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] 
+                        <div className="relative w-full h-[500px] lg:h-full max-w-xl mx-auto lg:mx-0 
                                         rounded-[2.5rem] lg:rounded-[3rem] 
                                         overflow-hidden shadow-2xl 
                                         border-4 border-white/50">

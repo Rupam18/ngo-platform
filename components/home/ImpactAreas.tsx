@@ -49,15 +49,7 @@ export default function ImpactAreas() {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     return (
-        <section className="relative z-0 py-12 md:py-16 bg-gradient-to-b from-gray-50/50 via-white to-white overflow-hidden" id="impact">
-            {/* Divider / Separation */}
-            {/* <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" /> */}
-            <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-white to-transparent pointer-events-none" />
-
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style={{ backgroundImage: 'radial-gradient(#3B82F6 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
-            </div>
+        <section className="py-12 md:py-16 bg-white" id="impact">
 
             <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
 
@@ -69,16 +61,16 @@ export default function ImpactAreas() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-center mb-16 space-y-4"
                 >
-                    <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
+                    <span className="text-[#0056A6] font-bold tracking-wider uppercase text-sm mb-3 block">
                         Where We Focus
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent">
-                        RISO’s Key <span className="text-yellow-500">Impact Areas</span>
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-[#0056A6]">
+                        RISO’s Key <span className="text-[#900000]">Impact Areas</span>
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-700 max-w-2xl mx-auto mt-4">
                         A clear overview of the areas where RISO creates lasting impact, driven by your generous support.
                     </p>
-                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mt-6" />
+                    <div className="w-24 h-1.5 bg-[#0056A6] rounded-full mx-auto mt-6" />
                 </motion.div>
 
                 <div className="grid lg:grid-cols-[40%_60%] gap-6 items-center relative z-10">
@@ -89,7 +81,7 @@ export default function ImpactAreas() {
                     </div>
 
                     {/* RIGHT: Impact Cards Container */}
-                    <div className="relative z-20 bg-white/60 backdrop-blur-md rounded-3xl p-6 lg:p-8 shadow-sm border border-white/50 order-2 lg:order-2">
+                    <div className="relative z-20 bg-white rounded-3xl p-6 lg:p-8 shadow-sm border border-gray-100 order-2 lg:order-2">
                         <div className="grid sm:grid-cols-2 gap-4">
                             {data.map((item, index) => (
                                 <motion.div
@@ -101,9 +93,10 @@ export default function ImpactAreas() {
                                     onMouseEnter={() => setActiveIndex(index)}
                                     onMouseLeave={() => setActiveIndex(null)}
                                     className={`
-                                    relative p-4 rounded-2xl bg-white border border-gray-100/80 transition-all duration-300 group cursor-pointer
-                                    ${activeIndex === index ? 'shadow-[0_20px_60px_rgba(37,99,235,0.25)] -translate-y-2' : 'shadow-sm hover:shadow-[0_20px_60px_rgba(37,99,235,0.25)] hover:-translate-y-2'}
-                                `}
+                                        p-4 rounded-2xl bg-white border border-gray-100 
+                                        transition-all duration-300 cursor-pointer 
+                                        ${activeIndex === index ? 'shadow-md -translate-y-1' : 'shadow-sm hover:shadow-md hover:-translate-y-1'}
+                                    `}
                                     style={{
                                         borderColor: activeIndex === index ? item.color : ''
                                     }}

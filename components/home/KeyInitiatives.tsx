@@ -163,16 +163,16 @@ export default function KeyInitiatives() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-center mb-16"
                 >
-                    <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
+                    <span className="text-[#0056A6] font-bold tracking-wider uppercase text-sm mb-3 block">
                         Our Impact Areas
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
-                        What We <span className="text-yellow-500">Do</span>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <span className="text-[#0056A6]">What</span> <span className="text-[#900000]">We Do</span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
                         Our core programs designed for real community impact.
                     </p>
-                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto" />
+                    <div className="w-24 h-1.5 bg-[#0056A6] rounded-full mx-auto" />
                 </motion.div>
 
                 {/* --- WHAT WE DO (CIRCULAR IMPACT CARDS) --- */}
@@ -204,17 +204,17 @@ export default function KeyInitiatives() {
                             <div className="relative z-10 flex flex-col items-center justify-center text-center h-full p-6 transition-all duration-500">
 
                                 {/* Icon (Fades out/up on hover) */}
-                                <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-8 ${item.color}`}>
+                                <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-8 ${item.color}`}>
                                     {item.icon}
                                 </div>
 
                                 {/* Title (Changes color on hover) */}
-                                <h3 className="text-2xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300 relative group-hover:-translate-y-4">
+                                <h3 className="text-lg md:text-xl font-semibold text-gray-900 group-hover:text-white mb-2 leading-tight text-center px-4 transition-colors duration-300 relative group-hover:-translate-y-4">
                                     {item.title}
                                 </h3>
 
                                 {/* Description (Changes color on hover) */}
-                                <p className="text-base text-gray-600 mt-2 group-hover:text-gray-200 transition-colors duration-300 relative group-hover:-translate-y-4 line-clamp-3">
+                                <p className="text-sm md:text-base text-gray-600 group-hover:text-gray-200 leading-relaxed px-6 text-center transition-colors duration-300 relative group-hover:-translate-y-4 line-clamp-3">
                                     {item.description}
                                 </p>
                             </div>
@@ -236,16 +236,16 @@ export default function KeyInitiatives() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="text-center mb-16 px-4"
                     >
-                        <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3 block">
+                        <span className="text-[#0056A6] font-bold tracking-wider uppercase text-sm mb-3 block">
                             Our Core Programs
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
-                            Key <span className="text-yellow-500">Initiatives</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#0056A6] mb-4">
+                            Key <span className="text-[#900000]">Initiatives</span>
                         </h2>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                             Projects driving real change and creating sustainable impact.
                         </p>
-                        <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mt-6 shadow-lg shadow-blue-500/20" />
+                        <div className="w-24 h-1.5 bg-[#0056A6] rounded-full mx-auto mt-6 shadow-lg shadow-[#0056A6]/20" />
                     </motion.div>
 
                     {/* Navigation Arrows (Floating) */}

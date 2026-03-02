@@ -86,14 +86,7 @@ export default function CSRPartners() {
     const smoothSponsors = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
 
     return (
-        <section className="relative py-12 md:py-16 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 overflow-hidden">
-
-            {/* 1. Animated Particles Background */}
-            <div className="absolute inset-0 pointer-events-none">
-                {[...Array(15)].map((_, i) => (
-                    <Particle key={i} delay={i * 0.5} />
-                ))}
-            </div>
+        <section className="relative py-12 md:py-16 bg-white overflow-hidden">
 
             <div className="max-w-7xl mx-auto px-6 mb-16 text-center relative z-10">
                 <motion.div
@@ -102,24 +95,24 @@ export default function CSRPartners() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    <span className="inline-block py-1 px-3 rounded-full bg-blue-100/50 text-blue-600 font-bold tracking-wider uppercase text-xs mb-4 border border-blue-200/50 backdrop-blur-sm">
+                    <span className="inline-block py-1 px-3 rounded-full bg-blue-50 text-[#0056A6] font-bold tracking-wider uppercase text-xs mb-4 border border-blue-100">
                         Trusted Partners
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 bg-clip-text text-transparent mb-4">
-                        Trusted by Leading <span className="text-yellow-500">CSR Partners</span>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <span className="text-[#0056A6]">Trusted by Leading</span> <span className="text-[#900000]">CSR Partners</span>
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                         Working together to create lasting social impact through sustainable development initiatives.
                     </p>
-                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mt-6" />
+                    <div className="w-24 h-1.5 bg-[#0056A6] rounded-full mx-auto mt-6" />
                 </motion.div>
             </div>
 
             {/* Seamless Marquee Container */}
             <div className="relative w-full z-10">
                 {/* Gradient Masks */}
-                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-emerald-50 to-transparent z-20" />
-                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-blue-50 to-transparent z-20" />
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-20" />
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-20" />
 
                 {/* Moving Track */}
                 <div className="flex w-max animate-premium-scroll py-10">
@@ -142,7 +135,7 @@ export default function CSRPartners() {
                                     const track = e.currentTarget.closest(".animate-premium-scroll") as HTMLElement;
                                     if (track) track.style.animationPlayState = "running";
                                 }}
-                                className="group relative bg-white rounded-2xl p-8 h-40 flex items-center justify-center shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer hover:bg-gradient-to-br hover:from-blue-50 hover:to-purple-50"
+                                className="group relative bg-white rounded-2xl p-8 h-40 flex items-center justify-center border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer"
                             >
                                 {/* Shine Effect on Hover */}
                                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/0 via-white/50 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -169,9 +162,9 @@ export default function CSRPartners() {
                 transition={{ delay: 0.5 }}
                 className="text-center mt-8 relative z-10"
             >
-                <div className="inline-flex flex-wrap items-center justify-center gap-1.5 md:gap-2 px-4 md:px-6 py-3 rounded-full md:rounded-full rounded-2xl bg-white/50 backdrop-blur-md border border-white/60 shadow-sm text-gray-600 text-[13px] sm:text-sm md:text-base w-[90%] md:w-auto">
+                <div className="inline-flex flex-wrap items-center justify-center gap-1.5 md:gap-2 px-4 md:px-6 py-3 rounded-full border border-gray-100 shadow-sm text-slate-700 text-[13px] sm:text-sm md:text-base w-[90%] md:w-auto mt-4 bg-white">
                     <span>Proudly supported by</span>
-                    <span className="text-lg md:text-xl font-bold text-blue-600"><SimpleCounter to={50} />+</span>
+                    <span className="text-lg md:text-xl font-bold text-[#0056A6]"><SimpleCounter to={50} />+</span>
                     <span>CSR partners across India</span>
                 </div>
             </motion.div>

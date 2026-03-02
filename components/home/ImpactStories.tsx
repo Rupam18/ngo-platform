@@ -28,20 +28,17 @@ const stories = [
 
 export default function ImpactStories() {
     return (
-        <section className="relative py-12 md:py-16 bg-slate-900 overflow-hidden">
-            {/* Background with Dark Blue Gradient Overlay & Blur */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-slate-900/95 to-slate-900 z-0" />
-
+        <section className="relative py-12 md:py-16 bg-white overflow-hidden">
             {/* Subtle floating shapes */}
             <motion.div
                 animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"
+                className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[100px] pointer-events-none"
             />
             <motion.div
                 animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none"
+                className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-50 rounded-full blur-[100px] pointer-events-none"
             />
 
             <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -54,16 +51,16 @@ export default function ImpactStories() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-center mb-16"
                 >
-                    <span className="text-blue-400 font-bold tracking-widest uppercase text-sm mb-3 block">
+                    <span className="text-[#0056A6] font-bold tracking-widest uppercase text-sm mb-3 block">
                         Our Impact
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
-                        Impact <span className="text-yellow-400">Stories</span>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg text-[#0056A6]">
+                        Impact <span className="text-[#900000]">Stories</span>
                     </h2>
-                    <p className="text-lg text-blue-100/80 max-w-2xl mx-auto font-light">
+                    <p className="text-lg text-slate-600 max-w-2xl mx-auto font-light">
                         Real stories of change and transformation
                     </p>
-                    <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mx-auto mt-6" />
+                    <div className="w-24 h-1.5 bg-[#0056A6] rounded-full mx-auto mt-6" />
                 </motion.div>
 
                 {/* Stories Grid */}
@@ -77,7 +74,7 @@ export default function ImpactStories() {
                             transition={{ duration: 0.6, delay: index * 0.2 }}
                             className="group relative"
                         >
-                            <div className="h-full bg-white/5 backdrop-blur-md border border-white/10 rounded-[24px] overflow-hidden hover:bg-white/10 hover:border-white/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all duration-500 flex flex-col group-hover:-translate-y-2">
+                            <div className="h-full bg-white border border-gray-100 shadow-sm rounded-[24px] overflow-hidden hover:shadow-[0_20px_40px_rgba(37,99,235,0.1)] hover:border-blue-100 transition-all duration-500 flex flex-col group-hover:-translate-y-2">
 
                                 {/* Image / Video Thumbnail Section */}
                                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-800 rounded-t-[24px]">
@@ -114,16 +111,16 @@ export default function ImpactStories() {
 
                                 {/* Content Section */}
                                 <div className="p-8 flex flex-col flex-grow">
-                                    <h3 className="text-2xl font-bold text-white mb-4 leading-tight group-hover:text-blue-300 transition-colors">
+                                    <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-[#0056A6] transition-colors">
                                         {story.title}
                                     </h3>
 
-                                    <p className="text-blue-100/70 text-sm leading-relaxed mb-6 flex-grow">
+                                    <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
                                         {story.description}
                                     </p>
 
                                     <div className="mt-auto">
-                                        <Link href={story.videoLink} className="inline-flex items-center text-blue-400 font-bold text-sm tracking-wide group/link hover:text-white transition-colors uppercase">
+                                        <Link href={story.videoLink} className="inline-flex items-center text-[#0056A6] font-bold text-sm tracking-wide group/link hover:text-[#900000] transition-colors uppercase">
                                             Read More
                                             <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover/link:translate-x-2" />
                                         </Link>

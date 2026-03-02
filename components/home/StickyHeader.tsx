@@ -48,8 +48,8 @@ export default function StickyHeader() {
                     }`}
             >
                 {/* =======================
-               TOP ROW: Logo + Actions
-               ======================= */}
+                    TOP ROW: Logo + Actions
+                    ======================= */}
                 <div className={`w-full px-4 md:px-6 lg:px-8 flex items-center justify-between transition-all duration-300 ${isScrolled ? "py-2" : "py-3"
                     }`}>
                     {/* LOGO */}
@@ -121,41 +121,43 @@ export default function StickyHeader() {
                 </div>
 
                 {/* =======================
-               BOTTOM ROW: Menu + Contact
-               ======================= */}
-                <div className="hidden xl:block border-t border-gray-100">
+                    BOTTOM ROW: Menu + Contact
+                    ======================= */}
+                <div className="hidden xl:block border-t border-gray-100 border-b border-gray-200">
                     <div className="w-full px-4 lg:px-8 py-3 flex justify-between items-center">
 
                         {/* NAV LINKS */}
-                        <nav className="flex gap-5">
-                            {navLinks.map((link) => {
-                                const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-                                return (
-                                    <Link
-                                        key={link.name}
-                                        href={link.href}
-                                        className={`relative text-[15px] font-medium transition-colors uppercase tracking-wide group ${isActive ? 'text-blue-700' : 'text-gray-700 hover:text-blue-700'}`}
-                                    >
-                                        {link.name}
-                                        {isActive && (
-                                            <motion.div
-                                                layoutId="header-underline"
-                                                className="absolute -bottom-1 left-0 right-0 h-[2px] bg-blue-700"
-                                            />
-                                        )}
-                                        <span className={`absolute -bottom-1 left-0 w-full h-[2px] bg-blue-700 transition-transform duration-300 origin-left ${isActive ? 'scale-x-0' : 'scale-x-0 group-hover:scale-x-100'}`} />
-                                    </Link>
-                                );
-                            })}
-                        </nav>
+                        <div className="flex-1 flex justify-start pl-10">
+                            <nav className="flex gap-6">
+                                {navLinks.map((link) => {
+                                    const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+                                    return (
+                                        <Link
+                                            key={link.name}
+                                            href={link.href}
+                                            className={`relative text-[15px] font-medium transition-colors uppercase tracking-wide group py-1 ${isActive ? 'text-[#0056A6] font-bold' : 'text-[#0056A6] hover:text-[#800000]'}`}
+                                        >
+                                            {link.name}
+                                            {isActive && (
+                                                <motion.div
+                                                    layoutId="header-underline"
+                                                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0056A6]"
+                                                />
+                                            )}
+                                            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#0056A6] transition-transform duration-300 origin-left ${isActive ? 'scale-x-0' : 'scale-x-0 group-hover:scale-x-100'}`} />
+                                        </Link>
+                                    );
+                                })}
+                            </nav>
+                        </div>
 
                         {/* CONTACT */}
-                        <div className="flex gap-6 text-sm text-gray-600 font-medium">
-                            <a href="tel:+919730035255" className="flex items-center gap-2 hover:text-blue-700 transition-colors">
-                                <Phone size={16} className="text-blue-600" /> +91 9730035255
+                        <div className="flex gap-6 text-sm text-[#0056A6] font-medium">
+                            <a href="tel:+919730035255" className="flex items-center gap-2 hover:text-[#800000] transition-colors">
+                                <Phone size={16} /> +91 9730035255
                             </a>
-                            <a href="mailto:info@rostrumindia.org" className="flex items-center gap-2 hover:text-blue-700 transition-colors">
-                                <Mail size={16} className="text-blue-600" /> info@rostrumindia.org
+                            <a href="mailto:info@rostrumindia.org" className="flex items-center gap-2 hover:text-[#800000] transition-colors">
+                                <Mail size={16} /> info@rostrumindia.org
                             </a>
                         </div>
                     </div>
@@ -163,8 +165,8 @@ export default function StickyHeader() {
             </motion.header>
 
             {/* =======================
-            MOBILE DRAWER (Imported Component)
-            ======================= */}
+                    MOBILE DRAWER (Imported Component)
+                    ======================= */}
             <MobileMenu
                 isOpen={isMobileMenuOpen}
                 setIsOpen={setIsMobileMenuOpen}

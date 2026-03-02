@@ -97,7 +97,7 @@ export default function ProgramsSection() {
     const currentTabInfo = programsData.find((p) => p.id === activeTab) || programsData[0];
 
     return (
-        <section className="pt-4 md:pt-8 pb-16 md:pb-20 bg-gray-50/50 relative overflow-hidden">
+        <section className="pt-4 md:pt-8 pb-16 md:pb-20 bg-white relative overflow-hidden">
             <div className="max-w-[1240px] mx-auto px-4 md:px-8">
 
                 {/* Tabs Row */}
@@ -108,21 +108,21 @@ export default function ProgramsSection() {
                             <button
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`px-5 py-2.5 rounded-full text-[11px] md:text-sm font-bold uppercase tracking-wide transition-all duration-300 flex items-center gap-2 whitespace-nowrap shadow-sm
+                                className={`px-4 py-2 rounded-md text-[11px] md:text-xs font-bold uppercase tracking-wide transition-all duration-300 flex items-center gap-2 whitespace-nowrap
                                     ${isActive
-                                        ? "bg-primary outline outline-2 outline-offset-2 outline-primary text-white"
-                                        : "bg-white text-gray-500 hover:text-primary hover:bg-primary/5 border border-gray-100"
+                                        ? "bg-[#0056A6] text-white"
+                                        : "bg-white text-slate-500 border border-gray-100 hover:text-[#0056A6]"
                                     }`}
                             >
                                 {tab.tabLabel}
-                                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-secondary ml-0.5" />}
+                                {!isActive && <div className="w-1 h-1 rounded-full bg-[#0056A6]" />}
                             </button>
                         );
                     })}
                 </div>
 
                 {/* Content Area */}
-                <div className="bg-white rounded-[2rem] shadow-xl p-4 md:p-6 lg:p-8 border border-gray-100 relative min-h-[500px]">
+                <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-4 md:p-6 lg:p-8 border-l-[8px] border-[#0056A6] relative min-h-[500px]">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentTabInfo.id}
@@ -134,48 +134,38 @@ export default function ProgramsSection() {
                         >
 
                             {/* Left Side (Text content) */}
-                            <div className="w-full lg:w-1/2 bg-[#f8fbfe] rounded-[1.5rem] p-8 md:p-12 relative overflow-hidden flex flex-col justify-center">
+                            <div className="w-full lg:w-1/2 bg-[#F4F9FF] rounded-[1.5rem] p-8 md:p-12 relative overflow-hidden flex flex-col justify-center">
 
                                 {/* Top decorative blur circle */}
-                                <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-[50px] -mr-10 -mt-20 z-0 pointer-events-none" />
+                                <div className="absolute top-0 right-0 w-48 h-48 bg-[#0056A6]/10 rounded-full blur-[50px] -mr-10 -mt-20 z-0 pointer-events-none" />
 
                                 <div className="relative z-10">
-                                    <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6 drop-shadow-sm">
+                                    <h2 className="text-3xl md:text-4xl font-extrabold text-[#0056A6] mb-8 text-center">
                                         {currentTabInfo.title}
                                     </h2>
 
                                     {/* Quote Block */}
-                                    <div className="bg-white shadow-sm border-l-4 border-primary rounded-r-xl p-5 mb-6 relative">
-                                        <p className="italic text-gray-700 text-[15px] md:text-base font-medium leading-relaxed">
+                                    <div className="mb-6 relative">
+                                        <p className="italic text-slate-500 text-[15px] md:text-base font-medium leading-relaxed">
                                             {currentTabInfo.quote}
                                         </p>
                                     </div>
 
                                     {/* Description */}
-                                    <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed mb-8">
+                                    <p className="text-slate-600 text-sm md:text-[15px] leading-relaxed mb-8">
                                         {currentTabInfo.description}
                                     </p>
 
                                     {/* Bullets */}
-                                    <div className="space-y-4">
+                                    <div className="space-y-3">
                                         {currentTabInfo.bullets.map((point, idx) => (
-                                            <div key={idx} className="flex items-start gap-4 group">
-                                                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-primary transition-colors">
-                                                    <svg
-                                                        width="14"
-                                                        height="14"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        className="text-primary group-hover:text-white transition-colors"
-                                                        strokeWidth="3"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                    >
-                                                        <polyline points="20 6 9 17 4 12" />
+                                            <div key={idx} className="flex items-center gap-4 bg-[#E5EEF9] rounded-md p-3 px-4">
+                                                <div className="flex-shrink-0 flex items-center justify-center">
+                                                    <svg width="12" height="24" viewBox="0 0 12 24" fill="none" stroke="#0056A6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                        <path d="M10 2 Q4 2 4 8 Q4 12 0 12 Q4 12 4 16 Q4 22 10 22" />
                                                     </svg>
                                                 </div>
-                                                <span className="text-sm md:text-[15px] text-gray-700 font-semibold pt-0.5">
+                                                <span className="text-sm md:text-[15px] text-slate-700 font-medium">
                                                     {point}
                                                 </span>
                                             </div>
@@ -185,7 +175,7 @@ export default function ProgramsSection() {
                             </div>
 
                             {/* Right Side (Image + Stat) */}
-                            <div className="w-full lg:w-1/2 flex flex-col rounded-[1.5rem] overflow-hidden shadow-md group">
+                            <div className="w-full lg:w-1/2 flex flex-col rounded-[1.5rem] overflow-hidden group">
                                 <div className="relative h-[250px] md:h-full min-h-[300px] w-full bg-gray-100 overflow-hidden">
                                     <Image
                                         src={currentTabInfo.image}
@@ -196,14 +186,11 @@ export default function ProgramsSection() {
                                     />
                                 </div>
 
-                                <div className="bg-primary text-white text-center py-8 px-6 relative overflow-hidden">
-                                    {/* Subtle gradient shine */}
-                                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]" />
-
-                                    <div className="text-4xl md:text-5xl font-extrabold mb-2 relative z-10">
+                                <div className="bg-[#0056A6] text-center py-8 px-6 relative overflow-hidden">
+                                    <div className="text-4xl md:text-5xl font-extrabold mb-2 relative z-10 text-white">
                                         {currentTabInfo.statValue}
                                     </div>
-                                    <div className="text-xs md:text-sm font-bold tracking-widest uppercase text-white/80 relative z-10">
+                                    <div className="text-xs md:text-sm font-bold tracking-widest uppercase text-white relative z-10">
                                         {currentTabInfo.statLabel}
                                     </div>
                                 </div>
