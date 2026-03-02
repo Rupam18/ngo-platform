@@ -58,7 +58,7 @@ export default function StickyHeader() {
                             <img
                                 src="/banner-removebg-preview.png"
                                 alt="RISO Logo"
-                                className="h-16 w-auto object-contain object-left transition-all duration-300 ease-in-out hover:scale-105 hover:drop-shadow-sm origin-left will-change-transform"
+                                className="h-20 lg:h-24 w-auto object-contain object-left transition-all duration-300 ease-in-out hover:scale-105 hover:drop-shadow-sm origin-left will-change-transform"
                             />
                         </div>
                     </Link>

@@ -30,11 +30,11 @@ export default function AboutRiso() {
                     </motion.div>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch">
 
                     {/* LEFT CONTENT */}
                     <motion.div
-                        className="flex flex-col justify-between h-full"
+                        className="flex flex-col justify-between h-full order-1 lg:order-1 w-full lg:w-1/2"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -123,13 +123,13 @@ export default function AboutRiso() {
 
                     {/* RIGHT IMAGE */}
                     <motion.div
-                        className="relative h-full flex justify-end ml-4 lg:ml-6"
+                        className="relative h-full flex justify-center lg:justify-end ml-0 lg:ml-6 order-2 lg:order-2 w-full lg:w-1/2 mt-12 lg:mt-0"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                     >
-                        <div className="relative w-full h-[500px] lg:h-full max-w-xl mx-auto lg:mx-0 
+                        <div className="relative w-full h-[350px] md:h-[500px] lg:h-full lg:min-h-[750px] max-w-xl mx-auto lg:mx-0 
                                         rounded-[2.5rem] lg:rounded-[3rem] 
                                         overflow-hidden shadow-2xl 
                                         border-4 border-white/50">

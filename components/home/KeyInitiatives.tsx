@@ -184,7 +184,7 @@ export default function KeyInitiatives() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
-                            className="group relative w-[260px] h-[260px] rounded-full overflow-hidden shadow-xl bg-white transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl cursor-pointer"
+                            className="group relative w-[280px] h-[280px] rounded-full overflow-hidden shadow-xl bg-white transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl cursor-pointer flex-shrink-0"
                         >
                             {/* Hover Image Background */}
                             <div className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out z-0">
@@ -201,20 +201,20 @@ export default function KeyInitiatives() {
                             <div className={`absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-500 z-0 bg-gradient-to-br from-white to-gray-50`} />
 
                             {/* Content Container */}
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center h-full p-6 transition-all duration-500">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center h-full p-4 transition-all duration-500">
 
                                 {/* Icon (Fades out/up on hover) */}
-                                <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-8 ${item.color}`}>
+                                <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-3 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-8 ${item.color}`}>
                                     {item.icon}
                                 </div>
 
                                 {/* Title (Changes color on hover) */}
-                                <h3 className="text-lg md:text-xl font-semibold text-gray-900 group-hover:text-white mb-2 leading-tight text-center px-4 transition-colors duration-300 relative group-hover:-translate-y-4">
+                                <h3 className="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-white transition-colors duration-300 relative group-hover:-translate-y-4 leading-tight px-4 mb-2">
                                     {item.title}
                                 </h3>
 
                                 {/* Description (Changes color on hover) */}
-                                <p className="text-sm md:text-base text-gray-600 group-hover:text-gray-200 leading-relaxed px-6 text-center transition-colors duration-300 relative group-hover:-translate-y-4 line-clamp-3">
+                                <p className="text-sm md:text-base text-gray-600 group-hover:text-gray-200 transition-colors duration-300 relative group-hover:-translate-y-4 leading-snug px-5 line-clamp-3">
                                     {item.description}
                                 </p>
                             </div>

@@ -48,7 +48,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            <section className="relative py-20 overflow-hidden">
+            <section className="relative pt-7 pb-20 overflow-hidden">
                 {/* Top Wave Decoration (Optional/Subtle) */}
                 <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
                     <svg className="relative block w-full h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -56,10 +56,10 @@ export default function AboutPage() {
                     </svg>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mt-12 md:mt-16">
+                <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-12 w-full grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mt-8 lg:mt-12">
 
                     {/* LEFT CONTENT */}
-                    <div className="space-y-8">
+                    <div className="space-y-8 lg:pr-8">
 
                         {/* Heading */}
                         <motion.div

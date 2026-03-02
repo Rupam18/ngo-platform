@@ -4,10 +4,62 @@ import StickyHeader from "@/components/home/StickyHeader";
 import Footer from "@/components/home/Footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { MapPin, Phone, Mail, Send, User, MessageSquare, Briefcase } from "lucide-react";
+import { MapPin, Phone, Mail, Send, User, MessageSquare, Briefcase, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const contactSchema = z.object({
+    fullName: z
+        .string()
+        .min(3, "Full name must be at least 3 characters")
+        .regex(/^[A-Za-z\s]+$/, "Please enter only letters and spaces"),
+    email: z
+        .string()
+        .email("Please enter a valid email address")
+        .regex(/^[a-zA-Z0-9._%+\-]+@gmail\.com$/, "Please enter a valid @gmail.com email address"),
+    mobile: z
+        .string()
+        .regex(/^[0-9]+$/, "Please enter a valid mobile number (digits only)")
+        .min(10, "Mobile number must be at least 10 digits")
+        .max(15, "Mobile number too long"),
+    subject: z
+        .string()
+        .min(5, "Subject must be at least 5 characters")
+        .regex(/^[A-Za-z\s]+$/, "Please enter only letters and spaces"),
+    message: z
+        .string()
+        .min(10, "Message must be at least 10 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactPage() {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+    } = useForm<ContactFormData>({
+        resolver: zodResolver(contactSchema),
+        mode: "onChange",
+        defaultValues: {
+            fullName: "",
+            email: "",
+            mobile: "",
+            subject: "",
+            message: "",
+        },
+    });
+
+    const onSubmit = async (data: ContactFormData) => {
+        console.log("Form Submitted Data:", data);
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API call network delay
+        alert("Message sent successfully! We will get back to you soon.");
+        reset();
+    };
+
     return (
         <main className="min-h-screen flex flex-col bg-gray-50/50">
             <StickyHeader />
@@ -119,105 +171,129 @@ export default function ContactPage() {
                             Send us a Message
                         </h3>
 
-                        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 {/* Name Input */}
-                                <div className="relative group">
-                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center justify-center pointer-events-none">
-                                        <User className="text-gray-400 group-focus-within:text-blue-600 transition-colors h-5 w-5" />
+                                <div>
+                                    <div className="relative group">
+                                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center justify-center pointer-events-none">
+                                            <User className={`transition-colors h-5 w-5 ${errors.fullName ? 'text-red-400' : 'text-gray-400 group-focus-within:text-blue-600'}`} />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            id="fullName"
+                                            className={`block w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:bg-white transition-all peer ${errors.fullName ? 'border-red-400 focus:ring-red-500/50' : 'border-gray-200 focus:ring-blue-500/50 focus:border-blue-500'}`}
+                                            placeholder=" "
+                                            {...register("fullName")}
+                                        />
+                                        <label htmlFor="fullName" className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-focus:top-2 peer-focus:bg-white peer-focus:scale-75 peer-focus:-translate-y-4 left-10 ${errors.fullName ? 'text-red-500' : 'text-gray-500 peer-focus:text-blue-600'}`}>
+                                            Your Full Name
+                                        </label>
                                     </div>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        className="block w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white transition-all peer"
-                                        placeholder=" "
-                                        required
-                                    />
-                                    <label htmlFor="name" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-focus:top-2 peer-focus:bg-white peer-focus:scale-75 peer-focus:-translate-y-4 left-10">
-                                        Your Full Name
-                                    </label>
+                                    {errors.fullName && <p className="text-red-500 text-xs mt-1.5 ml-2 font-medium">{errors.fullName.message}</p>}
                                 </div>
 
                                 {/* Email Input */}
-                                <div className="relative group">
-                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center justify-center pointer-events-none">
-                                        <Mail className="text-gray-400 group-focus-within:text-blue-600 transition-colors h-5 w-5" />
+                                <div>
+                                    <div className="relative group">
+                                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center justify-center pointer-events-none">
+                                            <Mail className={`transition-colors h-5 w-5 ${errors.email ? 'text-red-400' : 'text-gray-400 group-focus-within:text-blue-600'}`} />
+                                        </div>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            className={`block w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:bg-white transition-all peer ${errors.email ? 'border-red-400 focus:ring-red-500/50' : 'border-gray-200 focus:ring-blue-500/50 focus:border-blue-500'}`}
+                                            placeholder=" "
+                                            {...register("email")}
+                                        />
+                                        <label htmlFor="email" className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-focus:top-2 peer-focus:bg-white peer-focus:scale-75 peer-focus:-translate-y-4 left-10 ${errors.email ? 'text-red-500' : 'text-gray-500 peer-focus:text-blue-600'}`}>
+                                            Email Address
+                                        </label>
                                     </div>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        className="block w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white transition-all peer"
-                                        placeholder=" "
-                                        required
-                                    />
-                                    <label htmlFor="email" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-focus:top-2 peer-focus:bg-white peer-focus:scale-75 peer-focus:-translate-y-4 left-10">
-                                        Email Address
-                                    </label>
+                                    {errors.email && <p className="text-red-500 text-xs mt-1.5 ml-2 font-medium">{errors.email.message}</p>}
                                 </div>
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-6">
                                 {/* Mobile Input */}
-                                <div className="relative group">
-                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center justify-center pointer-events-none">
-                                        <Phone className="text-gray-400 group-focus-within:text-blue-600 transition-colors h-5 w-5" />
+                                <div>
+                                    <div className="relative group">
+                                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center justify-center pointer-events-none">
+                                            <Phone className={`transition-colors h-5 w-5 ${errors.mobile ? 'text-red-400' : 'text-gray-400 group-focus-within:text-blue-600'}`} />
+                                        </div>
+                                        <input
+                                            type="tel"
+                                            id="mobile"
+                                            className={`block w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:bg-white transition-all peer ${errors.mobile ? 'border-red-400 focus:ring-red-500/50' : 'border-gray-200 focus:ring-blue-500/50 focus:border-blue-500'}`}
+                                            placeholder=" "
+                                            {...register("mobile")}
+                                        />
+                                        <label htmlFor="mobile" className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-focus:top-2 peer-focus:bg-white peer-focus:scale-75 peer-focus:-translate-y-4 left-10 ${errors.mobile ? 'text-red-500' : 'text-gray-500 peer-focus:text-blue-600'}`}>
+                                            Mobile Number
+                                        </label>
                                     </div>
-                                    <input
-                                        type="tel"
-                                        id="mobile"
-                                        className="block w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white transition-all peer"
-                                        placeholder=" "
-                                        required
-                                    />
-                                    <label htmlFor="mobile" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-focus:top-2 peer-focus:bg-white peer-focus:scale-75 peer-focus:-translate-y-4 left-10">
-                                        Mobile Number
-                                    </label>
+                                    {errors.mobile && <p className="text-red-500 text-xs mt-1.5 ml-2 font-medium">{errors.mobile.message}</p>}
                                 </div>
 
                                 {/* Subject Input */}
-                                <div className="relative group">
-                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center justify-center pointer-events-none">
-                                        <Briefcase className="text-gray-400 group-focus-within:text-blue-600 transition-colors h-5 w-5" />
+                                <div>
+                                    <div className="relative group">
+                                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center justify-center pointer-events-none">
+                                            <Briefcase className={`transition-colors h-5 w-5 ${errors.subject ? 'text-red-400' : 'text-gray-400 group-focus-within:text-blue-600'}`} />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            id="subject"
+                                            className={`block w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:bg-white transition-all peer ${errors.subject ? 'border-red-400 focus:ring-red-500/50' : 'border-gray-200 focus:ring-blue-500/50 focus:border-blue-500'}`}
+                                            placeholder=" "
+                                            {...register("subject")}
+                                        />
+                                        <label htmlFor="subject" className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-focus:top-2 peer-focus:bg-white peer-focus:scale-75 peer-focus:-translate-y-4 left-10 ${errors.subject ? 'text-red-500' : 'text-gray-500 peer-focus:text-blue-600'}`}>
+                                            Subject
+                                        </label>
                                     </div>
-                                    <input
-                                        type="text"
-                                        id="subject"
-                                        className="block w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white transition-all peer"
-                                        placeholder=" "
-                                        required
-                                    />
-                                    <label htmlFor="subject" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-placeholder-shown:bg-transparent peer-focus:top-2 peer-focus:bg-white peer-focus:scale-75 peer-focus:-translate-y-4 left-10">
-                                        Subject
-                                    </label>
+                                    {errors.subject && <p className="text-red-500 text-xs mt-1.5 ml-2 font-medium">{errors.subject.message}</p>}
                                 </div>
                             </div>
 
                             {/* Message Textarea */}
-                            <div className="relative group">
-                                <div className="absolute top-4 left-0 pl-4 flex items-start justify-center pointer-events-none">
-                                    <MessageSquare className="text-gray-400 group-focus-within:text-blue-600 transition-colors h-5 w-5" />
+                            <div>
+                                <div className="relative group">
+                                    <div className="absolute top-4 left-0 pl-4 flex items-start justify-center pointer-events-none">
+                                        <MessageSquare className={`transition-colors h-5 w-5 ${errors.message ? 'text-red-400' : 'text-gray-400 group-focus-within:text-blue-600'}`} />
+                                    </div>
+                                    <textarea
+                                        id="message"
+                                        rows={5}
+                                        className={`block w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:bg-white transition-all peer resize-none ${errors.message ? 'border-red-400 focus:ring-red-500/50' : 'border-gray-200 focus:ring-blue-500/50 focus:border-blue-500'}`}
+                                        placeholder=" "
+                                        {...register("message")}
+                                    ></textarea>
+                                    <label htmlFor="message" className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-[-16px] peer-placeholder-shown:top-4 peer-placeholder-shown:bg-transparent peer-focus:top-2 peer-focus:bg-white peer-focus:scale-75 peer-focus:-translate-y-4 left-10 ${errors.message ? 'text-red-500' : 'text-gray-500 peer-focus:text-blue-600'}`}>
+                                        Your Message...
+                                    </label>
                                 </div>
-                                <textarea
-                                    id="message"
-                                    rows={5}
-                                    className="block w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white transition-all peer resize-none"
-                                    placeholder=" "
-                                    required
-                                ></textarea>
-                                <label htmlFor="message" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-[-16px] peer-placeholder-shown:top-4 peer-placeholder-shown:bg-transparent peer-focus:top-2 peer-focus:bg-white peer-focus:scale-75 peer-focus:-translate-y-4 left-10">
-                                    Your Message...
-                                </label>
+                                {errors.message && <p className="text-red-500 text-xs mt-1.5 ml-2 font-medium">{errors.message.message}</p>}
                             </div>
 
                             {/* Submit Button */}
-                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto text-center sm:text-left">
+                            <motion.div whileHover={{ scale: isSubmitting ? 1 : 1.02 }} whileTap={{ scale: isSubmitting ? 1 : 0.98 }} className="w-full sm:w-auto text-center sm:text-left">
                                 <Button
                                     type="submit"
                                     variant="primary"
                                     size="lg"
-                                    className="w-full sm:w-auto px-8 py-4 text-lg rounded-xl flex items-center justify-center gap-2 group/btn shadow-[0_4px_14px_0_rgba(0,0,0,0.08)]"
+                                    disabled={isSubmitting}
+                                    className="w-full sm:w-auto px-8 py-4 text-lg rounded-xl flex items-center justify-center gap-2 group/btn shadow-[0_4px_14px_0_rgba(0,0,0,0.08)] disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
-                                    Send Message <Send size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                                    {isSubmitting ? (
+                                        <>
+                                            Sending <Loader2 size={18} className="animate-spin ml-2" />
+                                        </>
+                                    ) : (
+                                        <>
+                                            Send Message <Send size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform ml-2" />
+                                        </>
+                                    )}
                                 </Button>
                             </motion.div>
                         </form>
