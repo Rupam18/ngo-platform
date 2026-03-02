@@ -29,7 +29,7 @@ export default async function CampaignsPage() {
       {activeCampaigns.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {activeCampaigns.map((campaign: any) => {
-            const raisedAmount = campaign.donations?.reduce((sum: number, d: any) => sum + d.amount, 0) || 0;
+            const raisedAmount = campaign._count?.donations ? campaign.donations?.reduce((sum: number, d: { amount: number }) => sum + d.amount, 0) || 0 : 0;
             return (
               <CampaignCard
                 key={campaign.id}

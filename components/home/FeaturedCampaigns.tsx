@@ -37,7 +37,7 @@ export default function FeaturedCampaigns({ campaigns }: FeaturedCampaignsProps)
                                 title={campaign.title}
                                 description={campaign.description || "A wonderful campaign to support."}
                                 image={campaign.image || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070"}
-                                raised={campaign.donations?.reduce((sum: number, d: any) => sum + d.amount, 0) || 0}
+                                raised={campaign.donations?.reduce((sum: number, d: { amount: number }) => sum + d.amount, 0) || 0}
                                 goal={campaign.goal}
                             />
                         ))

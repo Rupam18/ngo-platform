@@ -170,7 +170,7 @@ export function CampaignTable() {
                                 </TableRow>
                             ) : filtered.length > 0 ? (
                                 filtered.map((campaign) => {
-                                    const raised = campaign._count?.donations ? campaign.donations?.reduce((sum: number, d: any) => sum + d.amount, 0) || 0 : 0;
+                                    const raised = campaign._count?.donations ? campaign.donations?.reduce((sum: number, d: { amount: number }) => sum + d.amount, 0) || 0 : 0;
                                     const progress = Math.min(100, Math.round((raised / campaign.goal) * 100)) || 0;
 
                                     return (

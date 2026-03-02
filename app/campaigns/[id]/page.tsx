@@ -22,7 +22,7 @@ export default async function CampaignDetailsPage({ params }: { params: Promise<
         notFound();
     }
 
-    const raisedAmount = campaign.donations?.reduce((sum, d) => sum + d.amount, 0) || 0;
+    const raisedAmount = campaign.donations?.reduce((sum: number, d: { amount: number }) => sum + d.amount, 0) || 0;
     const progress = (raisedAmount / campaign.goal) * 100;
 
     return (
