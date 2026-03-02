@@ -38,3 +38,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 very difficyltk jbnfkqJNfLellkqgmfjkv
  ef jqnefe  fmfq;kefmqkmgomwrkg;mwgwGWmgmgfmfg
+ READY FOR DEPLOYMENT
