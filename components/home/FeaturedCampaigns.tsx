@@ -1,8 +1,16 @@
 "use client";
 
-// Force editor re-check
-import { Campaign } from "../../ngo-backend/node_modules/@prisma/client";
 import CampaignCard from "@/components/campaigns/CampaignCard";
+
+interface Campaign {
+    id: string;
+    title: string;
+    description?: string | null;
+    image?: string | null;
+    goal: number;
+    status?: string | null;
+    donations?: { amount: number }[];
+}
 
 interface FeaturedCampaignsProps {
     campaigns: Campaign[];
