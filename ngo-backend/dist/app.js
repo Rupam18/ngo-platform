@@ -15,11 +15,11 @@ const app = (0, express_1.default)();
 app.use((0, helmet_1.default)({
     crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
+const allowedOrigins = process.env.FRONTEND_URL
+    ? [process.env.FRONTEND_URL, 'http://localhost:3000']
+    : ['http://localhost:3000', 'https://yourdomain.com'];
 app.use((0, cors_1.default)({
-    origin: [
-        'http://localhost:3000',
-        'https://yourdomain.com'
-    ],
+    origin: allowedOrigins,
     credentials: true,
 }));
 app.use(rateLimit_middleware_1.globalLimiter);
