@@ -28,15 +28,31 @@ model Campaign {
   donations  Donation[]
 }
 
+model Donor {
+  id        String     @id @default(uuid())
+  name      String
+  email     String
+  pan       String?
+  createdAt DateTime   @default(now())
+  donations Donation[]
+}
+
 model Donation {
-  id         String   @id @default(uuid())
-  amount     Int
-  campaignId String
-  createdAt  DateTime @default(now())
-  status     String   @default("PENDING")
-  userId     String
-  campaign   Campaign @relation(fields: [campaignId], references: [id])
-  user       User     @relation(fields: [userId], references: [id])
+  id            String   @id @default(uuid())
+  amount        Int
+  campaignId    String?
+  createdAt     DateTime @default(now())
+  status        String   @default("PENDING")
+  userId        String?
+  donorId       String?
+  paymentMethod String?
+  receiptNumber String?  @unique
+  receiptUrl    String?
+  type          String?  @default("ONLINE")
+  
+  campaign      Campaign? @relation(fields: [campaignId], references: [id])
+  user          User?     @relation(fields: [userId], references: [id])
+  donor         Donor?    @relation(fields: [donorId], references: [id])
 }
 
 model CampaignImage {
