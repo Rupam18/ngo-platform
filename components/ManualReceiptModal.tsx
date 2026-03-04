@@ -31,7 +31,8 @@ export function ManualReceiptModal({ open, onOpenChange }: ManualReceiptModalPro
         setIsLoading(true);
 
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api'}/receipts/manual`, {
+            const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
+            const res = await fetch(`${baseUrl}/receipts/manual`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -157,7 +158,11 @@ export function ManualReceiptModal({ open, onOpenChange }: ManualReceiptModalPro
                             </Button>
                             <Button
                                 className="flex-1 bg-blue-600 hover:bg-blue-700"
-                                onClick={() => window.open(`http://localhost:5001${successData.receiptUrl}`, '_blank')}
+                                onClick={() => {
+                                    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
+                                    const backendUrl = baseUrl.replace('/api', '');
+                                    window.open(`${backendUrl}${successData.receiptUrl}`, '_blank');
+                                }}
                             >
                                 <FileText className="mr-2 h-4 w-4" />
                                 View PDF
