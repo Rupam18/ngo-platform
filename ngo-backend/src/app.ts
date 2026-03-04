@@ -33,6 +33,8 @@ import donationRoutes from './routes/donation.routes';
 import dashboardRoutes from './routes/dashboard.routes';
 import campaignRoutes from './routes/campaign.routes';
 import receiptRoutes from './routes/receipt.routes';
+import taxReceiptRoutes from './routes/taxReceipt.routes';
+import taxStatementRoutes from './routes/taxStatement.routes';
 import { protect } from './middleware/auth.middleware';
 
 // Routes
@@ -41,6 +43,8 @@ app.use('/api/donation', donationRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/campaign', campaignRoutes);
 app.use('/api/receipts', receiptRoutes);
+app.use('/api/tax-receipts', taxReceiptRoutes);
+app.use('/api/tax-statements', taxStatementRoutes);
 
 app.get('/api/protected', protect, (req: Request, res: Response) => {
     res.json({ message: 'You are authenticated' });

@@ -53,6 +53,22 @@ model Donation {
   campaign      Campaign? @relation(fields: [campaignId], references: [id])
   user          User?     @relation(fields: [userId], references: [id])
   donor         Donor?    @relation(fields: [donorId], references: [id])
+  taxReceipt    TaxReceipt?
+}
+
+model TaxReceipt {
+  id            String   @id @default(uuid())
+  receiptNumber String   @unique
+  donationId    String   @unique
+  donorName     String
+  donorPAN      String?
+  donorAddress  String?
+  amount        Float
+  donationDate  DateTime
+  generatedAt   DateTime @default(now())
+  pdfUrl        String
+
+  donation      Donation @relation(fields: [donationId], references: [id])
 }
 
 model CampaignImage {

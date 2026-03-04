@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import Razorpay from "razorpay"
 import crypto from "crypto"
+import { generate80GReceiptService } from "../services/taxReceipt.service"
 import { prisma } from "../config/prisma"
 
 const razorpay = new Razorpay({
@@ -54,9 +55,15 @@ export const verifyPayment = async (req: any, res: Response): Promise<any> => {
                 amount,
                 userId: req.user.userId,
                 campaignId,
-                status: "SUCCESS"
+                status: "SUCCESS",
+                paymentMethod: "RAZORPAY" // Tracking payment method for receipt
             }
         })
+
+        // Automatically generate 80G Tax Receipt
+        generate80GReceiptService(donation.id).catch((err) => {
+            console.error("Failed to auto-generate 80G receipt:", err);
+        });
 
         // Optional: Update campaign status if goal reached
         const totalRaised = await prisma.donation.aggregate({
