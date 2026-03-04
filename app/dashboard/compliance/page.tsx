@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { FileText, Download, UploadCloud, ShieldCheck, Mail, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ManualReceiptModal } from "@/components/ManualReceiptModal";
+import { useState } from "react";
 
 export function CompliancePage() {
+    const [isReceiptModalOpen, setIsReceiptModalOpen] = useState(false);
     return (
         <div className="p-6 md:p-8 max-w-[1600px] mx-auto space-y-8 pb-20">
             {/* Header Section */}
@@ -34,7 +37,10 @@ export function CompliancePage() {
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Generate Manual Receipt</h3>
                     <p className="text-gray-500 text-sm mb-6">Create a single, formatted PDF donation receipt for offline contributions or corrections.</p>
-                    <Button className="w-full !bg-blue-50 !text-blue-700 hover:!bg-blue-100 border-none shadow-none font-semibold">
+                    <Button
+                        onClick={() => setIsReceiptModalOpen(true)}
+                        className="w-full !bg-blue-50 !text-blue-700 hover:!bg-blue-100 border-none shadow-none font-semibold"
+                    >
                         Create Receipt
                     </Button>
                 </motion.div>
@@ -99,6 +105,11 @@ export function CompliancePage() {
                 </div>
             </motion.div>
 
+            {/* Modals */}
+            <ManualReceiptModal
+                open={isReceiptModalOpen}
+                onOpenChange={setIsReceiptModalOpen}
+            />
         </div>
     );
 }
