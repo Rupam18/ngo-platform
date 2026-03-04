@@ -28,11 +28,8 @@ export function ManualReceiptModal({ open, onOpenChange }: ManualReceiptModalPro
             return;
         }
 
-        setIsLoading(true);
-
         try {
-            const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
-            const res = await fetch(`${baseUrl}/receipts/manual`, {
+            const res = await fetch(`/api/receipts/manual`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -159,9 +156,7 @@ export function ManualReceiptModal({ open, onOpenChange }: ManualReceiptModalPro
                             <Button
                                 className="flex-1 bg-blue-600 hover:bg-blue-700"
                                 onClick={() => {
-                                    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
-                                    const backendUrl = baseUrl.replace('/api', '');
-                                    window.open(`${backendUrl}${successData.receiptUrl}`, '_blank');
+                                    window.open(successData.receiptUrl, '_blank');
                                 }}
                             >
                                 <FileText className="mr-2 h-4 w-4" />
