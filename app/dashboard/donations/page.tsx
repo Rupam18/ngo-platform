@@ -1,11 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { format } from "date-fns";
 import { motion } from "framer-motion";
-import { Search, Filter, Download, Eye, RotateCcw, Calendar as CalendarIcon } from "lucide-react";
+import { Search, Filter, Download, Eye, RotateCcw, Calendar as CalendarIcon, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Calendar } from "@/components/ui/calendar";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 import {
     Table,
     TableBody,
@@ -42,12 +50,20 @@ const mockDonations: Donation[] = [
 export default function DonationsPage() {
     const [searchTerm, setSearchTerm] = useState("");
     const [campaignFilter, setCampaignFilter] = useState("All Campaigns");
+    const [date, setDate] = useState<Date | undefined>(undefined);
 
     const filteredDonations = mockDonations.filter(d => {
         const matchSearch = d.donorName.toLowerCase().includes(searchTerm.toLowerCase()) ||
             d.id.toLowerCase().includes(searchTerm.toLowerCase());
         const matchCampaign = campaignFilter === "All Campaigns" || d.campaign === campaignFilter;
-        return matchSearch && matchCampaign;
+
+        let matchDate = true;
+        if (date) {
+            const formattedFilterDate = format(date, "yyyy-MM-dd");
+            matchDate = d.date === formattedFilterDate;
+        }
+
+        return matchSearch && matchCampaign && matchDate;
     });
 
     return (
@@ -96,10 +112,35 @@ export default function DonationsPage() {
                             </DropdownMenuContent>
                         </DropdownMenu>
 
-                        <Button variant="outline" className="text-gray-700">
-                            <CalendarIcon size={16} className="mr-2" />
-                            Select Date
-                        </Button>
+                        <div className="flex items-center gap-2">
+                            <Popover>
+                                <PopoverTrigger asChild>
+                                    <Button
+                                        variant={"outline"}
+                                        className={cn(
+                                            "min-w-36 justify-start text-left font-normal text-gray-700",
+                                            !date && "text-muted-foreground"
+                                        )}
+                                    >
+                                        <CalendarIcon className="mr-2 h-4 w-4" />
+                                        {date ? format(date, "PPP") : <span>Select Date</span>}
+                                    </Button>
+                                </PopoverTrigger>
+                                <PopoverContent className="w-auto p-0 z-50 bg-white" align="end">
+                                    <Calendar
+                                        mode="single"
+                                        selected={date}
+                                        onSelect={setDate}
+                                        initialFocus
+                                    />
+                                </PopoverContent>
+                            </Popover>
+                            {date && (
+                                <Button variant="ghost" size="icon" onClick={() => setDate(undefined)} className="h-9 w-9 text-gray-400 hover:text-red-500 rounded-full" title="Clear Date Filter">
+                                    <X size={16} />
+                                </Button>
+                            )}
+                        </div>
                     </div>
                 </div>
 
