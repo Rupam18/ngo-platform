@@ -22,8 +22,15 @@ const donateSchema = z.object({
 
 type DonateFormData = z.infer<typeof donateSchema>;
 
+declare global {
+    interface Window {
+        Razorpay: any;
+    }
+}
+
 export default function DonatePage() {
     const [selectedAmount, setSelectedAmount] = useState<number | null>(1000);
+    const [isProcessing, setIsProcessing] = useState(false);
     const amounts = [500, 1000, 2500, 5000, 10000];
 
     const {
@@ -40,8 +47,68 @@ export default function DonatePage() {
     });
 
     const onSubmit = async (data: DonateFormData) => {
-        console.log("Validated Data:", data);
-        // 🔥 Integrate Razorpay here
+        setIsProcessing(true);
+        try {
+            // 1. Create order
+            const res = await fetch("/api/payment/create-order", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+            const orderData = await res.json();
+
+            if (!orderData.success) {
+                alert("Failed to create order. Please try again.");
+                return;
+            }
+
+            // 2. Initialize Razorpay
+            const options = {
+                key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+                amount: orderData.order.amount,
+                currency: orderData.order.currency,
+                name: "NGO Platform",
+                description: "Donation Contribution",
+                order_id: orderData.order.id,
+                handler: async function (response: any) {
+                    // 3. Verify payment
+                    const verifyRes = await fetch("/api/payment/verify", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            razorpay_payment_id: response.razorpay_payment_id,
+                            razorpay_order_id: response.razorpay_order_id,
+                            razorpay_signature: response.razorpay_signature,
+                            donationId: orderData.donationId,
+                        }),
+                    });
+                    const verifyData = await verifyRes.json();
+                    if (verifyData.success) {
+                        alert("Donation successful! Thank you for your contribution.");
+                        // Optional: Reset form or redirect
+                    } else {
+                        alert("Payment verification failed.");
+                    }
+                },
+                prefill: {
+                    name: data.fullName,
+                    email: data.email,
+                    contact: data.phone,
+                },
+                theme: {
+                    color: "#0056A6",
+                },
+            };
+
+            const paymentObject = new window.Razorpay(options);
+            paymentObject.open();
+
+        } catch (error) {
+            console.error("Payment initialization error:", error);
+            alert("Something went wrong. Please try again.");
+        } finally {
+            setIsProcessing(false);
+        }
     };
 
     return (
@@ -282,13 +349,17 @@ export default function DonatePage() {
                                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                                     <Button
                                         type="submit"
-                                        disabled={!isValid}
+                                        disabled={!isValid || isProcessing}
                                         variant="primary"
                                         size="lg"
-                                        className={`w-full py-4 text-lg rounded-2xl flex items-center justify-center gap-3 transition-all ${!isValid ? "opacity-50 cursor-not-allowed" : ""
+                                        className={`w-full py-4 text-lg rounded-2xl flex items-center justify-center gap-3 transition-all ${(!isValid || isProcessing) ? "opacity-50 cursor-not-allowed" : ""
                                             } bg-[#800000] hover:bg-[#660000] text-white font-bold shadow-[0_4px_14px_0_rgba(128,0,0,0.2)] hover:-translate-y-[2px]`}
                                     >
-                                        <ShieldCheck size={22} className="text-white/80" /> Proceed to Secure Payment
+                                        {isProcessing ? (
+                                            <span className="animate-pulse">Processing...</span>
+                                        ) : (
+                                            <><ShieldCheck size={22} className="text-white/80" /> Proceed to Secure Payment</>
+                                        )}
                                     </Button>
                                 </motion.div>
                                 <p className="text-center text-xs text-gray-500 mt-4 font-medium flex items-center justify-center gap-1">

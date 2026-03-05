@@ -9,6 +9,92 @@ import { Heart, Activity, ArrowLeft, Target, Users } from "lucide-react";
 export default function CampaignDetailsClient({ campaign, raisedAmount, progress }: any) {
     const [showDonate, setShowDonate] = useState(false);
     const [selectedAmount, setSelectedAmount] = useState<number | null>(1000);
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        phone: "",
+        pan: "",
+    });
+
+    const handleDonateSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!selectedAmount || selectedAmount < 100) {
+            alert("Minimum donation amount is ₹100");
+            return;
+        }
+
+        setIsProcessing(true);
+        try {
+            // 1. Create order
+            const res = await fetch("/api/payment/create-order", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    amount: selectedAmount,
+                    fullName: formData.fullName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    purpose: "campaign",
+                    campaignId: campaign.id,
+                }),
+            });
+            const orderData = await res.json();
+
+            if (!orderData.success) {
+                alert("Failed to create order. Please try again.");
+                return;
+            }
+
+            // 2. Initialize Razorpay
+            const options = {
+                key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+                amount: orderData.order.amount,
+                currency: orderData.order.currency,
+                name: "NGO Platform",
+                description: `Support ${campaign.title}`,
+                order_id: orderData.order.id,
+                handler: async function (response: any) {
+                    // 3. Verify payment
+                    const verifyRes = await fetch("/api/payment/verify", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            razorpay_payment_id: response.razorpay_payment_id,
+                            razorpay_order_id: response.razorpay_order_id,
+                            razorpay_signature: response.razorpay_signature,
+                            donationId: orderData.donationId,
+                        }),
+                    });
+                    const verifyData = await verifyRes.json();
+                    if (verifyData.success) {
+                        alert("Donation successful! Thank you for your support.");
+                        setShowDonate(false);
+                        // Can trigger a re-fetch of campaign details here if needed
+                    } else {
+                        alert("Payment verification failed.");
+                    }
+                },
+                prefill: {
+                    name: formData.fullName,
+                    email: formData.email,
+                    contact: formData.phone,
+                },
+                theme: {
+                    color: "#0056A6",
+                },
+            };
+
+            const paymentObject = new window.Razorpay(options);
+            paymentObject.open();
+
+        } catch (error) {
+            console.error("Payment initialization error:", error);
+            alert("Something went wrong. Please try again.");
+        } finally {
+            setIsProcessing(false);
+        }
+    };
 
     return (
         <>
@@ -150,7 +236,7 @@ export default function CampaignDetailsClient({ campaign, raisedAmount, progress
                             </div>
 
                             {/* Form Elements */}
-                            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                            <form className="space-y-6" onSubmit={handleDonateSubmit}>
                                 <div className="relative mb-8">
                                     <span className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 font-bold text-xl">₹</span>
                                     <input
@@ -166,31 +252,39 @@ export default function CampaignDetailsClient({ campaign, raisedAmount, progress
                                     <input
                                         type="text"
                                         placeholder="Full Name"
+                                        value={formData.fullName}
+                                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                                         className="w-full bg-gray-50 border border-gray-200 px-6 py-4 rounded-xl text-gray-900 font-medium focus:bg-white focus:ring-2 focus:ring-[#0056A6]/50 focus:border-[#0056A6] outline-none transition-all shadow-sm"
                                         required
                                     />
                                     <input
                                         type="email"
                                         placeholder="Email Address"
+                                        value={formData.email}
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         className="w-full bg-gray-50 border border-gray-200 px-6 py-4 rounded-xl text-gray-900 font-medium focus:bg-white focus:ring-2 focus:ring-[#0056A6]/50 focus:border-[#0056A6] outline-none transition-all shadow-sm"
                                         required
                                     />
                                     <input
                                         type="tel"
                                         placeholder="Phone Number"
+                                        value={formData.phone}
+                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                         className="w-full bg-gray-50 border border-gray-200 px-6 py-4 rounded-xl text-gray-900 font-medium focus:bg-white focus:ring-2 focus:ring-[#0056A6]/50 focus:border-[#0056A6] outline-none transition-all shadow-sm"
                                         required
                                     />
                                     <input
                                         type="text"
                                         placeholder="Pan Card (Optional)"
+                                        value={formData.pan}
+                                        onChange={(e) => setFormData({ ...formData, pan: e.target.value })}
                                         className="w-full bg-gray-50 border border-gray-200 px-6 py-4 rounded-xl text-gray-900 font-medium focus:bg-white focus:ring-2 focus:ring-[#0056A6]/50 focus:border-[#0056A6] outline-none transition-all shadow-sm"
                                     />
                                 </div>
 
                                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                                    <Button type="submit" variant="primary" size="lg" className="w-full py-5 rounded-2xl text-xl shadow-[0_4px_14px_0_rgba(0,0,0,0.08)]">
-                                        Proceed to Payment
+                                    <Button type="submit" disabled={isProcessing} variant="primary" size="lg" className={`w-full py-5 rounded-2xl text-xl shadow-[0_4px_14px_0_rgba(0,0,0,0.08)] ${isProcessing ? 'opacity-70 cursor-not-allowed' : ''}`}>
+                                        {isProcessing ? 'Processing...' : 'Proceed to Payment'}
                                     </Button>
                                 </motion.div>
                             </form>

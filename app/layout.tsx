@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 import Navbar from "@/components/layout/Navbar";
@@ -34,7 +35,9 @@ export default function RootLayout({
         {/* <Navbar /> Moved to page.tsx for homepage redesign request */}
         {children}
         {/* <Footer /> Moved to page.tsx for homepage redesign request */}
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
       </body>
     </html>
   );
 }
+
