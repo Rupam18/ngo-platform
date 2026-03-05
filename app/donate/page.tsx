@@ -9,6 +9,7 @@ import Image from "next/image";
 import StickyHeader from "@/components/home/StickyHeader";
 import Footer from "@/components/home/Footer";
 import { ShieldCheck, CheckCircle, Receipt, Lock } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
 const donateSchema = z.object({
@@ -58,7 +59,8 @@ export default function DonatePage() {
             const orderData = await res.json();
 
             if (!orderData.success) {
-                alert("Failed to create order. Please try again.");
+                toast.error(orderData.error || "Failed to create order. Please try again.");
+                console.error("Order creation failed details:", orderData.details);
                 return;
             }
 
@@ -84,10 +86,10 @@ export default function DonatePage() {
                     });
                     const verifyData = await verifyRes.json();
                     if (verifyData.success) {
-                        alert("Donation successful! Thank you for your contribution.");
+                        toast.success("Donation successful! Thank you for your contribution.");
                         // Optional: Reset form or redirect
                     } else {
-                        alert("Payment verification failed.");
+                        toast.error("Payment verification failed. Please contact support.");
                     }
                 },
                 prefill: {
@@ -105,7 +107,7 @@ export default function DonatePage() {
 
         } catch (error) {
             console.error("Payment initialization error:", error);
-            alert("Something went wrong. Please try again.");
+            toast.error("Something went wrong. Please try again.");
         } finally {
             setIsProcessing(false);
         }
@@ -349,10 +351,10 @@ export default function DonatePage() {
                                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                                     <Button
                                         type="submit"
-                                        disabled={!isValid || isProcessing}
+                                        disabled={isProcessing}
                                         variant="primary"
                                         size="lg"
-                                        className={`w-full py-4 text-lg rounded-2xl flex items-center justify-center gap-3 transition-all ${(!isValid || isProcessing) ? "opacity-50 cursor-not-allowed" : ""
+                                        className={`w-full py-4 text-lg rounded-2xl flex items-center justify-center gap-3 transition-all ${isProcessing ? "opacity-50 cursor-not-allowed" : ""
                                             } bg-[#800000] hover:bg-[#660000] text-white font-bold shadow-[0_4px_14px_0_rgba(128,0,0,0.2)] hover:-translate-y-[2px]`}
                                     >
                                         {isProcessing ? (

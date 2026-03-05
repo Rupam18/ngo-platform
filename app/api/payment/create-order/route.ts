@@ -48,10 +48,14 @@ export async function POST(req: Request) {
             donationId: donation.id
         });
 
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error creating Razorpay order:", error);
         return NextResponse.json(
-            { success: false, error: "Failed to create payment order" },
+            {
+                success: false,
+                error: error?.message || "Failed to create payment order",
+                details: error
+            },
             { status: 500 }
         );
     }
