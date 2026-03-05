@@ -48,42 +48,37 @@ export async function POST(req: Request) {
             }
         });
 
-        // Generate PDF in memory
-        const pdfBuffer = await new Promise<Buffer>((resolve) => {
-            const doc = new PDFDocument();
-            const buffers: Buffer[] = [];
+        // Generate PDF in memory using jsPDF
+        // Note: Using dynamic import or require to ensure it works nicely in the serverless edge/node environment
+        const { jsPDF } = require("jspdf");
+        const doc = new jsPDF();
 
-            doc.on("data", buffers.push.bind(buffers));
-            doc.on("end", () => {
-                resolve(Buffer.concat(buffers));
-            });
+        doc.setFontSize(20);
+        doc.text("Donation Receipt", 105, 20, { align: "center" });
 
-            doc.fontSize(20).text("Donation Receipt", { align: "center" });
-            doc.moveDown();
-            doc.fontSize(12).text(`Receipt Number: ${donation.receiptNumber}`);
-            doc.text(`Date: ${new Date().toDateString()}`);
-            doc.moveDown();
-            doc.text(`Donor Name: ${donor.name}`);
-            doc.text(`Email: ${donor.email}`);
-            doc.text(`PAN: ${donor.pan || "N/A"}`);
-            doc.moveDown();
-            doc.text(`Donation Amount: Rs. ${donation.amount}`);
-            doc.text(`Payment Method: ${donation.paymentMethod}`);
-            doc.moveDown();
-            doc.text("Thank you for supporting our mission.");
-            doc.end();
-        });
+        doc.setFontSize(12);
+        doc.text(`Receipt Number: ${donation.receiptNumber}`, 20, 40);
+        doc.text(`Date: ${new Date().toDateString()}`, 20, 50);
+
+        doc.text(`Donor Name: ${donor.name}`, 20, 70);
+        doc.text(`Email: ${donor.email}`, 20, 80);
+        doc.text(`PAN: ${donor.pan || "N/A"}`, 20, 90);
+
+        doc.text(`Donation Amount: Rs. ${donation.amount}`, 20, 110);
+        doc.text(`Payment Method: ${donation.paymentMethod}`, 20, 120);
+
+        doc.text("Thank you for supporting our mission.", 20, 140);
+
+        const pdfBase64String = doc.output('datauristring');
+
+        // Remove the Data URI prefix so cloudinary can upload it clearly
+        // ex: 'data:application/pdf;filename=generated.pdf;base64,...'
 
         // Upload PDF Buffer to Cloudinary
-        const uploadResult = await new Promise<any>((resolve, reject) => {
-            const uploadStream = cloudinary.uploader.upload_stream(
-                { folder: "ngo-receipts", format: "pdf" },
-                (error, result) => {
-                    if (result) resolve(result);
-                    else reject(error);
-                }
-            );
-            uploadStream.end(pdfBuffer);
+        const uploadResult = await cloudinary.uploader.upload(pdfBase64String, {
+            folder: "ngo-receipts",
+            resource_type: "raw", // Required for raw files like PDF vs image
+            format: "pdf"
         });
 
         const receiptUrl = uploadResult.secure_url;

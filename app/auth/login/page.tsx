@@ -41,11 +41,11 @@ export default function LoginPage() {
             <div className="w-full max-w-md bg-white/70 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/40">
 
                 <h1 className="text-3xl font-bold text-center text-gray-800">
-                    Login to Your Account
+                    NGO Admin Login
                 </h1>
 
                 <p className="text-center text-gray-500 mt-2 mb-6">
-                    Welcome back! Please enter your details.
+                    Secure access to the NGO platform dashboard.
                 </p>
 
                 <form className="space-y-4" onSubmit={handleSubmit}>
