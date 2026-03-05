@@ -1,4 +1,5 @@
 import CampaignCard from "@/components/campaigns/CampaignCard";
+import { prisma } from "@/lib/prisma";
 
 export const revalidate = 0;
 
@@ -6,15 +7,17 @@ export default async function CampaignsPage() {
   let campaigns: any[] = [];
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
-    const res = await fetch(`${baseUrl}/campaign`, { cache: 'no-store' });
-    const json = await res.json();
-
-    if (json.success) {
-      campaigns = json.data;
-    }
+    campaigns = await prisma.campaign.findMany({
+      include: {
+        _count: {
+          select: { donations: true }
+        },
+        donations: true
+      },
+      orderBy: { createdAt: 'desc' }
+    });
   } catch (error) {
-    console.error("Failed to fetch campaigns:", error);
+    console.error("Failed to fetch campaigns from DB:", error);
   }
 
   const activeCampaigns = campaigns.filter(c => c.status === 'ACTIVE');
@@ -29,14 +32,14 @@ export default async function CampaignsPage() {
       {activeCampaigns.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {activeCampaigns.map((campaign: any) => {
-            const raisedAmount = campaign._count?.donations ? campaign.donations?.reduce((sum: number, d: { amount: number }) => sum + d.amount, 0) || 0 : 0;
+            const raisedAmount = campaign.donations ? campaign.donations.reduce((sum: number, d: { amount: number }) => sum + d.amount, 0) : 0;
             return (
               <CampaignCard
                 key={campaign.id}
                 id={campaign.id}
                 title={campaign.title}
                 description={campaign.description || "A wonderful campaign to support."}
-                image={campaign.image || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070"}
+                image={campaign.coverImage || campaign.image || "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070"}
                 raised={raisedAmount}
                 goal={campaign.goal}
               />

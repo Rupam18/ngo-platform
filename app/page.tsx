@@ -21,17 +21,24 @@ export default async function Home() {
   let activeCampaigns: any[] = [];
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
-    const res = await fetch(`${baseUrl}/campaign`, { cache: 'no-store' });
-    const json = await res.json();
+    const { prisma } = await import("@/lib/prisma");
+    const dbCampaigns = await prisma.campaign.findMany({
+      where: { status: 'ACTIVE' },
+      orderBy: { createdAt: 'desc' },
+      take: 3,
+      include: {
+        _count: { select: { donations: true } },
+        donations: true
+      }
+    });
 
-    if (json.success) {
-      activeCampaigns = json.data
-        .filter((c: any) => c.status === 'ACTIVE')
-        .slice(0, 3);
-    }
+    // Map them to the component's expected format just to be safe with image types
+    activeCampaigns = dbCampaigns.map(c => ({
+      ...c,
+      image: c.coverImage
+    }));
   } catch (error) {
-    console.error("Failed to fetch featured campaigns:", error);
+    console.error("Failed to fetch featured campaigns from DB:", error);
   }
 
   return (
