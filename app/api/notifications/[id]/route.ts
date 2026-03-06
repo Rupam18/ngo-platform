@@ -4,10 +4,10 @@ import { prisma } from "@/lib/prisma";
 // PATCH /api/notifications/[id] - Mark a specific notification as read
 export async function PATCH(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const notificationId = params.id;
+        const { id: notificationId } = await params;
 
         const updatedNotification = await prisma.notification.update({
             where: { id: notificationId },

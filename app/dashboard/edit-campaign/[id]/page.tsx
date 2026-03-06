@@ -1,17 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
 import CampaignForm from "@/components/admin/CampaignForm";
 
-export default function EditCampaignPage({ params }: { params: { id: string } }) {
+export default function EditCampaignPage({ params }: { params: Promise<{ id: string }> }) {
     const router = useRouter();
     const [campaign, setCampaign] = useState(null);
     const [loading, setLoading] = useState(true);
+    const resolvedParams = use(params);
 
     useEffect(() => {
-        fetchCampaign(params.id);
-    }, [params.id]);
+        fetchCampaign(resolvedParams.id);
+    }, [resolvedParams.id]);
 
     async function fetchCampaign(id: string) {
         try {
