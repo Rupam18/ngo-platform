@@ -17,9 +17,15 @@ import { NotificationBell } from "./NotificationBell";
 export function Topbar() {
     const router = useRouter();
 
-    function handleLogout() {
-        localStorage.removeItem("token");
-        router.push("/auth/login");
+    async function handleLogout() {
+        try {
+            await fetch("/api/auth/logout", { method: "POST" });
+        } catch (error) {
+            console.error("Logout failed:", error);
+        } finally {
+            localStorage.removeItem("token");
+            router.push("/auth/login");
+        }
     }
 
     return (
