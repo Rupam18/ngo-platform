@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
-import { Search, Filter, Download, Eye, RotateCcw, Calendar as CalendarIcon, X } from "lucide-react";
+import { Search, Filter, Download, Eye, RotateCcw, Calendar as CalendarIcon, X, PackageOpen, Banknote } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +13,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import {
     Table,
@@ -38,6 +39,25 @@ interface Donation {
     status: "Success" | "Pending" | "Failed" | "Refunded";
 }
 
+interface InKindDonation {
+    id: string;
+    firstName: string;
+    lastName?: string;
+    email: string;
+    phone: string;
+    address: string;
+    subject: string;
+    clothes: number;
+    books: number;
+    raddi: number;
+    grains: number;
+    stationery: number;
+    computers: number;
+    otherItems?: string;
+    status: string;
+    createdAt: string;
+}
+
 const mockDonations: Donation[] = [
     { id: "DON1029", donorName: "Anil Kumar", amount: 5000, campaign: "Education for All", date: "2026-02-21", status: "Success" },
     { id: "DON1028", donorName: "Priya Singh", amount: 1500, campaign: "Disaster Relief Fund", date: "2026-02-20", status: "Success" },
@@ -51,6 +71,27 @@ export default function DonationsPage() {
     const [searchTerm, setSearchTerm] = useState("");
     const [campaignFilter, setCampaignFilter] = useState("All Campaigns");
     const [date, setDate] = useState<Date | undefined>(undefined);
+
+    const [inKindDonations, setInKindDonations] = useState<InKindDonation[]>([]);
+    const [isLoadingInKind, setIsLoadingInKind] = useState(true);
+
+    useEffect(() => {
+        const fetchInKind = async () => {
+            try {
+                const res = await fetch("/api/admin/inkind");
+                const data = await res.json();
+                if (data.success) {
+                    setInKindDonations(data.data);
+                }
+            } catch (error) {
+                console.error("Failed to fetch in-kind donations", error);
+            } finally {
+                setIsLoadingInKind(false);
+            }
+        };
+
+        fetchInKind();
+    }, []);
 
     const filteredDonations = mockDonations.filter(d => {
         const matchSearch = d.donorName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -144,60 +185,142 @@ export default function DonationsPage() {
                     </div>
                 </div>
 
-                <div className="overflow-x-auto">
-                    <Table>
-                        <TableHeader className="bg-gray-50/50">
-                            <TableRow className="hover:bg-transparent">
-                                <TableHead className="font-semibold text-gray-600">Transaction ID</TableHead>
-                                <TableHead className="font-semibold text-gray-600">Donor Name</TableHead>
-                                <TableHead className="font-semibold text-gray-600">Amount</TableHead>
-                                <TableHead className="font-semibold text-gray-600">Campaign</TableHead>
-                                <TableHead className="font-semibold text-gray-600">Date</TableHead>
-                                <TableHead className="font-semibold text-gray-600">Status</TableHead>
-                                <TableHead className="text-right font-semibold text-gray-600">Actions</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {filteredDonations.map((donation) => (
-                                <TableRow key={donation.id} className="hover:bg-gray-50/50">
-                                    <TableCell className="font-medium text-gray-900">{donation.id}</TableCell>
-                                    <TableCell>{donation.donorName}</TableCell>
-                                    <TableCell className="text-emerald-600 font-medium">₹{donation.amount.toLocaleString()}</TableCell>
-                                    <TableCell className="text-gray-600">{donation.campaign}</TableCell>
-                                    <TableCell className="text-gray-500">{donation.date}</TableCell>
-                                    <TableCell>
-                                        <Badge variant="outline" className={`
+                <Tabs defaultValue="monetary" className="w-full">
+                    <div className="px-6 pt-4">
+                        <TabsList className="grid w-full max-w-md grid-cols-2 bg-gray-100 p-1 rounded-xl">
+                            <TabsTrigger value="monetary" className="rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-emerald-700 transition-all font-medium py-2">
+                                <Banknote className="w-4 h-4 mr-2" />
+                                Monetary
+                            </TabsTrigger>
+                            <TabsTrigger value="inkind" className="rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-blue-700 transition-all font-medium py-2">
+                                <PackageOpen className="w-4 h-4 mr-2" />
+                                In-Kind
+                            </TabsTrigger>
+                        </TabsList>
+                    </div>
+
+                    <TabsContent value="monetary" className="mt-0 outline-none">
+
+                        <div className="overflow-x-auto">
+                            <Table>
+                                <TableHeader className="bg-gray-50/50">
+                                    <TableRow className="hover:bg-transparent">
+                                        <TableHead className="font-semibold text-gray-600">Transaction ID</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Donor Name</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Amount</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Campaign</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Date</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Status</TableHead>
+                                        <TableHead className="text-right font-semibold text-gray-600">Actions</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {filteredDonations.map((donation) => (
+                                        <TableRow key={donation.id} className="hover:bg-gray-50/50">
+                                            <TableCell className="font-medium text-gray-900">{donation.id}</TableCell>
+                                            <TableCell>{donation.donorName}</TableCell>
+                                            <TableCell className="text-emerald-600 font-medium">₹{donation.amount.toLocaleString()}</TableCell>
+                                            <TableCell className="text-gray-600">{donation.campaign}</TableCell>
+                                            <TableCell className="text-gray-500">{donation.date}</TableCell>
+                                            <TableCell>
+                                                <Badge variant="outline" className={`
                                             ${donation.status === 'Success' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : ''}
                                             ${donation.status === 'Pending' ? 'bg-amber-50 text-amber-700 border-amber-200' : ''}
                                             ${donation.status === 'Failed' ? 'bg-red-50 text-red-700 border-red-200' : ''}
                                             ${donation.status === 'Refunded' ? 'bg-gray-100 text-gray-700 border-gray-300' : ''}
                                         `}>
-                                            {donation.status}
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell className="text-right">
-                                        <div className="flex items-center justify-end gap-2">
-                                            <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-blue-600 hover:bg-blue-50" title="View Transaction">
-                                                <Eye size={16} />
-                                            </Button>
-                                            <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-orange-600 hover:bg-orange-50" title="Refund" disabled={donation.status !== 'Success'}>
-                                                <RotateCcw size={16} />
-                                            </Button>
-                                        </div>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </div>
+                                                    {donation.status}
+                                                </Badge>
+                                            </TableCell>
+                                            <TableCell className="text-right">
+                                                <div className="flex items-center justify-end gap-2">
+                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-blue-600 hover:bg-blue-50" title="View Transaction">
+                                                        <Eye size={16} />
+                                                    </Button>
+                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-orange-600 hover:bg-orange-50" title="Refund" disabled={donation.status !== 'Success'}>
+                                                        <RotateCcw size={16} />
+                                                    </Button>
+                                                </div>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </div>
 
-                <div className="p-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500">
-                    <span>Showing {filteredDonations.length} entries</span>
-                    <div className="flex gap-2">
-                        <Button variant="outline" size="sm" disabled>Previous</Button>
-                        <Button variant="outline" size="sm" disabled>Next</Button>
-                    </div>
-                </div>
+                        <div className="p-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500">
+                            <span>Showing {filteredDonations.length} entries</span>
+                            <div className="flex gap-2">
+                                <Button variant="outline" size="sm" disabled>Previous</Button>
+                                <Button variant="outline" size="sm" disabled>Next</Button>
+                            </div>
+                        </div>
+                    </TabsContent>
+
+                    <TabsContent value="inkind" className="mt-0 outline-none border-t border-gray-100">
+                        <div className="overflow-x-auto">
+                            <Table>
+                                <TableHeader className="bg-blue-50/50">
+                                    <TableRow className="hover:bg-transparent">
+                                        <TableHead className="font-semibold text-gray-600">ID</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Donor Name</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Contact</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Purpose</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Items Count</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Date</TableHead>
+                                        <TableHead className="font-semibold text-gray-600">Status</TableHead>
+                                        <TableHead className="text-right font-semibold text-gray-600">Actions</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {isLoadingInKind ? (
+                                        <TableRow>
+                                            <TableCell colSpan={8} className="text-center py-10 text-gray-500">Loading in-kind donations...</TableCell>
+                                        </TableRow>
+                                    ) : inKindDonations.length === 0 ? (
+                                        <TableRow>
+                                            <TableCell colSpan={8} className="text-center py-10 text-gray-500">No in-kind donations found.</TableCell>
+                                        </TableRow>
+                                    ) : (
+                                        inKindDonations.map((donation) => {
+                                            const totalItems = (donation.clothes || 0) + (donation.books || 0) + (donation.raddi || 0) + (donation.grains || 0) + (donation.stationery || 0) + (donation.computers || 0);
+                                            const hasOther = donation.otherItems ? 1 : 0;
+                                            return (
+                                                <TableRow key={donation.id} className="hover:bg-blue-50/30">
+                                                    <TableCell className="font-medium text-gray-900 text-xs">{donation.id.slice(0, 8)}</TableCell>
+                                                    <TableCell>{donation.firstName} {donation.lastName}</TableCell>
+                                                    <TableCell>
+                                                        <div className="text-sm">{donation.email}</div>
+                                                        <div className="text-xs text-gray-500">{donation.phone}</div>
+                                                    </TableCell>
+                                                    <TableCell className="text-gray-600 capitalize">{donation.subject}</TableCell>
+                                                    <TableCell className="text-blue-600 font-bold">{totalItems + hasOther} Types</TableCell>
+                                                    <TableCell className="text-gray-500">{new Date(donation.createdAt).toLocaleDateString()}</TableCell>
+                                                    <TableCell>
+                                                        <Badge variant="outline" className={`
+                                                        ${donation.status === 'PENDING' ? 'bg-amber-50 text-amber-700 border-amber-200' : ''}
+                                                        ${donation.status === 'REVIEWED' ? 'bg-blue-50 text-blue-700 border-blue-200' : ''}
+                                                        ${donation.status === 'COMPLETED' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : ''}
+                                                    `}>
+                                                            {donation.status}
+                                                        </Badge>
+                                                    </TableCell>
+                                                    <TableCell className="text-right">
+                                                        <div className="flex items-center justify-end gap-2">
+                                                            <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-400 hover:text-blue-600 hover:bg-blue-50" title="View Details">
+                                                                <Eye size={16} />
+                                                            </Button>
+                                                        </div>
+                                                    </TableCell>
+                                                </TableRow>
+                                            );
+                                        })
+                                    )}
+                                </TableBody>
+                            </Table>
+                        </div>
+                    </TabsContent>
+                </Tabs>
             </motion.div>
         </div>
     );

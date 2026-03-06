@@ -119,3 +119,23 @@ model Notification {
   isRead    Boolean  @default(false)
   createdAt DateTime @default(now())
 }
+
+model InKindDonation {
+  id          String   @id @default(uuid())
+  firstName   String
+  lastName    String?
+  email       String
+  phone       String
+  address     String
+  subject     String
+  clothes     Int      @default(0)
+  books       Int      @default(0)
+  raddi       Int      @default(0)
+  grains      Int      @default(0)
+  stationery  Int      @default(0)
+  computers   Int      @default(0)
+  otherItems  String?
+  message     String?
+  status      String   @default("PENDING") // PENDING, REVIEWED, COMPLETED
+  createdAt   DateTime @default(now())
+}

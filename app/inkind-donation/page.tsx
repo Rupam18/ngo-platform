@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import StickyHeader from "@/components/home/StickyHeader"
 import Footer from "@/components/home/Footer"
+import { toast } from "sonner"
 
 const inKindSchema = z.object({
     firstName: z.string().min(2, "First name is required").regex(/^[A-Za-z\s]+$/, "Only letters are allowed"),
@@ -18,22 +19,22 @@ const inKindSchema = z.object({
     phone: z.string().regex(/^[6-9]\d{9}$/, "Enter valid 10-digit Indian number"),
     address: z.string().min(10, "Pickup address is required"),
     subject: z.string().min(1, "Please select donation purpose"),
-    clothes: z.number().int().min(0).optional(),
-    books: z.number().int().min(0).optional(),
-    raddi: z.number().int().min(0).optional(),
-    grains: z.number().int().min(0).optional(),
-    stationery: z.number().int().min(0).optional(),
-    computers: z.number().int().min(0).optional(),
+    clothes: z.coerce.number().min(0).optional().default(0),
+    books: z.coerce.number().min(0).optional().default(0),
+    raddi: z.coerce.number().min(0).optional().default(0),
+    grains: z.coerce.number().min(0).optional().default(0),
+    stationery: z.coerce.number().min(0).optional().default(0),
+    computers: z.coerce.number().min(0).optional().default(0),
     otherItems: z.string().optional(),
     message: z.string().optional(),
 }).refine((data) => {
     return (
-        (data.clothes ?? 0) > 0 ||
-        (data.books ?? 0) > 0 ||
-        (data.raddi ?? 0) > 0 ||
-        (data.grains ?? 0) > 0 ||
-        (data.stationery ?? 0) > 0 ||
-        (data.computers ?? 0) > 0 ||
+        data.clothes > 0 ||
+        data.books > 0 ||
+        data.raddi > 0 ||
+        data.grains > 0 ||
+        data.stationery > 0 ||
+        data.computers > 0 ||
         (data.otherItems && data.otherItems.trim().length > 0)
     );
 }, {
@@ -49,13 +50,44 @@ export default function InKindDonation() {
         handleSubmit,
         formState: { errors, isValid },
     } = useForm<InKindFormData>({
-        resolver: zodResolver(inKindSchema),
+        resolver: zodResolver(inKindSchema) as any, // Cast to any to bypass strict resolver generic mismatch
         mode: "onChange",
+        defaultValues: {
+            clothes: "" as any,
+            books: "" as any,
+            raddi: "" as any,
+            grains: "" as any,
+            stationery: "" as any,
+            computers: "" as any,
+        }
     })
 
-    const onSubmit = (data: InKindFormData) => {
-        console.log("Validated In-Kind Donation:", data)
-        // 🔥 Send to backend / store in DB
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const onSubmit = async (data: InKindFormData) => {
+        setIsSubmitting(true);
+        try {
+            const res = await fetch("/api/inkind-donation", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+
+            const result = await res.json();
+
+            if (res.ok && result.success) {
+                toast.success("In-kind donation request submitted successfully!");
+                // Optionally reset the form
+                // reset();
+            } else {
+                toast.error(result.error || "Failed to submit request.");
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            toast.error("Something went wrong. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     return (
@@ -208,12 +240,12 @@ export default function InKindDonation() {
                             </h3>
 
                             <div className="grid md:grid-cols-3 gap-6">
-                                <input type="number" min={0} step="1" {...register("clothes", { valueAsNumber: true })} placeholder="Clothes (Kg)" className="premium-input font-medium" />
-                                <input type="number" min={0} step="1" {...register("books", { valueAsNumber: true })} placeholder="Books (Units)" className="premium-input font-medium" />
-                                <input type="number" min={0} step="1" {...register("raddi", { valueAsNumber: true })} placeholder="Raddi (Kg)" className="premium-input font-medium" />
-                                <input type="number" min={0} step="1" {...register("grains", { valueAsNumber: true })} placeholder="Grains (Kg)" className="premium-input font-medium" />
-                                <input type="number" min={0} step="1" {...register("stationery", { valueAsNumber: true })} placeholder="Stationery (Units)" className="premium-input font-medium" />
-                                <input type="number" min={0} step="1" {...register("computers", { valueAsNumber: true })} placeholder="Computers (Units)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("clothes")} placeholder="Clothes (Kg)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("books")} placeholder="Books (Units)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("raddi")} placeholder="Raddi (Kg)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("grains")} placeholder="Grains (Kg)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("stationery")} placeholder="Stationery (Units)" className="premium-input font-medium" />
+                                <input type="number" min={0} step="1" {...register("computers")} placeholder="Computers (Units)" className="premium-input font-medium" />
                             </div>
 
                             <textarea
