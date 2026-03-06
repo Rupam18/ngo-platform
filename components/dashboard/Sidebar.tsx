@@ -15,7 +15,8 @@ import {
     CheckCircle,
     ChevronLeft,
     ChevronRight,
-    Settings
+    Settings,
+    MessageSquare
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -25,6 +26,7 @@ const SIDEBAR_ITEMS = [
     { name: "Donors", href: "/dashboard/donors", icon: UserCheck },
     { name: "Donations", href: "/dashboard/donations", icon: CreditCard },
     { name: "Recurring", href: "/dashboard/recurring", icon: RefreshCw },
+    { name: "Messages", href: "/dashboard/messages", icon: MessageSquare },
     { name: "Impact", href: "/dashboard/impact", icon: HandHeart },
     { name: "Reports", href: "/dashboard/reports", icon: FileText },
     { name: "Compliance", href: "/dashboard/compliance", icon: CheckCircle },

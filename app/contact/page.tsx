@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 
 const contactSchema = z.object({
     fullName: z
@@ -54,10 +55,31 @@ export default function ContactPage() {
     });
 
     const onSubmit = async (data: ContactFormData) => {
-        console.log("Form Submitted Data:", data);
-        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API call network delay
-        alert("Message sent successfully! We will get back to you soon.");
-        reset();
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: data.fullName,
+                    email: data.email,
+                    phone: data.mobile,
+                    subject: data.subject,
+                    message: data.message
+                }),
+            });
+
+            const result = await res.json();
+
+            if (result.success) {
+                toast.success("Message sent successfully! We will get back to you soon.");
+                reset();
+            } else {
+                toast.error(result.error || "Failed to send message. Please try again.");
+            }
+        } catch (error) {
+            console.error("Contact form error:", error);
+            toast.error("An unexpected error occurred. Please try again.");
+        }
     };
 
     return (

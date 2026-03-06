@@ -82,3 +82,14 @@ model CampaignImage {
 
   @@map("campaign_images")
 }
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  status    String   @default("UNREAD") // UNREAD or READ
+  createdAt DateTime @default(now())
+}
