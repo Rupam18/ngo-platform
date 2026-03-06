@@ -31,7 +31,7 @@ export function Topbar() {
     return (
         <header className="h-20 bg-white border-b border-gray-100 flex items-center justify-between px-6 sticky top-0 z-10 shadow-sm flex-shrink-0">
             <div className="flex items-center flex-1">
-                <div className="flex items-center bg-gray-50 px-4 py-2.5 rounded-full w-full max-w-md border border-gray-100 focus-within:border-emerald-200 focus-within:ring-1 focus-within:ring-emerald-200 transition-all">
+                <div className="flex items-center bg-gray-50 px-4 py-2.5 rounded-full w-full max-w-md border border-gray-100 focus-within:border-red-200 focus-within:ring-1 focus-within:ring-red-200 transition-all">
                     <Search size={18} className="text-gray-400 mr-2 flex-shrink-0" />
                     <input
                         type="text"
@@ -56,7 +56,7 @@ export function Topbar() {
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <button className="flex items-center gap-3 hover:bg-gray-50 p-1 pr-4 rounded-full transition-colors border border-transparent hover:border-gray-200 focus:outline-none">
-                            <div className="w-9 h-9 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold border border-emerald-200">
+                            <div className="w-9 h-9 rounded-full bg-red-100 flex items-center justify-center text-red-700 font-bold border border-red-200 shadow-sm">
                                 A
                             </div>
                             <div className="text-sm text-left hidden md:block">
