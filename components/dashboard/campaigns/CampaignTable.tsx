@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
-import { fetchWithAuth } from "@/lib/api";
 import {
     Table,
     TableBody,
@@ -46,8 +45,9 @@ export function CampaignTable() {
     useEffect(() => {
         const fetchCampaigns = async () => {
             try {
-                const res = await fetchWithAuth("/campaign");
-                setCampaigns(res.data || []);
+                const res = await fetch("/api/campaigns");
+                const data = await res.json();
+                setCampaigns(data.data || []);
             } catch (error) {
                 console.error("Failed to fetch campaigns", error);
             } finally {
@@ -61,7 +61,9 @@ export function CampaignTable() {
     const handleDelete = async (id: string) => {
         if (!confirm("Are you sure you want to delete this campaign?")) return;
         try {
-            await fetchWithAuth(`/campaign/${id}`, { method: "DELETE" });
+            const res = await fetch(`/api/campaigns/${id}`, { method: "DELETE" });
+            const data = await res.json();
+            if (!data.success) throw new Error(data.message || "Failed to delete");
             setCampaigns((prev) => prev.filter((c) => c.id !== id));
         } catch (error: any) {
             alert(error.message || "Failed to delete campaign. It might have existing donations.");
