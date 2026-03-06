@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -54,18 +55,46 @@ const volunteerSchema = z.object({
 type VolunteerFormData = z.infer<typeof volunteerSchema>
 
 export default function VolunteerPage() {
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitSuccess, setSubmitSuccess] = useState(false)
+    const [submitError, setSubmitError] = useState<string | null>(null)
+
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors, isValid },
     } = useForm<VolunteerFormData>({
         resolver: zodResolver(volunteerSchema),
         mode: "onChange",
     })
 
-    const onSubmit = (data: VolunteerFormData) => {
-        console.log("Volunteer Application:", data)
-        // 🔥 Send to backend / DB
+    const onSubmit = async (data: VolunteerFormData) => {
+        setIsSubmitting(true)
+        setSubmitError(null)
+        setSubmitSuccess(false)
+        console.log("Submitting Volunteer Application:", data)
+        try {
+            const res = await fetch("/api/volunteer", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            })
+
+            const result = await res.json()
+
+            if (result.success) {
+                setSubmitSuccess(true)
+                reset() // Clear form on success
+            } else {
+                setSubmitError(result.error || "Failed to submit application.")
+            }
+        } catch (error) {
+            console.error("Error submitting application:", error)
+            setSubmitError("An error occurred. Please try again.")
+        } finally {
+            setIsSubmitting(false)
+        }
     }
     return (
         <main className="min-h-screen flex flex-col bg-gradient-to-r from-blue-100 via-yellow-50 to-purple-100">
@@ -103,6 +132,18 @@ export default function VolunteerPage() {
                         <p className="text-gray-600 mb-8">
                             Join our mission to support children, education & healthcare.
                         </p>
+
+                        {submitSuccess && (
+                            <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl">
+                                Thank you for applying! We have received your application and will review it shortly.
+                            </div>
+                        )}
+
+                        {submitError && (
+                            <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl">
+                                {submitError}
+                            </div>
+                        )}
 
                         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
 
@@ -231,13 +272,13 @@ export default function VolunteerPage() {
                             {/* BUTTON */}
                             <Button
                                 type="submit"
-                                disabled={!isValid}
-                                className={`w-full py-6 rounded-2xl text-white font-bold text-lg transition-all shadow-lg ${!isValid
+                                disabled={!isValid || isSubmitting}
+                                className={`w-full py-6 rounded-2xl text-white font-bold text-lg transition-all shadow-lg ${(!isValid || isSubmitting)
                                     ? "bg-gray-400 cursor-not-allowed opacity-50"
-                                    : "bg-gradient-to-r from-blue-600 to-purple-600 hover:scale-[1.02] hover:shadow-xl"
+                                    : "bg-[#800000] hover:bg-[#600000] hover:scale-[1.02] hover:shadow-xl"
                                     }`}
                             >
-                                Submit Application
+                                {isSubmitting ? "Submitting..." : "Submit Application"}
                             </Button>
 
                         </form>

@@ -93,3 +93,20 @@ model ContactMessage {
   status    String   @default("UNREAD") // UNREAD or READ
   createdAt DateTime @default(now())
 }
+
+model VolunteerApplication {
+  id          String   @id @default(uuid())
+  fullName    String
+  dob         String
+  gender      String
+  nationality String
+  address     String
+  city        String
+  state       String
+  country     String
+  pincode     String
+  phone       String
+  email       String
+  status      String   @default("UNREAD") // UNREAD, REVIEWED, ACCEPTED, REJECTED
+  createdAt   DateTime @default(now())
+}
