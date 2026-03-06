@@ -29,6 +29,14 @@ export async function POST(req: Request) {
             }
         });
 
+        await prisma.notification.create({
+            data: {
+                title: "New Contact Message",
+                message: `${validatedData.name} (${validatedData.email}) sent a message.`,
+                type: "CONTACT"
+            }
+        });
+
         return NextResponse.json({
             success: true,
             message: "Message received successfully",

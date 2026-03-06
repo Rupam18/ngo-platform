@@ -110,3 +110,12 @@ model VolunteerApplication {
   status      String   @default("UNREAD") // UNREAD, REVIEWED, ACCEPTED, REJECTED
   createdAt   DateTime @default(now())
 }
+
+model Notification {
+  id        String   @id @default(uuid())
+  title     String
+  message   String
+  type      String   // DONATION, VOLUNTEER, CONTACT
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

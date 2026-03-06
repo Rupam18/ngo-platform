@@ -26,11 +26,25 @@ export async function POST(req: Request) {
         }
 
         // Signature is valid, update the donation status to SUCCESS
-        await prisma.donation.update({
+        const donation = await prisma.donation.update({
             where: { id: donationId },
             data: {
                 status: "SUCCESS",
                 receiptNumber: razorpay_payment_id // Update receipt number with actual payment ID
+            },
+            include: {
+                user: true,
+                donor: true
+            }
+        });
+
+        const donorName = donation.user?.name || donation.donor?.name || "Someone";
+
+        await prisma.notification.create({
+            data: {
+                title: "New Online Donation",
+                message: `${donorName} made an online donation of ₹${donation.amount}.`,
+                type: "DONATION"
             }
         });
 

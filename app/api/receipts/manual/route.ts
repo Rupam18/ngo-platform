@@ -48,6 +48,14 @@ export async function POST(req: Request) {
             }
         });
 
+        await prisma.notification.create({
+            data: {
+                title: "New Offline Donation",
+                message: `${donor.name} made an offline donation of ₹${amount}.`,
+                type: "DONATION"
+            }
+        });
+
         // Generate PDF in memory using jsPDF
         // Note: Using dynamic import or require to ensure it works nicely in the serverless edge/node environment
         const { jsPDF } = require("jspdf");

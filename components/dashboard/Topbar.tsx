@@ -12,6 +12,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
+import { NotificationBell } from "./NotificationBell";
 
 export function Topbar() {
     const router = useRouter();
@@ -42,10 +43,7 @@ export function Topbar() {
                     </Button>
                 </Link>
 
-                <button className="relative p-2 text-gray-400 hover:text-gray-600 transition-colors rounded-full hover:bg-gray-50">
-                    <Bell size={20} />
-                    <span className="absolute top-1 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-                </button>
+                <NotificationBell />
 
                 <div className="h-8 w-[1px] bg-gray-200 mx-1"></div>
 

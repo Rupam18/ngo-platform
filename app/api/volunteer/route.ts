@@ -70,6 +70,14 @@ export async function POST(req: Request) {
             }
         });
 
+        await prisma.notification.create({
+            data: {
+                title: "New Volunteer Application",
+                message: `${validatedData.fullName} applied to be a volunteer.`,
+                type: "VOLUNTEER"
+            }
+        });
+
         return NextResponse.json({
             success: true,
             message: "Application received successfully",
